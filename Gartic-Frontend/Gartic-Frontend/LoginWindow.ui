@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>936</width>
+    <width>892</width>
     <height>499</height>
    </rect>
   </property>
@@ -50,13 +50,26 @@
      </rect>
     </property>
    </widget>
+   <widget class="QLabel" name="LoginTitlePage">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>20</y>
+      <width>61</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Login Page</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>936</width>
+     <width>892</width>
      <height>22</height>
     </rect>
    </property>
