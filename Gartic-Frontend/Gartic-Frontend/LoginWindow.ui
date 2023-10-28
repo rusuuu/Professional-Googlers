@@ -66,7 +66,7 @@ QPushButton:pressed {
      <string>Login</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="PasswordBox">
+   <widget class="QLineEdit" name="PasswordInput">
     <property name="geometry">
      <rect>
       <x>486</x>
@@ -113,7 +113,7 @@ QLineEdit:placeholder-text {
      <enum>QLineEdit::Password</enum>
     </property>
    </widget>
-   <widget class="QLineEdit" name="UsernameBox">
+   <widget class="QLineEdit" name="EmailInput">
     <property name="geometry">
      <rect>
       <x>486</x>
@@ -154,7 +154,7 @@ QLineEdit:placeholder-text {
 </string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="LoginTitlePage">
