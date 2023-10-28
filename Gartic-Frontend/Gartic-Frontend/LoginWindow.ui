@@ -230,6 +230,75 @@ QLineEdit:placeholder-text {
      <string>Password</string>
     </property>
    </widget>
+   <widget class="QLabel" name="EmailErrorLabel">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>261</y>
+      <width>301</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(231, 96, 131);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="PasswordErrorLabel">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>381</y>
+      <width>301</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(231, 96, 131);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="SignupLabel">
+    <property name="geometry">
+     <rect>
+      <x>465</x>
+      <y>530</y>
+      <width>351</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(41, 48, 142);</string>
+    </property>
+    <property name="text">
+     <string>Don't have an account? Register now</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

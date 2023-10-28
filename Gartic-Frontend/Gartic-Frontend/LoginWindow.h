@@ -18,6 +18,8 @@ private:
 	Ui::LoginWindowClass ui;
 	bool ValidateCredentials();
 
+	void ClearErrorMessage();
+
 private slots:
 	void OnLoginButtonClicked();
 

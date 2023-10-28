@@ -8,6 +8,8 @@ LoginWindow::LoginWindow(QWidget *parent)
 	ui.setupUi(this);
 
     connect(ui.LoginButton, &QPushButton::clicked, this, &LoginWindow::OnLoginButtonClicked);
+    connect(ui.EmailInput, &QLineEdit::textChanged, this, &LoginWindow::ClearErrorMessage);
+    connect(ui.PasswordInput, &QLineEdit::textChanged, this, &LoginWindow::ClearErrorMessage);
 }
 
 LoginWindow::~LoginWindow()
@@ -43,17 +45,24 @@ bool LoginWindow::ValidateCredentials()
     QString email = ui.EmailInput->text();
     QString password = ui.PasswordInput->text();
     
-    if (IsValidEmail(email) == false) 
+    if ((!IsValidEmail(email)) || email.isEmpty())
     {
-        QMessageBox::warning(this, "Invalid", "Email is not valid!");
+        ui.EmailErrorLabel->setText("Invalid email address.");
         return false;
     }
 
-    if (password.isEmpty() == true)
+    if (password.isEmpty())
     {
-        QMessageBox::warning(this, "Invalid", "Password is not valid!");
+        ui.PasswordErrorLabel->setText("Password cannot be empty.");
         return false;
     }
 
+    ui.EmailErrorLabel->clear();
+    ui.PasswordErrorLabel->clear();
     return true;
+}
+void LoginWindow::ClearErrorMessage()
+{
+    ui.EmailErrorLabel->clear();
+    ui.PasswordErrorLabel->clear();
 }
