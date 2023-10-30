@@ -89,6 +89,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="RegisterWindow.cpp" />
     <QtRcc Include="GarticFrontend.qrc" />
     <QtUic Include="GarticFrontend.ui" />
     <QtMoc Include="GarticFrontend.h" />
@@ -96,9 +97,13 @@
     <ClCompile Include="LoginWindow.cpp" />
     <ClCompile Include="main.cpp" />
     <QtUic Include="LoginWindow.ui" />
+    <QtUic Include="RegisterWindow.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="LoginWindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="RegisterWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
