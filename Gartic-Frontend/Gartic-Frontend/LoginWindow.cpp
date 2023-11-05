@@ -8,8 +8,8 @@ LoginWindow::LoginWindow(QWidget *parent)
 	ui.setupUi(this);
 
     connect(ui.LoginButton, &QPushButton::clicked, this, &LoginWindow::OnLoginButtonClicked);
-    connect(ui.EmailInput, &QLineEdit::textChanged, this, &LoginWindow::ClearErrorMessage);
-    connect(ui.PasswordInput, &QLineEdit::textChanged, this, &LoginWindow::ClearErrorMessage);
+    connect(ui.LoginEmailInput, &QLineEdit::textChanged, this, &LoginWindow::ClearErrorMessage);
+    connect(ui.LoginPasswordInput, &QLineEdit::textChanged, this, &LoginWindow::ClearErrorMessage);
 }
 
 LoginWindow::~LoginWindow()
@@ -17,8 +17,8 @@ LoginWindow::~LoginWindow()
 
 void LoginWindow::OnLoginButtonClicked() 
 {
-    QString email = ui.EmailInput->text();
-    QString password = ui.PasswordInput->text();
+    QString email = ui.LoginEmailInput->text();
+    QString password = ui.LoginPasswordInput->text();
 
     if (ValidateCredentials()) 
     {
@@ -42,8 +42,8 @@ bool LoginWindow::IsValidEmail(const QString& email)
 
 bool LoginWindow::ValidateCredentials() 
 {
-    QString email = ui.EmailInput->text();
-    QString password = ui.PasswordInput->text();
+    QString email = ui.LoginEmailInput->text();
+    QString password = ui.LoginPasswordInput->text();
     
     if ((!IsValidEmail(email)) || email.isEmpty())
     {
