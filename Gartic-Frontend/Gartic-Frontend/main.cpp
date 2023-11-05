@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
         loginWindow->hide();
         });
 
-    QObject::connect(registerWindow, &RegisterWindow::showLoginWindow, [loginWindow, registerWindow]() 
+    QObject::connect(registerWindow, &RegisterWindow::ShowLoginWindow, [loginWindow, registerWindow]() 
         {
         loginWindow->show();
         registerWindow->hide();

@@ -14,8 +14,17 @@ public:
 	void OnBackToLoginClicked();
 
 signals:
-	void showLoginWindow();
+	void ShowLoginWindow();
+
+private slots:
+	void OnRegisterButtonClicked();
+	void ValidateRegistration();
+	void ClearErrorLabel();
 
 private:
 	Ui::RegisterWindowClass ui;
+	bool IsValidUsername(const QString& username);
+	bool IsValidEmail(const QString& email);
+	bool IsValidPassword(const QString& password);
+	bool IsPasswordConfirmed(const QString& password, const QString& confirmPassword);
 };

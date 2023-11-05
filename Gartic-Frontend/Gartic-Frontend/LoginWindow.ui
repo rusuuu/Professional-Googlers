@@ -206,7 +206,7 @@ QLineEdit:placeholder-text {
      <string>Email</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="PasswordLabel">
     <property name="geometry">
      <rect>
       <x>490</x>
@@ -230,57 +230,13 @@ QLineEdit:placeholder-text {
      <string>Password</string>
     </property>
    </widget>
-   <widget class="QLabel" name="EmailErrorLabel">
+   <widget class="QPushButton" name="RegisterButton">
     <property name="geometry">
      <rect>
-      <x>490</x>
-      <y>261</y>
-      <width>301</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>11</pointsize>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(231, 96, 131);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="PasswordErrorLabel">
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>381</y>
-      <width>301</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>11</pointsize>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(231, 96, 131);</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="SignupLabel">
-    <property name="geometry">
-     <rect>
-      <x>520</x>
-      <y>530</y>
-      <width>251</width>
-      <height>31</height>
+      <x>460</x>
+      <y>640</y>
+      <width>361</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
@@ -290,50 +246,42 @@ QLineEdit:placeholder-text {
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(41, 48, 142);</string>
+     <string notr="true">QPushButton {
+    background: transparent;
+    border: none;
+    color: rgb(55,65, 189);
+}
+QPushButton:hover {
+    color: rgb(162,72,147); 
+}</string>
     </property>
     <property name="text">
-     <string>Don't have an account? </string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
+     <string>Don't have an account?  Register now</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="RegisterButton">
+   <widget class="QLabel" name="ErrorLabel">
     <property name="geometry">
      <rect>
-      <x>550</x>
-      <y>570</y>
-      <width>191</width>
-      <height>51</height>
+      <x>10</x>
+      <y>530</y>
+      <width>1261</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>18</pointsize>
+      <pointsize>12</pointsize>
       <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {
-    border-radius: 10px; 
-    border: 2px solid #5c5c5c; 
-    background-color: rgb(162,72,147);  
-    padding: 5px;
-    color: #ffffff;  
-}
-
-QPushButton:hover {
-    background-color: rgb(231,96,131);  
-}
-
-QPushButton:pressed {
-    background-color: rgb(225,62,103);  
-}
-</string>
+     <string notr="true">color: rgb(231, 96, 131);</string>
     </property>
     <property name="text">
-     <string> Register now</string>
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter|Qt::AlignTop</set>
     </property>
    </widget>
   </widget>

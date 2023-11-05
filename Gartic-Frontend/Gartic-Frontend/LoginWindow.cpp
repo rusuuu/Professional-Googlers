@@ -22,51 +22,35 @@ void LoginWindow::OnLoginButtonClicked()
     QString email = ui.LoginEmailInput->text();
     QString password = ui.LoginPasswordInput->text();
 
-    if (ValidateCredentials()) 
+    try
     {
-        // Attempt to login or any other logic
+        ValidateCredentials();
     }
-    else 
+    catch (std::exception exception)
     {
-        // Show error or validation message
+        ui.ErrorLabel->setText(exception.what());
     }
 }
 
-bool LoginWindow::IsValidEmail(const QString& email) 
-{
-    
-    QRegularExpression regex("^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4})*$");
-
-   
-    return regex.match(email).hasMatch();
-}
-
-
-bool LoginWindow::ValidateCredentials() 
+void LoginWindow::ValidateCredentials() 
 {
     QString email = ui.LoginEmailInput->text();
     QString password = ui.LoginPasswordInput->text();
     
-    if ((!IsValidEmail(email)) || email.isEmpty())
+    if (email.isEmpty())
     {
-        ui.EmailErrorLabel->setText("Invalid email address.");
-        return false;
+        throw std::exception("Email field cannot be empty");
     }
 
     if (password.isEmpty())
     {
-        ui.PasswordErrorLabel->setText("Password cannot be empty.");
-        return false;
+        throw std::exception("Password cannot be empty");
     }
-
-    ui.EmailErrorLabel->clear();
-    ui.PasswordErrorLabel->clear();
-    return true;
 }
+
 void LoginWindow::ClearErrorMessage()
 {
-    ui.EmailErrorLabel->clear();
-    ui.PasswordErrorLabel->clear();
+    ui.ErrorLabel->clear();
 }
 
 void LoginWindow::OnRegisterButtonClicked()
