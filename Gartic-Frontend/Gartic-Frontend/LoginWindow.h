@@ -14,11 +14,16 @@ public:
 
 	bool IsValidEmail(const QString& email); 
 
+signals:
+	void showRegisterWindow();
+
 private:
 	Ui::LoginWindowClass ui;
 	bool ValidateCredentials();
 
 	void ClearErrorMessage();
+
+	void OnRegisterButtonClicked();
 
 private slots:
 	void OnLoginButtonClicked();

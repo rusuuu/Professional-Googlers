@@ -10,6 +10,8 @@ LoginWindow::LoginWindow(QWidget *parent)
     connect(ui.LoginButton, &QPushButton::clicked, this, &LoginWindow::OnLoginButtonClicked);
     connect(ui.LoginEmailInput, &QLineEdit::textChanged, this, &LoginWindow::ClearErrorMessage);
     connect(ui.LoginPasswordInput, &QLineEdit::textChanged, this, &LoginWindow::ClearErrorMessage);
+    connect(ui.RegisterButton, &QPushButton::clicked, this, &LoginWindow::OnRegisterButtonClicked);
+
 }
 
 LoginWindow::~LoginWindow()
@@ -65,4 +67,9 @@ void LoginWindow::ClearErrorMessage()
 {
     ui.EmailErrorLabel->clear();
     ui.PasswordErrorLabel->clear();
+}
+
+void LoginWindow::OnRegisterButtonClicked()
+{
+    emit showRegisterWindow();
 }

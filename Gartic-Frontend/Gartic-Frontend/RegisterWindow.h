@@ -11,6 +11,11 @@ public:
 	RegisterWindow(QWidget *parent = nullptr);
 	~RegisterWindow();
 
+	void OnBackToLoginClicked();
+
+signals:
+	void showLoginWindow();
+
 private:
 	Ui::RegisterWindowClass ui;
 };
