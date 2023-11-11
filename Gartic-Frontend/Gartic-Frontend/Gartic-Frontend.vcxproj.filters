@@ -62,5 +62,8 @@
     <QtUic Include="RegisterWindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="Widget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
 </Project>

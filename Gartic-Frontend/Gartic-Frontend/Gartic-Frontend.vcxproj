@@ -89,6 +89,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="HostRoom.cpp" />
     <ClCompile Include="RegisterWindow.cpp" />
     <QtRcc Include="GarticFrontend.qrc" />
     <QtUic Include="GarticFrontend.ui" />
@@ -96,6 +97,7 @@
     <ClCompile Include="GarticFrontend.cpp" />
     <ClCompile Include="LoginWindow.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="HostRoom.ui" />
     <QtUic Include="LoginWindow.ui" />
     <QtUic Include="RegisterWindow.ui" />
   </ItemGroup>
@@ -104,6 +106,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="RegisterWindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="HostRoom.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
