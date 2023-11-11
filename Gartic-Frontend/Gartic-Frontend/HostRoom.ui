@@ -57,6 +57,19 @@ background-color: rgb(255, 250, 97);</string>
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="CopyInviteCodeButton">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>390</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Copy</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
