@@ -1,4 +1,5 @@
 #include "RegisterWindow.h"
+#include "LoginWindow.h"
 #include <QMessageBox>
 #include <QRegularExpression> 
 
@@ -12,6 +13,13 @@ RegisterWindow::RegisterWindow(QWidget *parent)
     connect(ui.RegisterEmailInput, &QLineEdit::textChanged, this, &RegisterWindow::ClearErrorLabel);
     connect(ui.RegisterPasswordInput, &QLineEdit::textChanged, this, &RegisterWindow::ClearErrorLabel);
     connect(ui.RegisterPasswordConfirmationInput, &QLineEdit::textChanged, this, &RegisterWindow::ClearErrorLabel);
+
+    transitionAnimationRegisterToLogin = new QPropertyAnimation(this, "windowOpacity");
+    transitionAnimationRegisterToLogin->setDuration(100);
+    transitionAnimationRegisterToLogin->setStartValue(1.0);
+    transitionAnimationRegisterToLogin->setEndValue(0.0);
+
+    connect(transitionAnimationRegisterToLogin, &QPropertyAnimation::finished, this, &RegisterWindow::OnTransitionAnimationFinished);
 }
 
 RegisterWindow::~RegisterWindow()
@@ -21,7 +29,15 @@ RegisterWindow::~RegisterWindow()
 
 void RegisterWindow::OnBackToLoginClicked()
 {
-	emit ShowLoginWindow();
+    transitionAnimationRegisterToLogin->start();
+}
+
+void RegisterWindow::OnTransitionAnimationFinished()
+{
+    this->hide();
+
+    LoginWindow* loginWindow = new LoginWindow();
+    loginWindow->show();
 }
 
 void RegisterWindow::OnRegisterButtonClicked()

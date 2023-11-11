@@ -1,6 +1,7 @@
 #pragma once
 
-#include <QMainWindow>
+#include <QtWidgets/QMainWindow>
+#include <QPropertyAnimation>
 #include "ui_RegisterWindow.h"
 
 class RegisterWindow : public QMainWindow
@@ -16,15 +17,18 @@ public:
 signals:
 	void ShowLoginWindow();
 
-private slots:
-	void OnRegisterButtonClicked();
-	void ValidateRegistration();
-	void ClearErrorLabel();
-
 private:
 	Ui::RegisterWindowClass ui;
 	bool IsValidUsername(const QString& username);
 	bool IsValidEmail(const QString& email);
 	bool IsValidPassword(const QString& password);
 	bool IsPasswordConfirmed(const QString& password, const QString& confirmPassword);
+
+	QPropertyAnimation* transitionAnimationRegisterToLogin;
+
+private slots:
+	void OnRegisterButtonClicked();
+	void ValidateRegistration();
+	void ClearErrorLabel();
+	void OnTransitionAnimationFinished();
 };

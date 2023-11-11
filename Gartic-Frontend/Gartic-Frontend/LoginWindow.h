@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QtWidgets/QMainWindow>
+#include <QPropertyAnimation>
 #include "ui_LoginWindow.h"
 
 
@@ -21,7 +22,11 @@ private:
 	void ValidateCredentials();
 	void ClearErrorMessage();
 	void OnRegisterButtonClicked();
+
+	QPropertyAnimation* transitionAnimationLoginToRegister;
+
 private slots:
 	void OnLoginButtonClicked();
+	void OnTransitionAnimationFinished();
 
 };
