@@ -13,7 +13,7 @@ LoginWindow::LoginWindow(QWidget *parent)
     connect(ui.LoginPasswordInput, &QLineEdit::textChanged, this, &LoginWindow::ClearErrorMessage);
     connect(ui.RegisterButton, &QPushButton::clicked, this, &LoginWindow::OnRegisterButtonClicked);
 
-    //Attributes of the transition between the Login window and the Register one
+    
     transitionAnimationLoginToRegister = new QPropertyAnimation(this, "windowOpacity");
     transitionAnimationLoginToRegister->setDuration(100); 
     transitionAnimationLoginToRegister->setStartValue(1.0);
