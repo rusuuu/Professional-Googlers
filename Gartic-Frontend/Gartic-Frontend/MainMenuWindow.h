@@ -12,7 +12,8 @@ public:
     ~MainMenuWindow();
 
 private slots:
-    void OnHostGameButtonClicked(); 
+    void OnHostGameButtonClicked();
+    void OnExitButtonClicked();
 
 private:
     Ui::MainMenuWindow ui;

@@ -3,29 +3,32 @@
 #include <QStackedWidget>
 #include "LoginWindow.h"
 #include "RegisterWindow.h"
+#include "MainMenuWindow.h"
 
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
    
-    LoginWindow* loginWindow = new LoginWindow();
-    RegisterWindow* registerWindow = new RegisterWindow();
+    LoginWindow* m_loginWindow = new LoginWindow();
+    RegisterWindow* m_registerWindow = new RegisterWindow();
+    MainMenuWindow* m_mainMenu = new MainMenuWindow();
     QStackedWidget stackedWidget;
 
-    QObject::connect(loginWindow, &LoginWindow::showRegisterWindow, [loginWindow, registerWindow]() 
+    QObject::connect(m_loginWindow, &LoginWindow::showRegisterWindow, [m_loginWindow, m_registerWindow]() 
         {
-        registerWindow->show();
-        loginWindow->hide();
+        m_registerWindow->show();
+        m_loginWindow->hide();
         });
 
-    QObject::connect(registerWindow, &RegisterWindow::ShowLoginWindow, [loginWindow, registerWindow]() 
+    QObject::connect(m_registerWindow, &RegisterWindow::ShowLoginWindow, [m_loginWindow, m_registerWindow]() 
         {
-        loginWindow->show();
-        registerWindow->hide();
+        m_loginWindow->show();
+        m_registerWindow->hide();
         });
 
-    loginWindow->show();
+    m_mainMenu->show();
 
+    
     return a.exec();
 }
