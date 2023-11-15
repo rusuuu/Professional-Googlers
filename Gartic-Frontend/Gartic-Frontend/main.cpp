@@ -1,5 +1,6 @@
 #include "GarticFrontend.h"
 #include <QtWidgets/QApplication>
+#include <QStackedWidget>
 #include "LoginWindow.h"
 #include "RegisterWindow.h"
 
@@ -10,8 +11,8 @@ int main(int argc, char *argv[])
    
     LoginWindow* loginWindow = new LoginWindow();
     RegisterWindow* registerWindow = new RegisterWindow();
+    QStackedWidget stackedWidget;
 
-    
     QObject::connect(loginWindow, &LoginWindow::showRegisterWindow, [loginWindow, registerWindow]() 
         {
         registerWindow->show();

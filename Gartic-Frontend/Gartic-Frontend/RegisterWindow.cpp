@@ -17,7 +17,7 @@ RegisterWindow::RegisterWindow(QWidget* parent)
 	transitionAnimationRegisterToLogin = new QPropertyAnimation(this, "windowOpacity");
 	transitionAnimationRegisterToLogin->setDuration(100);
 	transitionAnimationRegisterToLogin->setStartValue(1.0);
-	transitionAnimationRegisterToLogin->setEndValue(0.0);
+	transitionAnimationRegisterToLogin->setEndValue(1.0);
 
 	connect(transitionAnimationRegisterToLogin, &QPropertyAnimation::finished, this, &RegisterWindow::OnTransitionAnimationFinished);
 }
@@ -109,7 +109,7 @@ void RegisterWindow::ValidateRegistration()
 
 	if (!IsValidPassword(password))
 	{
-		throw std::runtime_error("Please ensure your password:\n- Is at least 8 characters long\n- Contains one uppercase letter\n- Contains one lowercase letter\n- Includes one number\n- Has one special character(e.g., !@#$%^&*)");
+		throw std::runtime_error("Please ensure your password  meets the following criteria:\n- Is at least 8 characters long\n- Contains one uppercase letter\n- Contains one lowercase letter\n- Includes one number\n- Has one special character(e.g., !@#$%^&*)");
 	}
 
 	if (!IsPasswordConfirmed(password, confirmPassword))

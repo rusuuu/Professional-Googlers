@@ -17,9 +17,10 @@ LoginWindow::LoginWindow(QWidget *parent)
     transitionAnimationLoginToRegister = new QPropertyAnimation(this, "windowOpacity");
     transitionAnimationLoginToRegister->setDuration(100); 
     transitionAnimationLoginToRegister->setStartValue(1.0);
-    transitionAnimationLoginToRegister->setEndValue(0.0);
+    transitionAnimationLoginToRegister->setEndValue(1.0);
 
     connect(transitionAnimationLoginToRegister, &QPropertyAnimation::finished, this, &LoginWindow::OnTransitionAnimationFinished);
+
 }
 
 LoginWindow::~LoginWindow()
