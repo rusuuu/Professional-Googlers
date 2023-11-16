@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>900</width>
-    <height>509</height>
+    <width>995</width>
+    <height>565</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,8 +30,8 @@
    <widget class="QLabel" name="InviteText">
     <property name="geometry">
      <rect>
-      <x>310</x>
-      <y>350</y>
+      <x>320</x>
+      <y>340</y>
       <width>101</width>
       <height>41</height>
      </rect>
@@ -43,7 +43,7 @@
    <widget class="QLabel" name="InviteCode">
     <property name="geometry">
      <rect>
-      <x>238</x>
+      <x>248</x>
       <y>390</y>
       <width>171</width>
       <height>31</height>
@@ -60,7 +60,7 @@ background-color: rgb(255, 250, 97);</string>
    <widget class="QPushButton" name="CopyInviteCodeButton">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>420</x>
       <y>390</y>
       <width>71</width>
       <height>31</height>
@@ -317,13 +317,26 @@ background-color: rgb(255, 250, 97);</string>
      </property>
     </item>
    </widget>
+   <widget class="QPushButton" name="BackToMainMenuButton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>75</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>back</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>900</width>
+     <width>995</width>
      <height>22</height>
     </rect>
    </property>

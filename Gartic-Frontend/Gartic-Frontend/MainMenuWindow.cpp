@@ -7,6 +7,9 @@ MainMenuWindow::MainMenuWindow(QWidget* parent) : QMainWindow(parent)
 
 	connect(ui.HostGameButton, &QPushButton::clicked, this, &MainMenuWindow::OnHostGameButtonClicked);
     connect(ui.ExitButton, &QPushButton::clicked, this, &MainMenuWindow::OnExitButtonClicked);
+
+    
+
 }
 
 MainMenuWindow::~MainMenuWindow()
@@ -22,8 +25,8 @@ void MainMenuWindow::OnExitButtonClicked()
 
 void MainMenuWindow::OnHostGameButtonClicked()
 {
-    if (!hostRoomWindow) 
-        hostRoomWindow = new HostRoom(this);
+    //if (!hostRoomWindow) 
+        m_hostRoomWindow = new HostRoom(this);
 
-    hostRoomWindow->show(); 
+    m_hostRoomWindow->show(); 
 }

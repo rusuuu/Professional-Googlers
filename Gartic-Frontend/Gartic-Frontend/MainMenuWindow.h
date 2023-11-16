@@ -1,5 +1,6 @@
 #pragma once
 #include <QMainWindow>
+#include <QPropertyAnimation>
 #include "ui_MainMenuWindow.h"
 
 class HostRoom; 
@@ -11,11 +12,17 @@ public:
     MainMenuWindow(QWidget* parent = nullptr);
     ~MainMenuWindow();
 
+signals:
+    void showHostRoomWindow();
+
+private:
+    Ui::MainMenuWindow ui;
+    HostRoom* m_hostRoomWindow; 
+
+    QPropertyAnimation* transitionAnimationMainMenuToHostRoom;
+
 private slots:
     void OnHostGameButtonClicked();
     void OnExitButtonClicked();
 
-private:
-    Ui::MainMenuWindow ui;
-    HostRoom* hostRoomWindow; 
 };
