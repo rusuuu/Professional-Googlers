@@ -11,6 +11,7 @@ class HostRoom : public QMainWindow
 public:
 	HostRoom(QWidget *parent = nullptr);
 	~HostRoom();
+
 	void OnBackToMainMenuClicked();
 
 signals:
