@@ -91,7 +91,12 @@
   <ItemGroup>
     <ClCompile Include="HostRoom.cpp" />
     <ClCompile Include="MainMenuWindow.cpp" />
-    <ClCompile Include="ProfileUserWindow.cpp" />
+    <ClCompile Include="ProfileUserWindow.cpp">
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
+    </ClCompile>
     <ClCompile Include="RegisterWindow.cpp" />
     <QtRcc Include="GarticFrontend.qrc" />
     <QtUic Include="GarticFrontend.ui" />

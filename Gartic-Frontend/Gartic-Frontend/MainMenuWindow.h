@@ -17,11 +17,13 @@ signals:
 
 private:
     Ui::MainMenuWindow ui;
-    HostRoom* m_hostRoomWindow; 
+
+    HostRoom* m_hostRoomWindow;
 
     QPropertyAnimation* transitionAnimationMainMenuToHostRoom;
 
 private slots:
+
     void OnHostGameButtonClicked();
     void OnExitButtonClicked();
     void OnTransitionAnimationToHostRoom();
