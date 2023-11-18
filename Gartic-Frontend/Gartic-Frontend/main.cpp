@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
             m_hostRoom->hide();
         });
 
-    m_mainMenu->show();
+    m_loginWindow->show();
 
     
     return a.exec();
