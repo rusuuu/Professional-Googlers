@@ -46,12 +46,30 @@
     <ClCompile Include="RegisterWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HostRoom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenuWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProfileUserWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="LoginWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="RegisterWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="HostRoom.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="MainMenuWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ProfileUserWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -62,7 +80,13 @@
     <QtUic Include="RegisterWindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="Widget.ui">
+    <QtUic Include="HostRoom.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="MainMenuWindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ProfileUserWindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

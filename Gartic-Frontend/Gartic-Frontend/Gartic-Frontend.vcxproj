@@ -91,6 +91,7 @@
   <ItemGroup>
     <ClCompile Include="HostRoom.cpp" />
     <ClCompile Include="MainMenuWindow.cpp" />
+    <ClCompile Include="ProfileUserWindow.cpp" />
     <ClCompile Include="RegisterWindow.cpp" />
     <QtRcc Include="GarticFrontend.qrc" />
     <QtUic Include="GarticFrontend.ui" />
@@ -101,6 +102,7 @@
     <QtUic Include="HostRoom.ui" />
     <QtUic Include="LoginWindow.ui" />
     <QtUic Include="MainMenuWindow.ui" />
+    <QtUic Include="ProfileUserWindow.ui" />
     <QtUic Include="RegisterWindow.ui" />
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +116,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="MainMenuWindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ProfileUserWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
