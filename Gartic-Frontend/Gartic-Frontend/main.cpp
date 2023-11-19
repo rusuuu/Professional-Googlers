@@ -6,43 +6,50 @@
 #include "MainMenuWindow.h"
 #include "HostRoom.h"
 
-
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
     QApplication a(argc, argv);
-   
+
     LoginWindow* m_loginWindow = new LoginWindow();
     RegisterWindow* m_registerWindow = new RegisterWindow();
     MainMenuWindow* m_mainMenu = new MainMenuWindow();
     HostRoom* m_hostRoom = new HostRoom();
     QStackedWidget stackedWidget;
 
-    QObject::connect(m_loginWindow, &LoginWindow::showRegisterWindow, [m_loginWindow, m_registerWindow]() 
+
+    stackedWidget.addWidget(m_loginWindow);
+    stackedWidget.addWidget(m_registerWindow);
+    stackedWidget.addWidget(m_mainMenu);
+    stackedWidget.addWidget(m_hostRoom);
+
+  
+    QObject::connect(m_loginWindow, &LoginWindow::showRegisterWindow, [&]()
         {
-        m_registerWindow->show();
-        m_loginWindow->hide();
+            stackedWidget.setCurrentWidget(m_registerWindow);
         });
 
-    QObject::connect(m_registerWindow, &RegisterWindow::ShowLoginWindow, [m_loginWindow, m_registerWindow]() 
+    QObject::connect(m_registerWindow, &RegisterWindow::ShowLoginWindow, [&]()
         {
-        m_loginWindow->show();
-        m_registerWindow->hide();
+            stackedWidget.setCurrentWidget(m_loginWindow);
         });
 
-    QObject::connect(m_mainMenu, &MainMenuWindow::showHostRoomWindow, [m_mainMenu, m_hostRoom]()
+    QObject::connect(m_mainMenu, &MainMenuWindow::showHostRoomWindow, [&]()
         {
-            m_hostRoom->show();
-            m_mainMenu->hide();
+            stackedWidget.setCurrentWidget(m_hostRoom);
         });
 
-    QObject::connect(m_hostRoom, &HostRoom::ShowMainMenuWindow, [m_hostRoom, m_mainMenu]()
+    QObject::connect(m_hostRoom, &HostRoom::ShowMainMenuWindow, [&]()
         {
-            m_mainMenu->show();
-            m_hostRoom->hide();
+            stackedWidget.setCurrentWidget(m_mainMenu);
         });
 
-    m_loginWindow->show();
+    QObject::connect(m_loginWindow, &LoginWindow::LoginSuccessful, [m_mainMenu]() 
+        {
+        m_mainMenu->show();
+        });
 
-    
+    stackedWidget.setCurrentWidget(m_loginWindow);
+    stackedWidget.show();
+
     return a.exec();
 }

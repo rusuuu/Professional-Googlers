@@ -15,6 +15,7 @@ public:
 
 signals:
 	void showRegisterWindow();
+	void LoginSuccessful();
 
 private:
 	Ui::LoginWindowClass ui;

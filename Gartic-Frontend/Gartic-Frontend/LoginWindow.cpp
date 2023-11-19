@@ -34,6 +34,7 @@ void LoginWindow::OnLoginButtonClicked()
     try
     {
         ValidateCredentials();
+        emit LoginSuccessful();
     }
     catch (std::exception exception)
     {
@@ -66,6 +67,7 @@ void LoginWindow::OnRegisterButtonClicked()
 {
     transitionAnimationLoginToRegister->start();
 }
+
 
 void LoginWindow::OnTransitionAnimationFinished()
 {
