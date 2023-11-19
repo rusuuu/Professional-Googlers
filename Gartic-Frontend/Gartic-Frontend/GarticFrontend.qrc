@@ -1,4 +1,5 @@
 <RCC>
-    <qresource prefix="GarticFrontend">
-    </qresource>
+  <qresource prefix="GarticFrontend">
+    <file>Images/profile_icon.png</file>
+  </qresource>
 </RCC>

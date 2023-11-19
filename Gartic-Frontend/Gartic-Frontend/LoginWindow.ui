@@ -116,7 +116,7 @@ QLineEdit:placeholder-text {
    <widget class="QLineEdit" name="LoginEmailInput">
     <property name="geometry">
      <rect>
-      <x>486</x>
+      <x>485</x>
       <y>220</y>
       <width>311</width>
       <height>41</height>
