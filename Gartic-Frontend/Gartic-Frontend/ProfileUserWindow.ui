@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>584</width>
-    <height>400</height>
+    <width>572</width>
+    <height>429</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -105,13 +105,26 @@
      <string>Upload Photo</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="BackToMainMenuFromProfileUser">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>75</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Back</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>584</width>
+     <width>572</width>
      <height>22</height>
     </rect>
    </property>
