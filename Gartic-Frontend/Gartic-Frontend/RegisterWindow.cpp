@@ -29,8 +29,9 @@ RegisterWindow::~RegisterWindow()
 
 void RegisterWindow::OnBackToLoginClicked()
 {
-	this->close();
+	this->hide();
 	transitionAnimationRegisterToLogin->start();
+	//this->deleteLater();
 }
 
 void RegisterWindow::OnTransitionAnimationFinished()
@@ -39,7 +40,7 @@ void RegisterWindow::OnTransitionAnimationFinished()
 	
 	LoginWindow* loginWindow = new LoginWindow();
 	loginWindow->show();
-	
+	//this->deleteLater();
 }
 
 void RegisterWindow::OnRegisterButtonClicked()

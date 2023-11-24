@@ -5,7 +5,7 @@
 #include "RegisterWindow.h"
 #include "MainMenuWindow.h"
 #include "HostRoom.h"
-#include <QScreen>
+
 
 
 int main(int argc, char* argv[])
@@ -25,16 +25,6 @@ int main(int argc, char* argv[])
     stackedWidget.addWidget(m_mainMenu);
     stackedWidget.addWidget(m_hostRoom);
 
-    QScreen* screen = QGuiApplication::primaryScreen();
-    QRect screenGeometry = screen->availableGeometry();
-
-    int x = (screenGeometry.width() - m_loginWindow->width()) / 2;
-    int y = (screenGeometry.height() - m_loginWindow->height()) / 2;
-
-    m_loginWindow->setGeometry(x, y, m_loginWindow->width(), m_loginWindow->height());
-
-    // Setarea dimensiunilor minime ale ferestrei
-    m_loginWindow->setMinimumSize(400, 300);
   
     QObject::connect(m_loginWindow, &LoginWindow::showRegisterWindow, [&]()
         {

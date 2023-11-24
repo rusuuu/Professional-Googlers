@@ -69,9 +69,9 @@ void LoginWindow::ClearErrorMessage()
 
 void LoginWindow::OnRegisterButtonClicked()
 {
-    this->close();
+    this->hide();
     transitionAnimationLoginToRegister->start();
-
+    //this->deleteLater();
 }
 
 
@@ -79,10 +79,9 @@ void LoginWindow::OnTransitionAnimationFinished()
 {
     this->hide();
     
-
     RegisterWindow* registerWindow = new RegisterWindow();
 
     registerWindow->show();
    
-
+    //this->deleteLater();
 }

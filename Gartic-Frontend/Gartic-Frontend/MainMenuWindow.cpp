@@ -33,13 +33,14 @@ void MainMenuWindow::OnTransitionAnimationToHostRoom()
 
     HostRoom* m_HostRoomWindow = new HostRoom();
     m_HostRoomWindow->show();
+    //this->deleteLater();
 }
 
 
 void MainMenuWindow::OnHostGameButtonClicked()
 {
-    //if (!hostRoomWindow) 
-        //m_hostRoomWindow = new HostRoom(this);
+    this->hide();
     transitionAnimationMainMenuToHostRoom->start();
-    //m_hostRoomWindow->show(); 
+
+   // this->deleteLater();
 }
