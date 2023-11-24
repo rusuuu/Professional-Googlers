@@ -21,6 +21,7 @@ HostRoom::~HostRoom()
 
 void HostRoom::OnBackToMainMenuClicked()
 {
+	this->close();
 	transitionAnimationHostToMainMenu->start();
 }
 
@@ -30,4 +31,5 @@ void HostRoom::OnTransitionAnimationToMainMenu()
 
 	MainMenuWindow* m_MainMenuWindow = new MainMenuWindow();
 	m_MainMenuWindow->show();
+	
 }

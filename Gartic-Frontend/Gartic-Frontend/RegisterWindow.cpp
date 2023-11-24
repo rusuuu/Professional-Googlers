@@ -1,4 +1,4 @@
-#include "RegisterWindow.h"
+﻿#include "RegisterWindow.h"
 #include "LoginWindow.h"
 #include <QMessageBox>
 #include <QRegularExpression> 
@@ -29,15 +29,17 @@ RegisterWindow::~RegisterWindow()
 
 void RegisterWindow::OnBackToLoginClicked()
 {
+	this->close();
 	transitionAnimationRegisterToLogin->start();
 }
 
 void RegisterWindow::OnTransitionAnimationFinished()
 {
 	this->hide();
-
+	
 	LoginWindow* loginWindow = new LoginWindow();
 	loginWindow->show();
+	
 }
 
 void RegisterWindow::OnRegisterButtonClicked()

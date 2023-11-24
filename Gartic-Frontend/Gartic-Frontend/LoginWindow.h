@@ -23,6 +23,7 @@ private:
 	void ValidateCredentials();
 	void ClearErrorMessage();
 	void OnRegisterButtonClicked();
+	
 
 	QPropertyAnimation* transitionAnimationLoginToRegister;
 
