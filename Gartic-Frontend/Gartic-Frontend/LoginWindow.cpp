@@ -14,17 +14,6 @@ LoginWindow::LoginWindow(QWidget *parent)
     connect(ui.LoginEmailInput, &QLineEdit::textChanged, this, &LoginWindow::ClearErrorMessage);
     connect(ui.LoginPasswordInput, &QLineEdit::textChanged, this, &LoginWindow::ClearErrorMessage);
     connect(ui.RegisterButton, &QPushButton::clicked, this, &LoginWindow::OnRegisterButtonClicked);
-
-    
-    transitionAnimationLoginToRegister = new QPropertyAnimation(this, "windowOpacity");
-    transitionAnimationLoginToRegister->setDuration(100); 
-    transitionAnimationLoginToRegister->setStartValue(1.0);
-    transitionAnimationLoginToRegister->setEndValue(1.0);
-
-    //setCentralWidget(ui.centralwidget);
-
-    connect(transitionAnimationLoginToRegister, &QPropertyAnimation::finished, this, &LoginWindow::OnTransitionAnimationFinished);
-
 }
 
 LoginWindow::~LoginWindow()
@@ -69,19 +58,27 @@ void LoginWindow::ClearErrorMessage()
 
 void LoginWindow::OnRegisterButtonClicked()
 {
-    this->hide();
-    transitionAnimationLoginToRegister->start();
-    //this->deleteLater();
-}
+    // Create an instance of RegisterWindow
+    RegisterWindow* registerWindow = new RegisterWindow(this);
+    registerWindow->setWindowOpacity(0.0);
 
+    // Set up the transition animation for the RegisterWindow
+    QPropertyAnimation* transitionAnimation = new QPropertyAnimation(registerWindow, "windowOpacity");
+    transitionAnimation->setDuration(100);
+    transitionAnimation->setStartValue(0.0);
+    transitionAnimation->setEndValue(1.0);
+
+    // Connect the animation's finished signal to the transition finished slot
+    connect(transitionAnimation, &QPropertyAnimation::finished, this, &LoginWindow::OnTransitionAnimationFinished);
+
+    // Show the register window
+    registerWindow->show();
+
+    // Start the transition animation
+    transitionAnimation->start(QAbstractAnimation::DeleteWhenStopped);
+}
 
 void LoginWindow::OnTransitionAnimationFinished()
 {
-    this->hide();
-    
-    RegisterWindow* registerWindow = new RegisterWindow();
-
-    registerWindow->show();
-   
-    //this->deleteLater();
+    hide();
 }
