@@ -24,6 +24,12 @@ private:
 
 	QPushButton* UploadButton;
 
+	QString ProfileName;
+	QString TotalGames;
+	QString GamesWon;
+	QString GamesLost;
+	QString TotalPoints;
+
 private slots:
 
 	void UploadAvatar();

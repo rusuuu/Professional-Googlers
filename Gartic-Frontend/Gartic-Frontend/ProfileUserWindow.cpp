@@ -6,7 +6,12 @@ ProfileUserWindow::ProfileUserWindow(QWidget *parent)
 	ui.setupUi(this);
 
 	connect(ui.UploadButton, &QPushButton::clicked, this, &ProfileUserWindow::UploadAvatar);
-
+    
+    ui.ProfileNameLabel->setText(ProfileName);
+    ui.ProfileNameLabel->setText(TotalGames);
+    ui.ProfileNameLabel->setText(GamesWon);
+    ui.ProfileNameLabel->setText(GamesLost);
+    ui.ProfileNameLabel->setText(TotalPoints);
 }
 
 ProfileUserWindow::~ProfileUserWindow()
