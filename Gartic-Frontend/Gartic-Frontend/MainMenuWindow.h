@@ -26,6 +26,4 @@ private slots:
 
     void OnHostGameButtonClicked();
     void OnExitButtonClicked();
-    void OnTransitionAnimationToHostRoom();
-
 };

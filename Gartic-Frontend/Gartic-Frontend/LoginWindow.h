@@ -13,6 +13,8 @@ public:
 	LoginWindow(QWidget *parent = nullptr);
 	~LoginWindow();
 
+	void OnRegisterButtonClicked();
+
 signals:
 	void ShowRegisterWindow();
 	void LoginSuccessful();
@@ -22,8 +24,6 @@ private:
 
 	void ValidateCredentials();
 	void ClearErrorMessage();
-	void OnRegisterButtonClicked();
-	
 
 	QPropertyAnimation* transitionAnimationLoginToRegister;
 

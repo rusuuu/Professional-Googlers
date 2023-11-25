@@ -19,6 +19,7 @@ signals:
 
 private:
 	Ui::RegisterWindowClass ui;
+
 	bool IsValidUsername(const QString& username);
 	bool IsValidEmail(const QString& email);
 	bool IsValidPassword(const QString& password);

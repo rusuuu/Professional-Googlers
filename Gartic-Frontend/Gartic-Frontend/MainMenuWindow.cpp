@@ -19,16 +19,7 @@ void MainMenuWindow::OnExitButtonClicked()
     qApp->quit();
 }
 
-void MainMenuWindow::OnTransitionAnimationToHostRoom()
-{
-    emit ShowHostRoomWindow();
-}
-
-
 void MainMenuWindow::OnHostGameButtonClicked()
 {
-    this->hide();
-    transitionAnimationMainMenuToHostRoom->start();
-
-   // this->deleteLater();
+    emit ShowHostRoomWindow();
 }
