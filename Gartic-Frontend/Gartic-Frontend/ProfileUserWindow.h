@@ -18,6 +18,11 @@ public:
 	ProfileUserWindow(QWidget *parent = nullptr);
 	~ProfileUserWindow();
 
+	void OnBackToMainMenuClicked();
+
+signals:
+	void ShowMainMenuWindow();
+
 private:
 
 	Ui::ProfileUserWindowClass ui;

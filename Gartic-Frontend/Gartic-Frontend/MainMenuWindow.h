@@ -14,6 +14,7 @@ public:
 
 signals:
     void ShowHostRoomWindow();
+    void ShowProfileUserWindow();
 
 private:
     Ui::MainMenuWindow ui;
@@ -25,5 +26,6 @@ private:
 private slots:
 
     void OnHostGameButtonClicked();
+    void OnProfileButtonClicked();
     void OnExitButtonClicked();
 };

@@ -7,28 +7,32 @@
 #include "RegisterWindow.h"
 #include "MainMenuWindow.h"
 #include "HostRoom.h"
+#include "ProfileUserWindow.h"
 
 
 int main(int argc, char* argv[])
 {
     QApplication a(argc, argv);
 
+    // Create instances of Windows
     LoginWindow* loginWindow = new LoginWindow();
     RegisterWindow* registerWindow = new RegisterWindow();
-    MainMenuWindow* mainMenuWindow = new MainMenuWindow();  // Create an instance of MainMenuWindow
+    MainMenuWindow* mainMenuWindow = new MainMenuWindow();
+    HostRoom* hostRoomWindow = new HostRoom();
+    ProfileUserWindow* profileUserWindow = new ProfileUserWindow();
 
     // Connect LoginWindow to show theRegisterWindow
     QObject::connect(loginWindow, &LoginWindow::ShowRegisterWindow, [=]() {
         QPropertyAnimation* fadeOut = new QPropertyAnimation(loginWindow, "windowOpacity");
         fadeOut->setStartValue(1.0);
         fadeOut->setEndValue(0.0);
-        fadeOut->setDuration(500);
+        fadeOut->setDuration(100);
         fadeOut->start(QPropertyAnimation::DeleteWhenStopped);
 
         QPropertyAnimation* fadeIn = new QPropertyAnimation(registerWindow, "windowOpacity");
         fadeIn->setStartValue(0.0);
         fadeIn->setEndValue(1.0);
-        fadeIn->setDuration(500);
+        fadeIn->setDuration(100);
         QObject::connect(fadeOut, &QPropertyAnimation::finished, [=]() {
             loginWindow->hide();
             registerWindow->show();
@@ -42,13 +46,13 @@ int main(int argc, char* argv[])
         QPropertyAnimation* fadeOut = new QPropertyAnimation(registerWindow, "windowOpacity");
         fadeOut->setStartValue(1.0);
         fadeOut->setEndValue(0.0);
-        fadeOut->setDuration(500);
+        fadeOut->setDuration(100);
         fadeOut->start(QPropertyAnimation::DeleteWhenStopped);
 
         QPropertyAnimation* fadeIn = new QPropertyAnimation(loginWindow, "windowOpacity");
         fadeIn->setStartValue(0.0);
         fadeIn->setEndValue(1.0);
-        fadeIn->setDuration(500);
+        fadeIn->setDuration(100);
         QObject::connect(fadeOut, &QPropertyAnimation::finished, [=]() {
             registerWindow->hide();
             loginWindow->show();
@@ -62,15 +66,95 @@ int main(int argc, char* argv[])
         QPropertyAnimation* fadeOut = new QPropertyAnimation(loginWindow, "windowOpacity");
         fadeOut->setStartValue(1.0);
         fadeOut->setEndValue(0.0);
-        fadeOut->setDuration(500);
+        fadeOut->setDuration(100);
         fadeOut->start(QPropertyAnimation::DeleteWhenStopped);
 
         QPropertyAnimation* fadeIn = new QPropertyAnimation(mainMenuWindow, "windowOpacity");
         fadeIn->setStartValue(0.0);
         fadeIn->setEndValue(1.0);
-        fadeIn->setDuration(500);
+        fadeIn->setDuration(100);
         QObject::connect(fadeOut, &QPropertyAnimation::finished, [=]() {
             loginWindow->hide();
+            mainMenuWindow->show();
+            fadeIn->start(QPropertyAnimation::DeleteWhenStopped);
+            });
+        fadeIn->start(QPropertyAnimation::DeleteWhenStopped);
+        });
+
+    // Connect MainMenuWindow to show HostRoom
+    QObject::connect(mainMenuWindow, &MainMenuWindow::ShowHostRoomWindow, [=]() {
+        QPropertyAnimation* fadeOut = new QPropertyAnimation(mainMenuWindow, "windowOpacity");
+        fadeOut->setStartValue(1.0);
+        fadeOut->setEndValue(0.0);
+        fadeOut->setDuration(100);
+        fadeOut->start(QPropertyAnimation::DeleteWhenStopped);
+
+        QPropertyAnimation* fadeIn = new QPropertyAnimation(hostRoomWindow, "windowOpacity");
+        fadeIn->setStartValue(0.0);
+        fadeIn->setEndValue(1.0);
+        fadeIn->setDuration(100);
+        QObject::connect(fadeOut, &QPropertyAnimation::finished, [=]() {
+            mainMenuWindow->hide();
+            hostRoomWindow->show();
+            fadeIn->start(QPropertyAnimation::DeleteWhenStopped);
+            });
+        fadeIn->start(QPropertyAnimation::DeleteWhenStopped);
+        });
+
+    // Connect MainMenuWindow to show ProfileUserWindow
+    QObject::connect(mainMenuWindow, &MainMenuWindow::ShowProfileUserWindow, [=]() {
+        QPropertyAnimation* fadeOut = new QPropertyAnimation(mainMenuWindow, "windowOpacity");
+        fadeOut->setStartValue(1.0);
+        fadeOut->setEndValue(0.0);
+        fadeOut->setDuration(100);
+        fadeOut->start(QPropertyAnimation::DeleteWhenStopped);
+
+        QPropertyAnimation* fadeIn = new QPropertyAnimation(profileUserWindow, "windowOpacity");
+        fadeIn->setStartValue(0.0);
+        fadeIn->setEndValue(1.0);
+        fadeIn->setDuration(100);
+        QObject::connect(fadeOut, &QPropertyAnimation::finished, [=]() {
+            mainMenuWindow->hide();
+            profileUserWindow->show();
+            fadeIn->start(QPropertyAnimation::DeleteWhenStopped);
+            });
+        fadeIn->start(QPropertyAnimation::DeleteWhenStopped);
+        });
+
+    // Connect HostRoom to show MainMenuWindow
+    QObject::connect(hostRoomWindow, &HostRoom::ShowMainMenuWindow, [=]() {
+        QPropertyAnimation* fadeOut = new QPropertyAnimation(hostRoomWindow, "windowOpacity");
+        fadeOut->setStartValue(1.0);
+        fadeOut->setEndValue(0.0);
+        fadeOut->setDuration(100);
+        fadeOut->start(QPropertyAnimation::DeleteWhenStopped);
+
+        QPropertyAnimation* fadeIn = new QPropertyAnimation(mainMenuWindow, "windowOpacity");
+        fadeIn->setStartValue(0.0);
+        fadeIn->setEndValue(1.0);
+        fadeIn->setDuration(100);
+        QObject::connect(fadeOut, &QPropertyAnimation::finished, [=]() {
+            hostRoomWindow->hide();
+            mainMenuWindow->show();
+            fadeIn->start(QPropertyAnimation::DeleteWhenStopped);
+            });
+        fadeIn->start(QPropertyAnimation::DeleteWhenStopped);
+        });
+
+    // Connect ProfileUserWindow to show MainWindow
+    QObject::connect(profileUserWindow, &ProfileUserWindow::ShowMainMenuWindow, [=]() {
+        QPropertyAnimation* fadeOut = new QPropertyAnimation(profileUserWindow, "windowOpacity");
+        fadeOut->setStartValue(1.0);
+        fadeOut->setEndValue(0.0);
+        fadeOut->setDuration(100);
+        fadeOut->start(QPropertyAnimation::DeleteWhenStopped);
+
+        QPropertyAnimation* fadeIn = new QPropertyAnimation(mainMenuWindow, "windowOpacity");
+        fadeIn->setStartValue(0.0);
+        fadeIn->setEndValue(1.0);
+        fadeIn->setDuration(100);
+        QObject::connect(fadeOut, &QPropertyAnimation::finished, [=]() {
+            profileUserWindow->hide();
             mainMenuWindow->show();
             fadeIn->start(QPropertyAnimation::DeleteWhenStopped);
             });
@@ -81,52 +165,4 @@ int main(int argc, char* argv[])
     loginWindow->show();
 
     return a.exec();
-
-
-
-    /*QApplication a(argc, argv);
-
-    LoginWindow* m_loginWindow = new LoginWindow();
-    RegisterWindow* m_registerWindow = new RegisterWindow();
-    MainMenuWindow* m_mainMenu = new MainMenuWindow();
-    HostRoom* m_hostRoom = new HostRoom();
-    QStackedWidget stackedWidget;
-
-    
-
-    stackedWidget.addWidget(m_loginWindow);
-    stackedWidget.addWidget(m_registerWindow);
-    stackedWidget.addWidget(m_mainMenu);
-    stackedWidget.addWidget(m_hostRoom);
-
-  
-    QObject::connect(m_loginWindow, &LoginWindow::ShowRegisterWindow, [&]()
-        {
-            stackedWidget.setCurrentWidget(m_registerWindow);
-        });
-
-    QObject::connect(m_registerWindow, &RegisterWindow::ShowLoginWindow, [&]()
-        {
-            stackedWidget.setCurrentWidget(m_loginWindow);
-        });
-
-    QObject::connect(m_mainMenu, &MainMenuWindow::ShowHostRoomWindow, [&]()
-        {
-            stackedWidget.setCurrentWidget(m_hostRoom);
-        });
-
-    QObject::connect(m_hostRoom, &HostRoom::ShowMainMenuWindow, [&]()
-        {
-            stackedWidget.setCurrentWidget(m_mainMenu);
-        });
-    
-    QObject::connect(m_loginWindow, &LoginWindow::LoginSuccessful, [m_mainMenu]() 
-        {
-            m_mainMenu->show();
-        });
-
-    stackedWidget.setCurrentWidget(m_loginWindow);
-    stackedWidget.show();
-
-    return a.exec();*/
 }

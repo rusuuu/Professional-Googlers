@@ -1,12 +1,14 @@
 #include "ProfileUserWindow.h"
+#include "MainMenuWindow.h"
 
 ProfileUserWindow::ProfileUserWindow(QWidget *parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
 
-	connect(ui.UploadButton, &QPushButton::clicked, this, &ProfileUserWindow::UploadAvatar);
-    
+	connect(ui.BackToMainMenuFromProfileUser, &QPushButton::clicked, this, &ProfileUserWindow::OnBackToMainMenuClicked);
+    connect(ui.UploadButton, &QPushButton::clicked, this, &ProfileUserWindow::UploadAvatar);
+
     ui.ProfileNameLabel->setText(ProfileName);
     ui.ProfileNameLabel->setText(TotalGames);
     ui.ProfileNameLabel->setText(GamesWon);
@@ -16,6 +18,11 @@ ProfileUserWindow::ProfileUserWindow(QWidget *parent)
 
 ProfileUserWindow::~ProfileUserWindow()
 {}
+
+void ProfileUserWindow::OnBackToMainMenuClicked()
+{
+    emit ShowMainMenuWindow();
+}
 
 void ProfileUserWindow::UploadAvatar()
 {
