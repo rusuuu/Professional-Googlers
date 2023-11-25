@@ -22,7 +22,5 @@ private:
 	QPropertyAnimation* transitionAnimationHostToMainMenu;
 
 private slots:
-	void OnTransitionAnimationToMainMenu();
-
 
 };

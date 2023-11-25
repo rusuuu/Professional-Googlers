@@ -13,7 +13,7 @@ public:
     ~MainMenuWindow();
 
 signals:
-    void showHostRoomWindow();
+    void ShowHostRoomWindow();
 
 private:
     Ui::MainMenuWindow ui;

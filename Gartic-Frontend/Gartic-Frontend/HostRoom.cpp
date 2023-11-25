@@ -7,13 +7,6 @@ HostRoom::HostRoom(QWidget *parent)
 	ui.setupUi(this);
 
 	connect(ui.BackToMainMenuButton, &QPushButton::clicked, this, &HostRoom::OnBackToMainMenuClicked);
-
-	transitionAnimationHostToMainMenu = new QPropertyAnimation(this, "windowOpacity");
-	transitionAnimationHostToMainMenu->setDuration(100);
-	transitionAnimationHostToMainMenu->setStartValue(1.0);
-	transitionAnimationHostToMainMenu->setEndValue(1.0);
-
-	connect(transitionAnimationHostToMainMenu, &QPropertyAnimation::finished, this, &HostRoom::OnTransitionAnimationToMainMenu);
 }
 
 HostRoom::~HostRoom()
@@ -21,17 +14,5 @@ HostRoom::~HostRoom()
 
 void HostRoom::OnBackToMainMenuClicked()
 {
-	this->hide();
-	transitionAnimationHostToMainMenu->start();
-	//this->deleteLater();
-}
-
-void HostRoom::OnTransitionAnimationToMainMenu()
-{
-	this->hide();
-
-	MainMenuWindow* m_MainMenuWindow = new MainMenuWindow();
-	m_MainMenuWindow->show();
-	//this->deleteLater();
-	
+	emit ShowMainMenuWindow();
 }

@@ -58,27 +58,5 @@ void LoginWindow::ClearErrorMessage()
 
 void LoginWindow::OnRegisterButtonClicked()
 {
-    // Create an instance of RegisterWindow
-    RegisterWindow* registerWindow = new RegisterWindow(this);
-    registerWindow->setWindowOpacity(0.0);
-
-    // Set up the transition animation for the RegisterWindow
-    QPropertyAnimation* transitionAnimation = new QPropertyAnimation(registerWindow, "windowOpacity");
-    transitionAnimation->setDuration(100);
-    transitionAnimation->setStartValue(0.0);
-    transitionAnimation->setEndValue(1.0);
-
-    // Connect the animation's finished signal to the transition finished slot
-    connect(transitionAnimation, &QPropertyAnimation::finished, this, &LoginWindow::OnTransitionAnimationFinished);
-
-    // Show the register window
-    registerWindow->show();
-
-    // Start the transition animation
-    transitionAnimation->start(QAbstractAnimation::DeleteWhenStopped);
-}
-
-void LoginWindow::OnTransitionAnimationFinished()
-{
-    hide();
+    emit ShowRegisterWindow();
 }

@@ -26,7 +26,7 @@ int main(int argc, char* argv[])
     stackedWidget.addWidget(m_hostRoom);
 
   
-    QObject::connect(m_loginWindow, &LoginWindow::showRegisterWindow, [&]()
+    QObject::connect(m_loginWindow, &LoginWindow::ShowRegisterWindow, [&]()
         {
             stackedWidget.setCurrentWidget(m_registerWindow);
         });
@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
             stackedWidget.setCurrentWidget(m_loginWindow);
         });
 
-    QObject::connect(m_mainMenu, &MainMenuWindow::showHostRoomWindow, [&]()
+    QObject::connect(m_mainMenu, &MainMenuWindow::ShowHostRoomWindow, [&]()
         {
             stackedWidget.setCurrentWidget(m_hostRoom);
         });

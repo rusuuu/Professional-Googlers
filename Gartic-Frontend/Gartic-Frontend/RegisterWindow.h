@@ -30,5 +30,4 @@ private slots:
 	void OnRegisterButtonClicked();
 	void ValidateRegistration();
 	void ClearErrorLabel();
-	void OnTransitionAnimationFinished();
 };

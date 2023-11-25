@@ -14,7 +14,7 @@ public:
 	~LoginWindow();
 
 signals:
-	void showRegisterWindow();
+	void ShowRegisterWindow();
 	void LoginSuccessful();
 
 private:
@@ -29,6 +29,4 @@ private:
 
 private slots:
 	void OnLoginButtonClicked();
-	void OnTransitionAnimationFinished();
-
 };
