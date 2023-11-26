@@ -20,7 +20,9 @@ signals:
 private:
 	Ui::HostRoomClass ui;
 	QPropertyAnimation* transitionAnimationHostToMainMenu;
+	QString GenerateRandomCode();
 
 private slots:
-
+	void OnCopyInviteCodeClicked();
+	void OnStartButtonClicked();
 };
