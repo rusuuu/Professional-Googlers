@@ -199,13 +199,37 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>20</y>
-      <width>75</width>
-      <height>24</height>
+      <y>10</y>
+      <width>41</width>
+      <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>18</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    border-radius: 10px; 
+    border: 2px solid #5c5c5c; 
+    background-color: rgb(162,72,147);  
+    padding: 5px;
+    color: #ffffff;  
+}
+
+QPushButton:hover {
+    background-color: rgb(231,96,131);  
+}
+
+QPushButton:pressed {
+    background-color: rgb(225,62,103);  
+}
+</string>
+    </property>
     <property name="text">
-     <string>Back</string>
+     <string>🠔</string>
     </property>
    </widget>
    <widget class="QLabel" name="ProfileName">
