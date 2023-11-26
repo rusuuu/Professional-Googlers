@@ -5,6 +5,7 @@
 
 #include <QWidget>
 #include <QLabel>
+#include <QPainter>
 #include <QPushButton>
 #include <QFileDialog>
 #include <QVBoxLayout>
@@ -19,6 +20,7 @@ public:
 	~ProfileUserWindow();
 
 	void OnBackToMainMenuClicked();
+	void SetDefaultAvatar();
 
 signals:
 	void ShowMainMenuWindow();
