@@ -212,6 +212,28 @@ QPushButton:pressed {
      <string/>
     </property>
    </widget>
+   <widget class="QLineEdit" name="JoinGameLabel">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>190</y>
+      <width>161</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(55,65, 189);
+background-color: rgb(247,211,185);  
+
+</string>
+    </property>
+    <property name="placeholderText">
+     <string>Enter code here</string>
+    </property>
+    <property name="clearButtonEnabled">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources>

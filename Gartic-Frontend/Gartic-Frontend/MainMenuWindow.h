@@ -3,6 +3,7 @@
 #include <QPropertyAnimation>
 #include "ui_MainMenuWindow.h"
 
+
 class HostRoom; 
 class MainMenuWindow : public QMainWindow
 {
@@ -18,14 +19,15 @@ signals:
 
 private:
     Ui::MainMenuWindow ui;
-
     HostRoom* m_hostRoomWindow;
-
     QPropertyAnimation* transitionAnimationMainMenuToHostRoom;
+    QLineEdit* JoinGameLabel = nullptr;
 
 private slots:
 
     void OnHostGameButtonClicked();
     void OnProfileButtonClicked();
     void OnExitButtonClicked();
+    void OnJoinGameButtonClicked();
+    
 };
