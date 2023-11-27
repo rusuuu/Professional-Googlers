@@ -32,21 +32,25 @@ void ProfileUserWindow::UploadAvatar()
     QString imagePath = QFileDialog::getOpenFileName(this, "Select Avatar", QDir::homePath(), "Images (*.png *.jpg *.bmp)");
 
     if (!imagePath.isEmpty()) {
-        QPixmap avatar(imagePath);
+        QPixmap originalAvatar(imagePath);
 
-        // Create a circular mask
-        QBitmap mask(avatar.size());
-        mask.fill(Qt::white);
-        QPainter painter(&mask);
-        painter.setBrush(Qt::black);
-        painter.setRenderHint(QPainter::Antialiasing, true);
-        painter.drawEllipse(mask.rect());
+        // Get the label dimensions
+        int labelWidth = ui.ProfilePicture->width();
+        int labelHeight = ui.ProfilePicture->height();
 
-        // Apply the circular mask to the avatar
-        avatar.setMask(mask);
+        // Scale the image while maintaining aspect ratio
+        QPixmap scaledAvatar = originalAvatar.scaled(labelWidth, labelHeight, Qt::KeepAspectRatio, Qt::SmoothTransformation);
 
-        // Set the circular avatar as the profile picture
-        ui.ProfilePicture->setPixmap(avatar);
+         QBitmap mask(scaledAvatar.size());
+         mask.fill(Qt::white);
+         QPainter painter(&mask);
+         painter.setBrush(Qt::black);
+         painter.setRenderHint(QPainter::Antialiasing, true);
+         painter.drawEllipse(mask.rect());
+         scaledAvatar.setMask(mask);
+
+        // Set the scaled and cropped avatar as the profile picture
+        ui.ProfilePicture->setPixmap(scaledAvatar);
         ui.ProfilePicture->setScaledContents(true);
     }
 }
