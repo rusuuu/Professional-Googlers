@@ -12,7 +12,24 @@ MainMenuWindow::MainMenuWindow(QWidget* parent) : QMainWindow(parent)
     connect(ui.ProfileButton, &QPushButton::clicked, this, &MainMenuWindow::OnProfileButtonClicked);
     connect(ui.ExitButton, &QPushButton::clicked, this, &MainMenuWindow::OnExitButtonClicked);
     connect(ui.JoinGameButton, &QPushButton::clicked, this, &MainMenuWindow::OnJoinGameButtonClicked);
-    
+
+    // Style sheet to make the button round
+    int buttonSize = 75;
+    ui.ProfileButton->setFixedSize(buttonSize, buttonSize);
+
+    ui.ProfileButton->setStyleSheet("QPushButton {"
+        "   border-image: url(':/GarticFrontend/Images/profile_icon.png') 0 0 0 0 stretch stretch;"
+        "   border-radius: " + QString::number(buttonSize / 2) + "px;"
+        "}"
+        "QPushButton:hover {"
+        "   background-color: rgb(231, 96, 131);"
+        "   border-radius: " + QString::number(buttonSize / 2) + "px;"
+        "}"
+        "QPushButton:pressed {"
+        "   background-color: rgb(225, 62, 103);"
+        "   border-radius: " + QString::number(buttonSize / 2) + "px;"
+        "}");
+
     ui.JoinGameLabel->hide();
 
 }

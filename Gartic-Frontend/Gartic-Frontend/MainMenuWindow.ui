@@ -195,18 +195,7 @@ QPushButton:pressed {
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton {
-    border-image: url(':/GarticFrontend/Images/profile_icon.png') 0 0 0 0 stretch stretch;
-    border-radius: 37.5px;
-}
-
-QPushButton:hover {
-    background-color: rgb(231, 96, 131);
-}
-
-QPushButton:pressed {
-    background-color: rgb(225, 62, 103);
-}
+     <string notr="true">
 </string>
     </property>
     <property name="text">
