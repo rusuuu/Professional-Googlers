@@ -33,6 +33,19 @@ void ProfileUserWindow::UploadAvatar()
 
     if (!imagePath.isEmpty()) {
         QPixmap avatar(imagePath);
+
+        // Create a circular mask
+        QBitmap mask(avatar.size());
+        mask.fill(Qt::white);
+        QPainter painter(&mask);
+        painter.setBrush(Qt::black);
+        painter.setRenderHint(QPainter::Antialiasing, true);
+        painter.drawEllipse(mask.rect());
+
+        // Apply the circular mask to the avatar
+        avatar.setMask(mask);
+
+        // Set the circular avatar as the profile picture
         ui.ProfilePicture->setPixmap(avatar);
         ui.ProfilePicture->setScaledContents(true);
     }
