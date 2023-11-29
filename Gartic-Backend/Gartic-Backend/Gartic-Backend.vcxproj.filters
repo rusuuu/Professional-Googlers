@@ -18,5 +18,8 @@
     <ClCompile Include="Gartic-Backend.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="player.cppm">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
