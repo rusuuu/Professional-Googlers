@@ -33,4 +33,45 @@ gartic::Player::~Player()
 {
 }
 
+void gartic::Player::swap(Player& other) noexcept
+{
+	std::swap(m_name, other.m_name);
 
+	//manual swap
+	Role tempRole{ m_role };
+	m_role = other.m_role;
+	other.m_role = tempRole;
+}
+
+const std::string& gartic::Player::GetName() const
+{
+	return m_name;
+}
+
+Player::Role gartic::Player::GetRole() const
+{
+	return m_role;
+}
+
+std::ostream& operator<< (std::ostream& os, const Player& player)
+{
+	os << "Player: " << player.GetName() << ", Role: ";
+	switch (player.GetRole())
+	{
+	case Player::Role::Drawer:
+		os << "Drawer";
+		break;
+	case Player::Role::Guesser:
+		os << "Guesser";
+		break;
+	default:
+		os << "No Role";
+		break;
+	}
+	return os;
+}
+
+void swap(Player& first, Player& second) noexcept
+{
+	first.swap(second);
+}

@@ -39,5 +39,7 @@ namespace gartic
 	// For copy-and-swap idiom:
 	export void swap(Player& first, Player& second) noexcept;
 	
+	
+
 }
 
