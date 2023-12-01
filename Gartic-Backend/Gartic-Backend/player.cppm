@@ -4,7 +4,7 @@ using std::uint8_t;
 
 namespace gartic
 {
-	class Player
+	export class Player
 	{
 	public:
 		enum class Role : uint8_t
@@ -15,9 +15,9 @@ namespace gartic
 		};
 	public:
 		Player();
-		Player(const std::string& playerName, Role role);
+		Player(const std::string& playerName, Role playerRole);
 
-		// Rule of 5 
+		// Rule of 5  
 		Player(const Player& other);
 		Player& operator= (const Player& rhs);
 
@@ -30,12 +30,14 @@ namespace gartic
 		Role GetRole() const;
 
 	private:
-		std::string name;
-		Role role : 2;
+		std::string m_name;
+		Role m_role : 2;
 	};
 
-	std::ostream& operator<< (std::ostream& os, const Player& player);
+	export std::ostream& operator<< (std::ostream& os, const Player& player);
 
 	// For copy-and-swap idiom:
-	void swap(Player& first, Player& second) noexcept;
+	export void swap(Player& first, Player& second) noexcept;
+	
 }
+
