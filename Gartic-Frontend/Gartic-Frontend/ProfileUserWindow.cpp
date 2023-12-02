@@ -67,3 +67,4 @@ void ProfileUserWindow::SetDefaultAvatar()
     // Set the QLabel as a circle
     ui.ProfilePicture->setStyleSheet("QLabel { border-radius: 50%; background-color: transparent; }");
 }
+//test
