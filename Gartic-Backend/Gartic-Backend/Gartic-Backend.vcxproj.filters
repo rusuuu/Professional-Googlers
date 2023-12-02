@@ -18,8 +18,23 @@
     <ClCompile Include="Gartic-Backend.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="player.cppm">
+    <ClCompile Include="game.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="round.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="player.cppm">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cppm">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="round.cppm">
+      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
