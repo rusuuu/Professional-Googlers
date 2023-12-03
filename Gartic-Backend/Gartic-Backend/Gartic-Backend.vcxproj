@@ -139,11 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="database.cppm" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="game.cppm" />
     <ClCompile Include="Gartic-Backend.cpp" />
-    <ClCompile Include="player.cpp" />
-    <ClCompile Include="player.cppm" />
+    <ClCompile Include="user.cpp" />
+    <ClCompile Include="user.cppm" />
     <ClCompile Include="round.cpp" />
     <ClCompile Include="round.cppm" />
   </ItemGroup>
