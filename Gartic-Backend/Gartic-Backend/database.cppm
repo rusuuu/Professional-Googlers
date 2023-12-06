@@ -14,15 +14,28 @@ export namespace Database
 {
 
     using Storage = decltype(sql::make_storage(""));
+    
+ 
 
-    // Define your entities here
+    struct Statistics
+    {
+        int gamesPlayed = 0;
+        int gamesWon = 0;
+        int correctGuesses = 0;
+    };
+    
     struct User 
     {
         int id;
         std::string name;
         std::string email;
         std::string password;
-        // Add more fields as necessary
+        std::string picture;
+        std::string role;
+        int m_gamesPlayed;
+        int m_gamesWon;
+        int m_correctGuesses;
+        
     };
 
     struct Room 
@@ -64,8 +77,10 @@ export namespace Database
                 sql::make_column("Id", &User::id, sql::autoincrement(), sql::primary_key()),
                 sql::make_column("Name", &User::name),
                 sql::make_column("Email", &User::email),
-                sql::make_column("Password", &User::password)),
-            
+                sql::make_column("Password", &User::password),
+                sql::make_column("Picture", &User::picture),
+                sql::make_column("Role", &User::role)),
+
             sql::make_table("Rooms",
                 sql::make_column("Id", &Room::id, sql::autoincrement(), sql::primary_key()),
                 sql::make_column("Code", &Room::code)),

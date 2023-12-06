@@ -9,23 +9,10 @@ export namespace gartic
     class User
     {
     public:
-        enum class Role
-        {
-            Drawer,
-            Guesser,
-            NoRole
-        };
-
-        struct Statistics
-        {
-            int gamesPlayed = 0;
-            int gamesWon = 0;
-            int correctGuesses = 0;
-        };
-
+       
         // Constructors
         User();
-        User(std::string userName, std::string userEmail, std::string userPassword, std::string userPicture, Role userRole = Role::NoRole);
+        User(int ID, std::string userName, std::string userEmail, std::string userPassword, std::string userPicture, std::string userRole = "", int gamesPlayed, int gamesWon, int correctGuesses);
 
         // Rule of Five
         User(const User& other);
@@ -40,20 +27,25 @@ export namespace gartic
 
         const std::string& GetName() const;
         const std::string& GetEmail() const;
-        const std::string& GetPassword() const; // Consider hashing passwords for security
+        const std::string& GetPassword() const; 
         const std::string& GetPicture() const;
-        Role GetRole() const;
-        Statistics GetStatistics() const;
+        const std::string GetRole() const;
+        const int GetGamesPlayed() const;
+        const int GetGamesWon() const;
+        const int GetCorrectGuesses() const;
+        
 
-        void SetRole(Role newRole);
-        void UpdateStatistics(const Statistics& stats);
-
+        void SetRole(std::string newRole);
+       
     private:
+        int m_id;
         std::string m_name;
         std::string m_email;
-        std::string m_password; // Store hashed password
+        std::string m_password; 
         std::string m_picture;
-        Role m_role;
-        Statistics m_statistics;
+        std::string m_role;
+        int m_gamesPlayed;
+        int m_gamesWon;
+        int m_correctGuesses;
     };
 }
