@@ -14,16 +14,7 @@ export namespace Database
 {
 
     using Storage = decltype(sql::make_storage(""));
-    
- 
-
-    struct Statistics
-    {
-        int gamesPlayed = 0;
-        int gamesWon = 0;
-        int correctGuesses = 0;
-    };
-    
+        
     struct User 
     {
         int id;
@@ -32,9 +23,9 @@ export namespace Database
         std::string password;
         std::string picture;
         std::string role;
-        int m_gamesPlayed;
-        int m_gamesWon;
-        int m_correctGuesses;
+        int gamesPlayed;
+        int gamesWon;
+        int correctGuesses;
         
     };
 
@@ -79,7 +70,10 @@ export namespace Database
                 sql::make_column("Email", &User::email),
                 sql::make_column("Password", &User::password),
                 sql::make_column("Picture", &User::picture),
-                sql::make_column("Role", &User::role)),
+                sql::make_column("Role", &User::role),
+                sql::make_column("Games played", &User::gamesPlayed),
+                sql::make_column("Games won", &User::gamesWon),
+                sql::make_column("Correct guesses", &User::correctGuesses)),
 
             sql::make_table("Rooms",
                 sql::make_column("Id", &Room::id, sql::autoincrement(), sql::primary_key()),
@@ -102,11 +96,47 @@ export namespace Database
         );
     }
 
-    // Example function to add a user
+   
     void AddUser(Storage& storage, const User& user) 
     {
         storage.insert(user);
     }
 
-    // More functions for other operations (e.g., AddRoom, AddGame, etc.)
+    void AddRoom(Storage& storage, const Room& room)
+    {
+        storage.insert(room);
+    }
+    void AddGame(Storage& storage, const Game& game)
+    {
+        storage.insert(game);
+    }
+    void AddDrawing(Storage& storage, const Drawing& drawing)
+    {
+        storage.insert(drawing);
+    }
+    void AddGuess(Storage& storage, const Guess& guess)
+    {
+        storage.insert(guess);
+    }
+    void UpdateUser(Storage& storage, const User& user)
+    {
+        storage.update(user);
+    }
+    std::optional<User> FindUserById(Storage& storage, int userId)
+    {
+        return storage.get_optional<User>(userId);
+    }
+    std::optional<Room> FindRoomById(Storage& storage, int roomId)
+    {
+        return storage.get_optional<Room>(roomId);
+    }
+    std::vector<User> GetAllUsers(Storage& storage)
+    {
+        return storage.get_all<User>();
+    }
+    void DeleteUser(Storage& storage, int userId)
+    {
+        storage.remove<User>(userId);
+    }
+
 }
