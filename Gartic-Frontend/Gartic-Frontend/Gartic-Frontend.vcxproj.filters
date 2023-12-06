@@ -21,6 +21,9 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
+    <Filter Include="Implementation Files">
+      <UniqueIdentifier>{e419e0c9-21e1-4340-a7b8-9f988bc1975d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="GarticFrontend.qrc">
@@ -32,28 +35,28 @@
     <QtMoc Include="GarticFrontend.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <ClCompile Include="GarticFrontend.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="LoginWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RegisterWindow.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="GarticFrontend.cpp">
+      <Filter>Implementation Files</Filter>
     </ClCompile>
     <ClCompile Include="HostRoom.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Implementation Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LoginWindow.cpp">
+      <Filter>Implementation Files</Filter>
     </ClCompile>
     <ClCompile Include="MainMenuWindow.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Implementation Files</Filter>
     </ClCompile>
     <ClCompile Include="ProfileUserWindow.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Implementation Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RegisterWindow.cpp">
+      <Filter>Implementation Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
