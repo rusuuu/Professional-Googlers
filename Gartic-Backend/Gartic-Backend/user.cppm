@@ -36,6 +36,9 @@ export namespace gartic
         
 
         void SetRole(std::string newRole);
+        void SetGamesPlayed(int gamesPlayed);
+        void SetGamesWon(int gamesWon);
+        void SetCorrectGuesses(int correctGuesses);
        
     private:
         int m_id;

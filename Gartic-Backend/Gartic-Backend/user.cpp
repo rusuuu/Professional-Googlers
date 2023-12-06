@@ -90,6 +90,21 @@ namespace gartic
     { 
         m_role = newRole;
     }
+
+    void User::SetGamesPlayed(int gamesPlayed)
+    {
+        m_gamesPlayed = gamesPlayed;
+    }
+
+    void User::SetGamesWon(int gamesWon)
+    {
+        m_gamesWon = gamesWon;
+    }
+
+    void User::SetCorrectGuesses(int correctGuesses)
+    {
+        m_correctGuesses = correctGuesses;
+    }
     
 
 }
