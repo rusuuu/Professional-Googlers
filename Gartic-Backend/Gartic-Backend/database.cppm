@@ -32,7 +32,20 @@ export namespace Database
         int gamesPlayed;
         int gamesWon;
         int correctGuesses;
-        
+
+        User GetUserByEmail(Storage& storage, const std::string& email)
+        {
+            // Try to find the user in the database
+            auto users = storage.get_all<User>(sql::where(sql::c(&User::email) == email));
+
+            // If the user is found, return it
+            if (!users.empty()) {
+                return users.front();
+            }
+
+            // If the user is not found, return a user with an id of 0
+            return User{ 0, "", "", "", "", "", 0, 0, 0 };
+        }
     };
 
     struct Room 
