@@ -1,3 +1,5 @@
+module user;
+
 #include "user.cppm"
 
 #include <utility>
@@ -50,6 +52,8 @@ namespace gartic
         return os;
     }
 
+    //Getters
+
     const std::string& User::GetName() const 
     {
         return m_name; 
@@ -85,6 +89,7 @@ namespace gartic
         return m_correctGuesses;
     }
     
+    //Setters
 
     void User::SetRole(std::string newRole)
     { 

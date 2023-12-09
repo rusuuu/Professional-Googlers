@@ -44,4 +44,5 @@ export namespace gartic
 		int m_wordCount;
 		std::string m_roomCode;
 	};
+	
 }
