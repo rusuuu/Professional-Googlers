@@ -1,7 +1,13 @@
 export module database;
 
+#define _SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING
+//silenced deprecation of certain features in C++17
+//needs to be solved
 
 #include <sqlite_orm/sqlite_orm.h>
+//import game;
+//import user;
+
 #include "user.cppm"
 #include "game.cppm"
 //#include "Drawing.h"
@@ -65,7 +71,7 @@ export namespace Database
             fileName,
 
             sql::make_table("Users",
-                sql::make_column("Id", &User::id, sql::autoincrement(), sql::primary_key()),
+                sql::make_column("Id", &User::id, sql::primary_key().autoincrement(), sql::primary_key()),
                 sql::make_column("Name", &User::name),
                 sql::make_column("Email", &User::email),
                 sql::make_column("Password", &User::password),
@@ -76,20 +82,20 @@ export namespace Database
                 sql::make_column("Correct guesses", &User::correctGuesses)),
 
             sql::make_table("Rooms",
-                sql::make_column("Id", &Room::id, sql::autoincrement(), sql::primary_key()),
+                sql::make_column("Id", &Room::id, sql::primary_key().autoincrement(), sql::primary_key()),
                 sql::make_column("Code", &Room::code)),
             
             sql::make_table("Games",
-                sql::make_column("Id", &Game::id, sql::autoincrement(), sql::primary_key()),
+                sql::make_column("Id", &Game::id, sql::primary_key().autoincrement(), sql::primary_key()),
                 sql::make_column("RoomId", &Game::roomId)),
             
             sql::make_table("Drawings",
-                sql::make_column("Id", &Drawing::id, sql::autoincrement(), sql::primary_key()),
+                sql::make_column("Id", &Drawing::id, sql::primary_key().autoincrement(), sql::primary_key()),
                 sql::make_column("GameId", &Drawing::gameId),
                 sql::make_column("Data", &Drawing::data)),
             
             sql::make_table("Guesses",
-                sql::make_column("Id", &Guess::id, sql::autoincrement(), sql::primary_key()),
+                sql::make_column("Id", &Guess::id, sql::primary_key().autoincrement(), sql::primary_key()),
                 sql::make_column("GameId", &Guess::gameId),
                 sql::make_column("GuessText", &Guess::guessText),
                 sql::make_column("IsCorrect", &Guess::isCorrect))
