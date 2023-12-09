@@ -1,5 +1,3 @@
-module game;
-
 #include "game.cppm"
 
 #include <utility>

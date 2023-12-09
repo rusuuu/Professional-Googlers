@@ -1,5 +1,3 @@
-module user;
-
 #include "user.cppm"
 
 #include <utility>

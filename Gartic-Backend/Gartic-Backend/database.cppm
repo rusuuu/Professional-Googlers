@@ -1,6 +1,6 @@
 export module database;
 
-//#define _SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING
+#define _SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING
 //silenced deprecation of certain features in C++17
 //needs to be solved
 
