@@ -1,15 +1,15 @@
 export module database;
 
-#define _SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING
+//#define _SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING
 //silenced deprecation of certain features in C++17
 //needs to be solved
 
 #include <sqlite_orm/sqlite_orm.h>
-//import game;
-//import user;
+import game;
+import user;
 
-#include "user.cppm"
-#include "game.cppm"
+//#include "user.cppm"
+//#include "game.cppm"
 //#include "Drawing.h"
 //#include "Guess.h"
 //#include "Room.h"
@@ -45,7 +45,12 @@ export namespace Database
     struct Game 
     {
         int id;
-        int roomId;
+        int roomId; 
+        int maxPlayers; 
+        int drawTime;
+        int rounds;
+        int wordCount; 
+        std::string roomCode;
         // Add more fields as necessary
     };
 
