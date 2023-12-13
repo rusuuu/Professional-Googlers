@@ -14,7 +14,7 @@ namespace gartic
     // Rule of Five
     User::User(const User& other)
         : m_name(other.m_name), m_email(other.m_email), m_password(other.m_password),
-        m_picture(other.m_picture), m_role(other.m_role), m_gamesPlayed(other.m_gamesPlayed), m_gamesWon(other.m_gamesPlayed), m_correctGuesses(other.m_correctGuesses){}
+        m_picture(other.m_picture), m_role(other.m_role), m_gamesPlayed(other.m_gamesPlayed), m_gamesWon(other.m_gamesWon), m_correctGuesses(other.m_correctGuesses){}
 
     User::User(User&& other) noexcept
         : User()
