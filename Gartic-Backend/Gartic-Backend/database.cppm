@@ -2,17 +2,14 @@ export module database;
 
 #define _SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING
 //silenced deprecation of certain features in C++17
-//needs to be solved
 
 #include <sqlite_orm/sqlite_orm.h>
-import game;
-import user;
 
+//import game;
+//import user;
 //#include "user.cppm"
 //#include "game.cppm"
-//#include "Drawing.h"
-//#include "Guess.h"
-//#include "Room.h"
+
 
 namespace sql = sqlite_orm;
 
@@ -33,17 +30,14 @@ export namespace Database
         int gamesWon;
         int correctGuesses;
 
-        User GetUserByEmail(Storage& storage, const std::string& email)
+        const User GetUserByEmail(Storage& storage, const std::string& email)
         {
-            // Try to find the user in the database
             auto users = storage.get_all<User>(sql::where(sql::c(&User::email) == email));
 
-            // If the user is found, return it
             if (!users.empty()) {
                 return users.front();
             }
 
-            // If the user is not found, return a user with an id of 0
             return User{ 0, "", "", "", "", "", 0, 0, 0 };
         }
     };
@@ -52,7 +46,7 @@ export namespace Database
     {
         int id;
         std::string code;
-        // Add more fields as necessary
+        
     };
 
     struct Game 
@@ -64,14 +58,13 @@ export namespace Database
         int rounds;
         int wordCount; 
         std::string roomCode;
-        // Add more fields as necessary
     };
 
     struct Drawing 
     {
         int id;
         int gameId;
-        std::string data;  // This could be a path to the image or binary data
+        std::string data; 
     };
 
     struct Guess 
@@ -82,7 +75,6 @@ export namespace Database
         bool isCorrect;
     };
 
-    // Create the SQLite storage object
     inline auto CreateStorage(const std::string& fileName) 
     {
         return sql::make_storage(

@@ -86,6 +86,8 @@ namespace gartic
     {
         return m_correctGuesses;
     }
+
+    
     
     //Setters
 
@@ -109,5 +111,15 @@ namespace gartic
         m_correctGuesses = correctGuesses;
     }
     
+    //Other functions
 
+    bool User::CanDraw() const
+    {
+        return m_role == "artist";
+    }
+
+    bool User::CanGuess() const
+    {
+        return m_role == "guesser";
+    }
 }

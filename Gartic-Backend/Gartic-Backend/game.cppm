@@ -3,6 +3,7 @@ export module game;
 #include <string>
 #include <iostream>
 #include <utility>
+#include <ctime>
 
 export namespace gartic
 {
@@ -35,6 +36,8 @@ export namespace gartic
 		void SetWordCount(int wordCount);
 		void SetRoomCode(std::string roomCode);
 
+		
+
 	private:
 		int m_id;
 		int m_roomID;
@@ -43,6 +46,8 @@ export namespace gartic
 		int m_rounds;
 		int m_wordCount;
 		std::string m_roomCode;
+
+		
 	};
 	
 }

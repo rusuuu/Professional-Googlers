@@ -34,6 +34,8 @@ export namespace gartic
         const int GetGamesWon() const;
         const int GetCorrectGuesses() const;
         
+        bool CanDraw() const;
+        bool CanGuess() const;
 
         void SetRole(std::string newRole);
         void SetGamesPlayed(int gamesPlayed);
@@ -50,5 +52,6 @@ export namespace gartic
         int m_gamesPlayed;
         int m_gamesWon;
         int m_correctGuesses;
+        
     };
 }
