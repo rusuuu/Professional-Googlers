@@ -2,7 +2,8 @@
 #include <functional>
 #include <string>
 
-import database;
+#include "database.cppm";
+namespace sql = sqlite_orm;
 
 std::string hash_password(const std::string& password)
 {
@@ -17,14 +18,10 @@ int main()
 
     auto db = Database::CreateStorage("");
 
-    /*CROW_ROUTE(app, "/")([]() {
-        return "Hello world";
-        });*/
-
     // User Registration
     CROW_ROUTE(app, "/register")
         .methods("POST"_method)
-        (&db{
+        ([&db](const crow::request& req) {
             auto x = crow::json::load(req.body);
             if (!x) {
                 return crow::response(400);
@@ -45,7 +42,7 @@ int main()
     // User Login
     CROW_ROUTE(app, "/login")
         .methods("POST"_method)
-        (&db{
+        ([&db](const crow::request& req) {
             auto x = crow::json::load(req.body);
             if (!x) {
                 return crow::response(400);
@@ -56,7 +53,7 @@ int main()
 
             std::string hashed_password = hash_password(password);
 
-            Database::User user = Database::GetUserByEmail(db, email);
+            Database::User user = Database::User::GetUserByEmail(db, email);
             if (user.id == 0) {
                 return crow::response(404);  // User not found
             }

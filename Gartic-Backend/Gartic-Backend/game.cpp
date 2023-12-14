@@ -45,7 +45,7 @@ namespace gartic
 		swap(first.m_roomCode, second.m_roomCode);
 	}
 
-	std::ostream& operator<<(std::ostream os, const Game& game)
+	std::ostream& operator<<(std::ostream& os, const Game& game)
 	{
 		os << "Game ID: " << game.m_id << ", Room ID: " << game.m_roomID
 			<< ", Max Players: " << game.m_maxPlayers << ", Draw Time: " << game.m_drawTime

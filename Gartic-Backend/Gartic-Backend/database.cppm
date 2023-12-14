@@ -1,15 +1,6 @@
 export module database;
 
-#define _SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING
-//silenced deprecation of certain features in C++17
-
 #include <sqlite_orm/sqlite_orm.h>
-
-//import game;
-//import user;
-//#include "user.cppm"
-//#include "game.cppm"
-
 
 namespace sql = sqlite_orm;
 
@@ -30,9 +21,9 @@ export namespace Database
         int gamesWon;
         int correctGuesses;
 
-        const User GetUserByEmail(Storage& storage, const std::string& email)
+        static const User GetUserByEmail(Database::Storage& storage, const std::string& email)
         {
-            auto users = storage.get_all<User>(sql::where(sql::c(&User::email) == email));
+            auto users = storage.get_all<Database::User>(sql::where(sql::c(&Database::User::email) == email));
 
             if (!users.empty()) {
                 return users.front();
@@ -110,47 +101,48 @@ export namespace Database
                 sql::make_column("GuessText", &Guess::guessText),
                 sql::make_column("IsCorrect", &Guess::isCorrect))
         );
+
     }
 
    
-    void AddUser(Storage& storage, const User& user) 
+    void AddUser(Database::Storage& storage, const Database::User& user) 
     {
         storage.insert(user);
     }
 
-    void AddRoom(Storage& storage, const Room& room)
+    void AddRoom(Database::Storage& storage, const Database::Room& room)
     {
         storage.insert(room);
     }
-    void AddGame(Storage& storage, const Game& game)
+    void AddGame(Database::Storage& storage, const Database::Game& game)
     {
         storage.insert(game);
     }
-    void AddDrawing(Storage& storage, const Drawing& drawing)
+    void AddDrawing(Database::Storage& storage, const Database::Drawing& drawing)
     {
         storage.insert(drawing);
     }
-    void AddGuess(Storage& storage, const Guess& guess)
+    void AddGuess(Database::Storage& storage, const Database::Guess& guess)
     {
         storage.insert(guess);
     }
-    void UpdateUser(Storage& storage, const User& user)
+    void UpdateUser(Database::Storage& storage, const Database::User& user)
     {
         storage.update(user);
     }
-    std::optional<User> FindUserById(Storage& storage, int userId)
+    std::optional<User> FindUserById(Database::Storage& storage, int userId)
     {
         return storage.get_optional<User>(userId);
     }
-    std::optional<Room> FindRoomById(Storage& storage, int roomId)
+    std::optional<Room> FindRoomById(Database::Storage& storage, int roomId)
     {
         return storage.get_optional<Room>(roomId);
     }
-    std::vector<User> GetAllUsers(Storage& storage)
+    std::vector<User> GetAllUsers(Database::Storage& storage)
     {
         return storage.get_all<User>();
     }
-    void DeleteUser(Storage& storage, int userId)
+    void DeleteUser(Database::Storage& storage, int userId)
     {
         storage.remove<User>(userId);
     }

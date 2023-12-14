@@ -22,7 +22,7 @@ export namespace gartic
 
 		//Member functions
 		friend void swap(Game& first, Game& second) noexcept;
-		friend std::ostream& operator<<(std::ostream os, const Game& game);
+		friend std::ostream& operator<<(std::ostream& os, const Game& game);
 
 		const int GetMaxPlayers() const;
 		const int GetDrawTime() const;
