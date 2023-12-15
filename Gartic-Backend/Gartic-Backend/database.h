@@ -1,15 +1,14 @@
-export module database;
+#pragma once
 
 #include <sqlite_orm/sqlite_orm.h>
 
 namespace sql = sqlite_orm;
 
-export namespace Database 
+namespace Database
 {
+    using Storage = decltype(sql::make_storage("gartic.sqllite"));
 
-    using Storage = decltype(sql::make_storage(""));
-        
-    struct User 
+    struct User
     {
         int id;
         std::string name;
@@ -33,32 +32,31 @@ export namespace Database
         }
     };
 
-    struct Room 
+    struct Room
     {
         int id;
         std::string code;
-        
     };
 
-    struct Game 
+    struct Game
     {
         int id;
-        int roomId; 
-        int maxPlayers; 
+        int roomId;
+        int maxPlayers;
         int drawTime;
         int rounds;
-        int wordCount; 
+        int wordCount;
         std::string roomCode;
     };
 
-    struct Drawing 
+    struct Drawing
     {
         int id;
         int gameId;
-        std::string data; 
+        std::string data;
     };
 
-    struct Guess 
+    struct Guess
     {
         int id;
         int gameId;
@@ -66,7 +64,7 @@ export namespace Database
         bool isCorrect;
     };
 
-    inline auto CreateStorage(const std::string& fileName) 
+    inline auto CreateStorage(const std::string& fileName)
     {
         return sql::make_storage(
             fileName,
@@ -85,16 +83,16 @@ export namespace Database
             sql::make_table("Rooms",
                 sql::make_column("Id", &Room::id, sql::primary_key().autoincrement(), sql::primary_key()),
                 sql::make_column("Code", &Room::code)),
-            
+
             sql::make_table("Games",
                 sql::make_column("Id", &Game::id, sql::primary_key().autoincrement(), sql::primary_key()),
                 sql::make_column("RoomId", &Game::roomId)),
-            
+
             sql::make_table("Drawings",
                 sql::make_column("Id", &Drawing::id, sql::primary_key().autoincrement(), sql::primary_key()),
                 sql::make_column("GameId", &Drawing::gameId),
                 sql::make_column("Data", &Drawing::data)),
-            
+
             sql::make_table("Guesses",
                 sql::make_column("Id", &Guess::id, sql::primary_key().autoincrement(), sql::primary_key()),
                 sql::make_column("GameId", &Guess::gameId),
@@ -104,8 +102,8 @@ export namespace Database
 
     }
 
-   
-    void AddUser(Database::Storage& storage, const Database::User& user) 
+
+    void AddUser(Database::Storage& storage, const Database::User& user)
     {
         storage.insert(user);
     }
@@ -146,5 +144,5 @@ export namespace Database
     {
         storage.remove<User>(userId);
     }
+};
 
-}

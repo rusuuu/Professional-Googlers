@@ -1,8 +1,8 @@
 #include "crow.h"
 #include <functional>
 #include <string>
+#include "database.h";
 
-#include "database.cppm";
 namespace sql = sqlite_orm;
 
 std::string hash_password(const std::string& password)
@@ -16,7 +16,9 @@ int main()
 {
     crow::SimpleApp app;
 
-    auto db = Database::CreateStorage("");
+    Database::Storage db = Database::CreateStorage("gartic.sqlite");
+    db.sync_schema();
+
 
     // User Registration
     CROW_ROUTE(app, "/register")

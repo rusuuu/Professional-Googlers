@@ -143,7 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="database.cppm" />
+    <ClCompile Include="database.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="game.cppm" />
     <ClCompile Include="Gartic-Backend.cpp" />
@@ -151,6 +151,9 @@
     <ClCompile Include="user.cppm" />
     <ClCompile Include="round.cpp" />
     <ClCompile Include="round.cppm" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="database.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
