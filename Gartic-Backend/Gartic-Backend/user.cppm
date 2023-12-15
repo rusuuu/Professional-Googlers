@@ -25,6 +25,7 @@ export namespace gartic
         friend void swap(User& first, User& second) noexcept;
         friend std::ostream& operator<< (std::ostream& os, const User& user);
 
+        const int GetId() const;
         const std::string& GetName() const;
         const std::string& GetEmail() const;
         const std::string& GetPassword() const; 
@@ -37,6 +38,11 @@ export namespace gartic
         bool CanDraw() const;
         bool CanGuess() const;
 
+    	void SetId(int id);
+    	void SetName(std::string& name);
+    	void SetEmail(std::string& email);
+    	void SetPassword(std::string& password);
+    	void SetPicture(std::string& picture);
         void SetRole(std::string newRole);
         void SetGamesPlayed(int gamesPlayed);
         void SetGamesWon(int gamesWon);

@@ -52,6 +52,11 @@ namespace gartic
 
     //Getters
 
+    const int User::GetId() const
+    {
+        return m_id;
+    }
+
     const std::string& User::GetName() const 
     {
         return m_name; 
@@ -90,6 +95,31 @@ namespace gartic
     
     
     //Setters
+
+    void User::SetId(int id)
+    {
+        m_id = id;
+    }
+
+    void User::SetName(std::string& name)
+    {
+        m_name = name;
+    }
+
+    void User::SetEmail(std::string& email)
+    {
+        m_email = email;
+    }
+
+    void User::SetPassword(std::string& password)
+    {
+        m_password = password;
+    }
+
+    void User::SetPicture(std::string& picture)
+    {
+        m_picture = picture;
+    }
 
     void User::SetRole(std::string newRole)
     { 

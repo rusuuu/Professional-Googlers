@@ -1,7 +1,7 @@
 #include "crow.h"
 #include <functional>
 #include <string>
-#include "database.h";
+#include "database.h"
 
 namespace sql = sqlite_orm;
 
@@ -16,8 +16,7 @@ int main()
 {
     crow::SimpleApp app;
 
-    Database::Storage db = Database::CreateStorage("gartic.sqlite");
-    db.sync_schema();
+    DataBaseStorage storage;
 
 
     // User Registration
@@ -56,7 +55,7 @@ int main()
             std::string hashed_password = hash_password(password);
 
             Database::User user = Database::User::GetUserByEmail(db, email);
-            if (user.id == 0) {
+            if (user.GetId == 0) {
                 return crow::response(404);  // User not found
             }
 

@@ -1,11 +1,12 @@
 ﻿export module round;
 
+import user;
+
 #include <vector>
 #include <string>
 #include <iostream>
 #include <utility>
 #include "game.cppm"
-#include "user.cppm"
 
 namespace gartic
 {

@@ -57,6 +57,16 @@ namespace gartic
 
 	//Getters
 
+	const int Game::GetId() const
+	{
+		return m_id;
+	}
+
+	const int Game::GetRoomID() const
+	{
+		return m_roomID;
+	}
+
 	const int Game::GetMaxPlayers() const
 	{
 		return m_maxPlayers;
@@ -83,6 +93,16 @@ namespace gartic
 	}
 
 	//Setters
+
+	void Game::SetId(int id)
+	{
+		m_id = id;
+	}
+
+	void Game::SetRoomID(int roomID)
+	{
+		m_roomID = roomID;
+	}
 
 	void Game::SetMaxPlayers(int maxPlayers)
 	{
