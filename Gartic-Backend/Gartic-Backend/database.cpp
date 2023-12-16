@@ -20,9 +20,9 @@ std::optional<gartic::User> gartic::DataBaseStorage::FindUserById(int userId)
     return m_db.get_optional<User>(userId);
 }
 
-std::optional<gartic::User> gartic::DataBaseStorage::FindUserForLogin(const std::string& name, const std::string& password)
+std::optional<gartic::User> gartic::DataBaseStorage::FindUserForLogin(const std::string& email, const std::string& password)
 {
-    return m_db.get_optional<User>(name, password);
+    return m_db.get_optional<User>(email, password);
 }
 
 void gartic::DataBaseStorage::AddUser(const User& user)
@@ -36,6 +36,15 @@ void gartic::DataBaseStorage::AddUser(const User& user)
     newUser.SetGamesPlayed(user.GetGamesPlayed());
     newUser.SetGamesWon(user.GetGamesWon());
     newUser.SetCorrectGuesses(user.GetCorrectGuesses());
+
+    m_db.insert(newUser);
+}
+
+void gartic::DataBaseStorage::AddUserForRegister(const std::string& email, const std::string& password)
+{
+    User newUser;
+    newUser.SetEmail(email);
+    newUser.SetEmail(password);
 
     m_db.insert(newUser);
 }
