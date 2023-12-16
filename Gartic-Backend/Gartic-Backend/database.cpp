@@ -20,6 +20,11 @@ std::optional<gartic::User> gartic::DataBaseStorage::FindUserById(int userId)
     return m_db.get_optional<User>(userId);
 }
 
+std::optional<gartic::User> gartic::DataBaseStorage::FindUserForLogin(const std::string& name, const std::string& password)
+{
+    return m_db.get_optional<User>(name, password);
+}
+
 void gartic::DataBaseStorage::AddUser(const User& user)
 {
 	User newUser;

@@ -11,7 +11,7 @@ namespace gartic
 		void Run(DataBaseStorage& storage);
 
 	private:
-		crow::response AddUsersToDataBaseRoute(DataBaseStorage& storage, const crow::request& req, int userId) const;
+		crow::response VerifyUsersToDataBaseRoute(DataBaseStorage& storage, const crow::request& req) const;
 
 	private:
 		crow::SimpleApp m_app;

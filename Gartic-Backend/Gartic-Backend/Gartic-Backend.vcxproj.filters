@@ -57,9 +57,15 @@
     <ClCompile Include="guess.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="routing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="database.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="routing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

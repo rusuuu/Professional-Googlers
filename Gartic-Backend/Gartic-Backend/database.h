@@ -73,6 +73,7 @@ namespace gartic
 
         std::vector<User> GetUsers();
         std::optional<User> FindUserById(int userId);
+        std::optional<User> FindUserForLogin(const std::string& name, const std::string& password);
         void AddUser(const User& user);
         void UpdateUser(User& user);
         void DeleteUser(int userId);
