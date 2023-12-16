@@ -2,7 +2,7 @@
 
 using namespace gartic;
 
-void Routing::Run(DataBaseStorage& storage)
+void Routing::Run(UserHandler& storage)
 {
 	CROW_ROUTE(m_app, "/")([]() {
 		return "This is an example app of crow and sql-orm";
@@ -37,7 +37,7 @@ void Routing::Run(DataBaseStorage& storage)
 	m_app.port(18080).multithreaded().run();
 }
 
-crow::response Routing::VerifyUserToDataBaseRoute(DataBaseStorage& storage, const crow::request& req) const
+crow::response Routing::VerifyUserToDataBaseRoute(UserHandler& storage, const crow::request& req) const
 {
     //validate user's login credentials 
 
@@ -61,7 +61,7 @@ crow::response Routing::VerifyUserToDataBaseRoute(DataBaseStorage& storage, cons
     }
 }
 
-crow::response Routing::AddUserToDataBaseRoute(DataBaseStorage& storage, const crow::request& req, const std::string& email, const std::string& password) const
+crow::response Routing::AddUserToDataBaseRoute(UserHandler& storage, const crow::request& req, const std::string& email, const std::string& password) const
 {
     char* email_chr = req.url_params.get("email");
     char* password_chr = req.url_params.get("password");

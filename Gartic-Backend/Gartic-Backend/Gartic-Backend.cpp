@@ -14,7 +14,7 @@ int main()
 {
     crow::SimpleApp app;
 
-    DataBaseStorage storage;
+    UserHandler storage;
 
     Routing r;
     r.Run(storage);

@@ -2,16 +2,15 @@
 
 #include <string>
 #include <vector>
-
 #include <crow.h> 
 #include <sqlite_orm/sqlite_orm.h>
-namespace sql = sqlite_orm;
-
 #include "user.cppm"
 #include "room.cppm"
 #include "game.cppm"
 #include "drawing.cppm"
 #include "guess.cppm"
+
+namespace sql = sqlite_orm;
 
 namespace gartic
 {
@@ -31,7 +30,7 @@ namespace gartic
                 sql::make_column("Games played", &User::SetGamesPlayed, &User::GetGamesPlayed),
                 sql::make_column("Games won", &User::SetGamesWon, &User::GetGamesWon),
                 sql::make_column("Correct guesses", &User::SetCorrectGuesses, &User::GetCorrectGuesses)
-            ),
+            )/*,
 
             sql::make_table(
                 "Rooms",
@@ -58,28 +57,28 @@ namespace gartic
                 sql::make_column("GameId", &Guess::SetGameId, &Guess::GetGameId),
                 sql::make_column("GuessText", &Guess::SetGuessText, &Guess::GetGuessText),
                 sql::make_column("IsCorrect", &Guess::SetIsCorrect, &Guess::GetIsCorrect)
-            )
+            )*/
         );
 
     }
 
     using Storage = decltype(CreateStorage(""));
 
-    class DataBaseStorage
+    class UserHandler
     {
     public:
 
         bool Initialize();
 
-        std::vector<User> GetUsers();
-        std::optional<User> FindUserById(int userId);
-        std::optional<User> FindUserForLogin(const std::string& email, const std::string& password);
         void AddUser(const User& user);
-        void AddUserForRegister(const std::string& email, const std::string& password);
+        std::vector<User> GetUsers();
+        std::optional<User> GetUserById(int userId);
+        //std::optional<User> FindUserForLogin(const std::string& email, const std::string& password);
+        //void AddUserForRegister(const std::string& email, const std::string& password);
         void UpdateUser(User& user);
         void DeleteUser(int userId);
 
-        std::vector<Room> GetRooms();
+       /* std::vector<Room> GetRooms();
         std::optional<Room> FindRoomById(int roomId);
         void AddRoom(const Room& room);
 
@@ -90,28 +89,24 @@ namespace gartic
         void AddDrawing(const Drawing& drawing);
 
         std::vector<Guess> GetGuesses();
-        void AddGuess(const Guess& guess);
+        void AddGuess(const Guess& guess);*/
 
     private:
-        void PopulateStorageWithUsers();
-
-    private:
-        const std::string kDbFile{ "products.sqlite" };
-
-    private:
-        Storage m_db = CreateStorage(kDbFile);
+        //void PopulateStorageWithUsers();
+        //const std::string kDbFile{ "products.sqlite" };
+        //Storage m_db = CreateStorage(kDbFile);
 
     };
 
-    class AddToDataBaseHandler
+    /*class AddToDataBaseHandler
     {
     public:
-        AddToDataBaseHandler(DataBaseStorage& storage);
+        AddToDataBaseHandler(UserHandler& storage);
 
         crow::response operator() (const crow::request& req) const;
 
     private:
-        DataBaseStorage& m_db;
-    };
+        UserHandler& m_db;
+    };*/
 };
 

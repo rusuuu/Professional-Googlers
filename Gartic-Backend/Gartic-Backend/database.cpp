@@ -1,6 +1,6 @@
 #include "database.h"
 
-bool gartic::DataBaseStorage::Initialize()
+bool gartic::UserHandler::Initialize()
 {
     m_db.sync_schema();
 
@@ -10,22 +10,22 @@ bool gartic::DataBaseStorage::Initialize()
         PopulateStorageWithUsers();
 }
 
-std::vector<gartic::User> gartic::DataBaseStorage::GetUsers()
+std::vector<gartic::User> gartic::UserHandler::GetUsers()
 {
 	return m_db.get_all<User>();
 }
 
-std::optional<gartic::User> gartic::DataBaseStorage::FindUserById(int userId)
+std::optional<gartic::User> gartic::UserHandler::GetUserById(int userId)
 {
     return m_db.get_optional<User>(userId);
 }
 
-std::optional<gartic::User> gartic::DataBaseStorage::FindUserForLogin(const std::string& email, const std::string& password)
+std::optional<gartic::User> gartic::UserHandler::FindUserForLogin(const std::string& email, const std::string& password)
 {
     return m_db.get_optional<User>(email, password);
 }
 
-void gartic::DataBaseStorage::AddUser(const User& user)
+void gartic::UserHandler::AddUser(const User& user)
 {
 	User newUser;
     newUser.SetName(user.GetName());
@@ -40,7 +40,7 @@ void gartic::DataBaseStorage::AddUser(const User& user)
     m_db.insert(newUser);
 }
 
-void gartic::DataBaseStorage::AddUserForRegister(const std::string& email, const std::string& password)
+void gartic::UserHandler::AddUserForRegister(const std::string& email, const std::string& password)
 {
     User newUser;
     newUser.SetEmail(email);
@@ -49,7 +49,7 @@ void gartic::DataBaseStorage::AddUserForRegister(const std::string& email, const
     m_db.insert(newUser);
 }
 
-void gartic::DataBaseStorage::UpdateUser(User& user)
+void gartic::UserHandler::UpdateUser(User& user)
 {
     User newUser;
     newUser.SetName(user.GetName());
@@ -64,33 +64,33 @@ void gartic::DataBaseStorage::UpdateUser(User& user)
     user = newUser;
 }
 
-void gartic::DataBaseStorage::DeleteUser(int userId)
+void gartic::UserHandler::DeleteUser(int userId)
 {
 	m_db.remove<User>(userId);
 }
 
-std::vector<gartic::Room> gartic::DataBaseStorage::GetRooms()
+std::vector<gartic::Room> gartic::UserHandler::GetRooms()
 {
     return m_db.get_all<Room>();
 }
 
-std::optional<gartic::Room> gartic::DataBaseStorage::FindRoomById(int roomId)
+std::optional<gartic::Room> gartic::UserHandler::FindRoomById(int roomId)
 {
     return m_db.get_optional<Room>(roomId);
 }
 
-void gartic::DataBaseStorage::AddRoom(const Room& room)
+void gartic::UserHandler::AddRoom(const Room& room)
 {
     Room newRoom;
     newRoom.SetCode(room.GetCode());
 }
 
-std::vector<gartic::Game> gartic::DataBaseStorage::GetGames()
+std::vector<gartic::Game> gartic::UserHandler::GetGames()
 {
     return m_db.get_all<Game>();
 }
 
-void gartic::DataBaseStorage::AddGame(const Game& game)
+void gartic::UserHandler::AddGame(const Game& game)
 {
     Game newGame;
     newGame.SetRoomID(game.GetRoomID());
@@ -101,24 +101,24 @@ void gartic::DataBaseStorage::AddGame(const Game& game)
     newGame.SetRoomCode(game.GetRoomCode());
 }
 
-std::vector<gartic::Drawing> gartic::DataBaseStorage::GetDrawings()
+std::vector<gartic::Drawing> gartic::UserHandler::GetDrawings()
 {
     return m_db.get_all<Drawing>();
 }
 
-void gartic::DataBaseStorage::AddDrawing(const Drawing& drawing)
+void gartic::UserHandler::AddDrawing(const Drawing& drawing)
 {
     Drawing newDrawing;
     newDrawing.SetGameId(drawing.GetGameId());
     newDrawing.SetData(drawing.GetData());
 }
 
-std::vector<gartic::Guess> gartic::DataBaseStorage::GetGuesses()
+std::vector<gartic::Guess> gartic::UserHandler::GetGuesses()
 {
     return m_db.get_all<Guess>();
 }
 
-void gartic::DataBaseStorage::AddGuess(const Guess& guess)
+void gartic::UserHandler::AddGuess(const Guess& guess)
 {
     Guess newGuess;
     newGuess.SetGameId(guess.GetGameId());
@@ -126,11 +126,11 @@ void gartic::DataBaseStorage::AddGuess(const Guess& guess)
     newGuess.SetIsCorrect(guess.GetIsCorrect());
 }
 
-void gartic::DataBaseStorage::PopulateStorageWithUsers()
+void gartic::UserHandler::PopulateStorageWithUsers()
 {
     std::vector<User> users{
         User{-1, "Claudiu", "claudiu.rusu@student.unitbv.ro", "@RuSu_2003"},
-        User{-1, "Iulia", "iulia.tipleiu@student.unitbv.ro", "@IuLiA_2003"},
+        User{-1, "Iulia", "iulia.tipeiu@student.unitbv.ro", "@IuLiA_2003"},
         User{-1, "Alex", "alexandru.decean@student.unitbv.ro", "@AlEx_2003"}
     };
     m_db.insert_range(users.begin(), users.end());
