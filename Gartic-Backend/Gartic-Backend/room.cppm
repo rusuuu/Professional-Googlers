@@ -30,7 +30,7 @@ namespace gartic
         const std::string& GetCode() const;
 
         void SetId(int id);
-        void SetCode(std::string& code);
+        void SetCode(const std::string& code);
 
     private:
         int m_id;

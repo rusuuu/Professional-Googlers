@@ -34,7 +34,7 @@ namespace gartic
 
         void SetId(int id);
         void SetGameId(int gameId);
-        void SetGuessText(std::string& guessText);
+        void SetGuessText(const std::string& guessText);
         void SetIsCorrect(bool isCorrect);
 
     private:

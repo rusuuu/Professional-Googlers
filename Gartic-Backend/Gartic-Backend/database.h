@@ -69,47 +69,29 @@ namespace gartic
     {
     public:
 
-        void AddUser(Storage& storage, const User& user)
-        {
-            storage.insert(user);
-        }
+        bool Initialize();
 
-        void AddRoom(Storage& storage, const Room& room)
-        {
-            storage.insert(room);
-        }
-        void AddGame(Storage& storage, const Game& game)
-        {
-            storage.insert(game);
-        }
-        void AddDrawing(Storage& storage, const Drawing& drawing)
-        {
-            storage.insert(drawing);
-        }
-        void AddGuess(Storage& storage, const Guess& guess)
-        {
-            storage.insert(guess);
-        }
-        void UpdateUser(Storage& storage, const User& user)
-        {
-            storage.update(user);
-        }
-        std::optional<User> FindUserById(Storage& storage, int userId)
-        {
-            return storage.get_optional<User>(userId);
-        }
-        std::optional<Room> FindRoomById(Storage& storage, int roomId)
-        {
-            return storage.get_optional<Room>(roomId);
-        }
-        std::vector<User> GetAllUsers(Storage& storage)
-        {
-            return storage.get_all<User>();
-        }
-        void DeleteUser(Storage& storage, int userId)
-        {
-            storage.remove<User>(userId);
-        }
+        std::vector<User> GetUsers();
+        std::optional<User> FindUserById(int userId);
+        void AddUser(const User& user);
+        void UpdateUser(User& user);
+        void DeleteUser(int userId);
+
+        std::vector<Room> GetRooms();
+        std::optional<Room> FindRoomById(int roomId);
+        void AddRoom(const Room& room);
+
+        std::vector<Game> GetGames();
+        void AddGame(const Game& game);
+
+        std::vector<Drawing> GetDrawings();
+        void AddDrawing(const Drawing& drawing);
+
+        std::vector<Guess> GetGuesses();
+        void AddGuess(const Guess& guess);
+
+    private:
+        void PopulateStorageWithUsers();
 
     private:
         const std::string kDbFile{ "products.sqlite" };
@@ -121,6 +103,10 @@ namespace gartic
 
     class AddToDataBaseHandler
     {
+    public:
+        AddToDataBaseHandler(DataBaseStorage& storage);
+
+        crow::response operator() (const crow::request& req) const;
 
     private:
         DataBaseStorage& m_db;

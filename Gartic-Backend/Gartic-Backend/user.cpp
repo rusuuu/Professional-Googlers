@@ -100,22 +100,22 @@ namespace gartic
         m_id = id;
     }
 
-    void User::SetName(std::string& name)
+    void User::SetName(const std::string& name)
     {
         m_name = name;
     }
 
-    void User::SetEmail(std::string& email)
+    void User::SetEmail(const std::string& email)
     {
         m_email = email;
     }
 
-    void User::SetPassword(std::string& password)
+    void User::SetPassword(const std::string& password)
     {
         m_password = password;
     }
 
-    void User::SetPicture(std::string& picture)
+    void User::SetPicture(const std::string& picture)
     {
         m_picture = picture;
     }

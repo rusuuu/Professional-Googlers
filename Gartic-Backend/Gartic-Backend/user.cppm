@@ -13,7 +13,7 @@ namespace gartic
        
         // Constructors
         User();
-        User(int ID, std::string userName, std::string userEmail, std::string userPassword, std::string userPicture, std::string userRole = "", int gamesPlayed = 0, int gamesWon = 0, int correctGuesses = 0);
+        User(int ID, std::string userName, std::string userEmail, std::string userPassword, std::string userPicture = "", std::string userRole = "", int gamesPlayed = 0, int gamesWon = 0, int correctGuesses = 0);
 
         // Rule of Five
         User(const User& other);
@@ -40,10 +40,10 @@ namespace gartic
         bool CanGuess() const;
 
     	void SetId(int id);
-    	void SetName(std::string& name);
-    	void SetEmail(std::string& email);
-    	void SetPassword(std::string& password);
-    	void SetPicture(std::string& picture);
+    	void SetName(const std::string& name);
+    	void SetEmail(const std::string& email);
+    	void SetPassword(const std::string& password);
+    	void SetPicture(const std::string& picture);
         void SetRole(std::string newRole);
         void SetGamesPlayed(int gamesPlayed);
         void SetGamesWon(int gamesWon);

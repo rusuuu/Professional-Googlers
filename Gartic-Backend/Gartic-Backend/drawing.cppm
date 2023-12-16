@@ -32,12 +32,11 @@ namespace gartic
 
         void SetId(int id);
         void SetGameId(int gameId);
-        void SetData(std::string& data);
+        void SetData(const std::string& data);
 
     private:
         int m_id;
         int m_gameId;
         std::string m_data;
-
     };
 }

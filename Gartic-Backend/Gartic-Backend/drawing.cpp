@@ -72,7 +72,7 @@ namespace gartic
         m_gameId = gameId;
     }
 
-    void Drawing::SetData(std::string& data)
+    void Drawing::SetData(const std::string& data)
     {
         m_data = data;
     }

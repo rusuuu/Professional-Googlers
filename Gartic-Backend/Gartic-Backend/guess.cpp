@@ -77,7 +77,7 @@ namespace gartic
         m_gameId = gameId;
     }
 
-    void Guess::SetGuessText(std::string& guessText)
+    void Guess::SetGuessText(const std::string& guessText)
     {
         m_guessText = guessText;
     }

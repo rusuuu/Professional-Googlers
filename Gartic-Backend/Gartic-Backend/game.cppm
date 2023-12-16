@@ -38,7 +38,7 @@ namespace gartic
 		void SetDrawTime(int drawTime);
 		void SetRounds(int rounds);
 		void SetWordCount(int wordCount);
-		void SetRoomCode(std::string roomCode);
+		void SetRoomCode(const std::string& roomCode);
 
 	private:
 		int m_id;

@@ -122,7 +122,7 @@ namespace gartic
 		m_wordCount = wordCount;
 	}
 
-	void Game::SetRoomCode(std::string roomCode)
+	void Game::SetRoomCode(const std::string& roomCode)
 	{
 		m_roomCode = std::move(roomCode);
 	}

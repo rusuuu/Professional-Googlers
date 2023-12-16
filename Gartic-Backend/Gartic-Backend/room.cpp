@@ -60,7 +60,7 @@ namespace gartic
         m_id = id;
     }
 
-    void Room::SetCode(std::string& code)
+    void Room::SetCode(const std::string& code)
     {
         m_code = code;
     }
