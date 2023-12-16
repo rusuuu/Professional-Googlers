@@ -8,6 +8,22 @@ void Routing::Run(DataBaseStorage& storage)
 		return "This is an example app of crow and sql-orm";
 		});
 
+    CROW_ROUTE(m_app, "/users")([&storage, this](const crow::request& req) {
+
+        std::vector<crow::json::wvalue> users_json;
+
+        auto users = storage.GetUsers();
+        for (const auto& user : users)
+        {
+            users_json.push_back(crow::json::wvalue{
+                {"id", user.GetId()},
+                {"name", user.GetName()},
+                {"email", user.GetEmail()}
+                });
+        }
+        return crow::json::wvalue{ users_json };
+    });
+
     CROW_ROUTE(m_app, "/login")([& storage, this](const crow::request& req){
 
         return VerifyUserToDataBaseRoute(storage, req);
