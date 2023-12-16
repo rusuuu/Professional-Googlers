@@ -1,12 +1,13 @@
+#pragma once
+
 export module drawing;
 
 #include <string>
 #include <iostream>
-#include <utility>
 
-export namespace gartic
+namespace gartic
 {
-    class Drawing
+    export class Drawing
     {
     public:
 

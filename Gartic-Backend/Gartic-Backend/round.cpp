@@ -1,7 +1,5 @@
 #include "round.cppm"
 
-#include <utility>
-
 namespace gartic
 {
     // Constructors

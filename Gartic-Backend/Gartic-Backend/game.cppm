@@ -1,13 +1,13 @@
+#pragma once
+
 export module game;
 
 #include <string>
 #include <iostream>
-#include <utility>
-#include <ctime>
 
-export namespace gartic
+namespace gartic
 {
-	class Game
+	export class Game
 	{
 	public:
 		//Constructors

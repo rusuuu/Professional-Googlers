@@ -7,11 +7,11 @@
 #include <sqlite_orm/sqlite_orm.h>
 namespace sql = sqlite_orm;
 
-import user;
-import room;
-import game;
-import drawing;
-import guess;
+#include "user.cppm"
+#include "room.cppm"
+#include "game.cppm"
+#include "drawing.cppm"
+#include "guess.cppm"
 
 namespace gartic
 {
@@ -20,7 +20,8 @@ namespace gartic
         return sql::make_storage(
             fileName,
 
-            sql::make_table("Users",
+            sql::make_table(
+                "Users",
                 sql::make_column("Id", &User::SetId, &User::GetId, sql::primary_key().autoincrement()),
                 sql::make_column("Name", &User::SetName, &User::GetName),
                 sql::make_column("Email", &User::SetEmail, &User::GetEmail),
@@ -29,35 +30,45 @@ namespace gartic
                 sql::make_column("Role", &User::SetRole, &User::GetRole),
                 sql::make_column("Games played", &User::SetGamesPlayed, &User::GetGamesPlayed),
                 sql::make_column("Games won", &User::SetGamesWon, &User::GetGamesWon),
-                sql::make_column("Correct guesses", &User::SetCorrectGuesses, &User::GetCorrectGuesses)),
+                sql::make_column("Correct guesses", &User::SetCorrectGuesses, &User::GetCorrectGuesses)
+            ),
 
-            sql::make_table("Rooms",
+            sql::make_table(
+                "Rooms",
                 sql::make_column("Id", &Room::SetId, &Room::GetId, sql::primary_key().autoincrement()),
-                sql::make_column("Code", &Room::SetCode, &Room::GetCode)),
+                sql::make_column("Code", &Room::SetCode, &Room::GetCode)
+            ),
 
-            sql::make_table("Games",
+            sql::make_table(
+                "Games",
                 sql::make_column("Id", &Game::SetId, &Game::GetId, sql::primary_key().autoincrement()),
-                sql::make_column("RoomId", &Game::SetRoomID, &Game::GetRoomID)),
+                sql::make_column("RoomId", &Game::SetRoomID, &Game::GetRoomID)
+            ),
 
-            sql::make_table("Drawings",
+            sql::make_table(
+                "Drawings",
                 sql::make_column("Id", &Drawing::SetId, &Drawing::GetId, sql::primary_key().autoincrement()),
                 sql::make_column("GameId", &Drawing::SetGameId, &Drawing::GetGameId),
-                sql::make_column("Data", &Drawing::SetData, &Drawing::GetData)),
+                sql::make_column("Data", &Drawing::SetData, &Drawing::GetData)
+            ),
 
-            sql::make_table("Guesses",
+            sql::make_table(
+                "Guesses",
                 sql::make_column("Id", &Guess::SetId, &Guess::GetId, sql::primary_key().autoincrement()),
                 sql::make_column("GameId", &Guess::SetGameId, &Guess::GetGameId),
                 sql::make_column("GuessText", &Guess::SetGuessText, &Guess::GetGuessText),
-                sql::make_column("IsCorrect", &Guess::SetIsCorrect, &Guess::GetIsCorrect))
+                sql::make_column("IsCorrect", &Guess::SetIsCorrect, &Guess::GetIsCorrect)
+            )
         );
 
     }
 
-    using Storage = decltype(sql::make_storage(""));
+    using Storage = decltype(CreateStorage(""));
 
     class DataBaseStorage
     {
     public:
+
         void AddUser(Storage& storage, const User& user)
         {
             storage.insert(user);
@@ -101,10 +112,11 @@ namespace gartic
         }
 
     private:
-        const std::string kDbFile{ "gartic.sqlite" };
+        const std::string kDbFile{ "products.sqlite" };
 
     private:
         Storage m_db = CreateStorage(kDbFile);
+
     };
 
     class AddToDataBaseHandler

@@ -1,7 +1,5 @@
 #include "game.cppm"
 
-#include <utility>
-
 namespace gartic
 {
 	//Constructors

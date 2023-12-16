@@ -1,7 +1,5 @@
 #include "guess.cppm"
 
-#include <utility>
-
 namespace gartic
 {
     // Constructors

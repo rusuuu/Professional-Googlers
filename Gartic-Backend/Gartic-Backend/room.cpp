@@ -1,7 +1,5 @@
 #include "room.cppm"
 
-#include <utility>
-
 namespace gartic
 {
     // Constructors

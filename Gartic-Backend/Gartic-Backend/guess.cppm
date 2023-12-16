@@ -1,12 +1,13 @@
+#pragma once
+
 export module guess;
 
 #include <string>
 #include <iostream>
-#include <utility>
 
-export namespace gartic
+namespace gartic
 {
-    class Guess
+    export class Guess
     {
     public:
 

@@ -1,7 +1,5 @@
 #include "drawing.cppm"
 
-#include <utility>
-
 namespace gartic
 {
     // Constructors

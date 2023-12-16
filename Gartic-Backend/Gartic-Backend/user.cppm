@@ -1,12 +1,13 @@
+#pragma once
+
 export module user;
 
 #include <string>
 #include <iostream>
-#include <utility>
 
-export namespace gartic
+namespace gartic
 {
-    class User
+    export class User
     {
     public:
        
