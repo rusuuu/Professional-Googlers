@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -18,11 +18,27 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Database.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="UserHandler.cpp" />
+    <ClCompile Include="UserHelper.cpp" />
+    <ClCompile Include="UserValidator.cpp" />
+    <ClCompile Include="UserValidator.cppm" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Database.h" />
+    <ClInclude Include="UserHandler.h" />
+    <ClInclude Include="UserHelper.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Server.rc" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{50cc92be-90ec-464e-8ece-32d02aeb1509}</ProjectGuid>
-    <RootNamespace>GarticBackend</RootNamespace>
+    <ProjectGuid>{5384665b-0767-4e16-b45b-ecc71c46f5b2}</ProjectGuid>
+    <RootNamespace>Server</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -76,12 +92,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
-      <BuildStlModules>true</BuildStlModules>
-      <AdditionalOptions>/D _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS %(AdditionalOptions)</AdditionalOptions>
-      <EnableModules>true</EnableModules>
-      <CompileAs>Default</CompileAs>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -96,12 +106,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
-      <BuildStlModules>true</BuildStlModules>
-      <AdditionalOptions>/D _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS %(AdditionalOptions)</AdditionalOptions>
-      <EnableModules>true</EnableModules>
-      <CompileAs>Default</CompileAs>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -114,19 +118,20 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
-      <BuildStlModules>true</BuildStlModules>
-      <AdditionalOptions>/D _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS %(AdditionalOptions)</AdditionalOptions>
-      <EnableModules>true</EnableModules>
-      <CompileAs>Default</CompileAs>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>..\..\Models\Models;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Models.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\Models\$(IntDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d "..\..\Models\$(IntDir)Models.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -134,43 +139,23 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);_SILENCE_CXX17_CODECVT_HEADER_DEPRECATION_WARNING</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <ScanSourceForModuleDependencies>true</ScanSourceForModuleDependencies>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
-      <BuildStlModules>true</BuildStlModules>
-      <AdditionalOptions>/D _SILENCE_ALL_CXX17_DEPRECATION_WARNINGS %(AdditionalOptions)</AdditionalOptions>
-      <EnableModules>true</EnableModules>
-      <CompileAs>Default</CompileAs>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>..\..\Models\Models;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Models.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\Models\$(IntDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d "..\..\Models\$(IntDir)Models.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="database.cpp" />
-    <ClCompile Include="drawing.cpp" />
-    <ClCompile Include="drawing.cppm" />
-    <ClCompile Include="game.cpp" />
-    <ClCompile Include="game.cppm" />
-    <ClCompile Include="Gartic-Backend.cpp" />
-    <ClCompile Include="guess.cpp" />
-    <ClCompile Include="guess.cppm" />
-    <ClCompile Include="room.cpp" />
-    <ClCompile Include="room.cppm" />
-    <ClCompile Include="routing.cpp" />
-    <ClCompile Include="user.cpp" />
-    <ClCompile Include="user.cppm" />
-    <ClCompile Include="round.cpp" />
-    <ClCompile Include="round.cppm" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="database.h" />
-    <ClInclude Include="routing.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
