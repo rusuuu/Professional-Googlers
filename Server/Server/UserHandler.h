@@ -12,7 +12,13 @@ public:
 	UserHandler(Database::Storage& db);
 
 	crow::response CreateUser(const crow::request& req);
+
 	crow::response GetUsers();
+	crow::response GetUserByName(const crow::request& req);
+
+	crow::response UpdateUser();
+
+	crow::response DeleteUser();
 private:
 	Database::Storage& m_db;
 };

@@ -69,3 +69,52 @@ crow::response UserHandler::GetUsers()
 		return crow::response(500, e.what());
 	}
 }
+
+crow::response UserHandler::GetUserByName(const crow::request& req)
+{
+	try
+	{
+		auto userJson = crow::json::load(req.body);
+		if (!userJson)
+		{
+			return crow::response(400);
+		}
+
+		std::string userName = userJson["name"].s();
+		auto users = m_db.get_all<User>();
+		for (const auto& user : users)
+		{
+			if (user.GetName() == userName)
+			{
+				crow::json::wvalue jsonUser;
+				jsonUser["id"] = user.GetId();
+				jsonUser["name"] = user.GetName();
+				jsonUser["password"] = user.GetPassword();
+				jsonUser["email"] = user.GetEmail();
+				jsonUser["image_path"] = user.GetImagePath();
+				jsonUser["role"] = user.GetRole();
+
+				return crow::response(200, jsonUser);
+			}
+		}
+
+		return crow::response(404);
+	}
+	catch (const std::exception& e)
+	{
+		return crow::response(500, e.what());
+	}
+}
+
+
+crow::response UserHandler::UpdateUser()//put
+{
+
+}
+
+crow::response UserHandler::DeleteUser()
+{
+
+}
+
+
