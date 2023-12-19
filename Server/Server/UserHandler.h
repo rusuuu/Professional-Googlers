@@ -16,7 +16,7 @@ public:
 	crow::response GetUsers();
 	crow::response GetUserByName(const crow::request& req);
 
-	crow::response UpdateUser();
+	crow::response UpdateUser(const crow::request& req, std::string name);
 
 	crow::response DeleteUser();
 private:

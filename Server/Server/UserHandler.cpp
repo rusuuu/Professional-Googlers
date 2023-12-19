@@ -107,9 +107,44 @@ crow::response UserHandler::GetUserByName(const crow::request& req)
 }
 
 
-crow::response UserHandler::UpdateUser()//put
+crow::response UserHandler::UpdateUser(const crow::request& req, std::string name)
 {
+	try
+	{
+		auto userJson = crow::json::load(req.body);
+		if (!userJson)
+		{
+			return crow::response(400);
+		}
 
+		auto users = m_db.get_all<User>();
+		for (auto& user : users)
+		{
+			if (user.GetName() == name)
+			{
+				user.SetPassword(userJson["password"].s());
+				user.SetEmail(userJson["email"].s());
+				user.SetImagePath(userJson["image_path"].s());
+				user.SetRole(userJson["role"].b());
+
+				CheckNames(user.GetName(), ExtractNames(users));
+				CheckEmails(user.GetEmail(), ExtractEmails(users));
+
+				m_db.update(user);
+				return crow::response(200);
+			}
+		}
+
+		return crow::response(404);
+	}
+	catch (const std::invalid_argument& e)
+	{
+		return crow::response(400, e.what());
+	}
+	catch (const std::exception& e)
+	{
+		return crow::response(500, e.what());
+	}
 }
 
 crow::response UserHandler::DeleteUser()
