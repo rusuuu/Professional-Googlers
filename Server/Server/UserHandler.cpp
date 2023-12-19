@@ -147,9 +147,26 @@ crow::response UserHandler::UpdateUser(const crow::request& req, std::string nam
 	}
 }
 
-crow::response UserHandler::DeleteUser()
+crow::response UserHandler::DeleteUser(const crow::request& req, std::string name)
 {
+	try
+	{
+		auto users = m_db.get_all<User>();
+		for (auto& user : users)
+		{
+			if (user.GetName() == name)
+			{
+				m_db.remove<User>(user.GetId());
+				return crow::response(200);
+			}
+		}
 
+		return crow::response(404);
+	}
+	catch (const std::exception& e)
+	{
+		return crow::response(500, e.what());
+	}
 }
 
 
