@@ -28,7 +28,7 @@ crow::response UserHandler::CreateUser(const crow::request& req)
 		CheckEmails(newUser.GetEmail(), ExtractEmails(users));
 
 		m_db.insert(newUser);
-		return crow::response(201);
+		return crow::response(201, "User created successfully");
 	}
 	catch (const std::invalid_argument& e)
 	{
@@ -74,13 +74,12 @@ crow::response UserHandler::GetUserByName(const crow::request& req)
 {
 	try
 	{
-		auto userJson = crow::json::load(req.body);
-		if (!userJson)
+		std::string userName = req.url_params.get("name");
+		if (userName.empty())
 		{
-			return crow::response(400);
+			return crow::response(400, "Name parameter is missing");
 		}
 
-		std::string userName = userJson["name"].s();
 		auto users = m_db.get_all<User>();
 		for (const auto& user : users)
 		{
@@ -98,7 +97,7 @@ crow::response UserHandler::GetUserByName(const crow::request& req)
 			}
 		}
 
-		return crow::response(404);
+		return crow::response(404, "User not found");
 	}
 	catch (const std::exception& e)
 	{
@@ -106,36 +105,64 @@ crow::response UserHandler::GetUserByName(const crow::request& req)
 	}
 }
 
-
-crow::response UserHandler::UpdateUser(const crow::request& req, std::string name)
+crow::response UserHandler::UpdateUser(const crow::request& req)
 {
 	try
 	{
+		std::string userName = req.url_params.get("name");
+		if (userName.empty())
+		{
+			return crow::response(400, "Name parameter is missing");
+		}
+
 		auto userJson = crow::json::load(req.body);
 		if (!userJson)
 		{
 			return crow::response(400);
 		}
 
+		auto name = userJson["name"].s();
+		auto password = userJson["password"].s();
+		auto email = userJson["email"].s();
+		auto imagePath = userJson["image_path"].s();
+		auto role = userJson["role"].b();
+
 		auto users = m_db.get_all<User>();
 		for (auto& user : users)
 		{
-			if (user.GetName() == name)
+			if (user.GetName() == userName)
 			{
-				user.SetPassword(userJson["password"].s());
-				user.SetEmail(userJson["email"].s());
-				user.SetImagePath(userJson["image_path"].s());
-				user.SetRole(userJson["role"].b());
+				if (user.GetName() != name)
+				{
+					CheckNames(name, ExtractNames(users));
 
-				CheckNames(user.GetName(), ExtractNames(users));
-				CheckEmails(user.GetEmail(), ExtractEmails(users));
+					user.SetName(name);
+				}
+				if (user.GetPassword() != password)
+				{
+					user.SetPassword(password);
+				}
+				if (user.GetEmail() != email)
+				{
+					CheckEmails(email, ExtractEmails(users));
+
+					user.SetEmail(email);
+				}
+				if (user.GetImagePath() != imagePath)
+				{
+					user.SetImagePath(imagePath);
+				}
+				if (user.GetRole() != role)
+				{
+					user.SetRole(role);
+				}
 
 				m_db.update(user);
-				return crow::response(200);
+				return crow::response(200, "User updated successfully");
 			}
 		}
 
-		return crow::response(404);
+		return crow::response(404, "User not found");
 	}
 	catch (const std::invalid_argument& e)
 	{
@@ -147,26 +174,30 @@ crow::response UserHandler::UpdateUser(const crow::request& req, std::string nam
 	}
 }
 
-crow::response UserHandler::DeleteUser(const crow::request& req, std::string name)
+crow::response UserHandler::DeleteUser(const crow::request& req)
 {
 	try
 	{
+		std::string userName = req.url_params.get("name");
+		if (userName.empty())
+		{
+			return crow::response(400, "Name parameter is missing");
+		}
+
 		auto users = m_db.get_all<User>();
 		for (auto& user : users)
 		{
-			if (user.GetName() == name)
+			if (user.GetName() == userName)
 			{
 				m_db.remove<User>(user.GetId());
-				return crow::response(200);
+				return crow::response(200, "User deleted successfully");
 			}
 		}
 
-		return crow::response(404);
+		return crow::response(404, "User not found");
 	}
 	catch (const std::exception& e)
 	{
 		return crow::response(500, e.what());
 	}
 }
-
-
