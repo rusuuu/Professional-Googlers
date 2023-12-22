@@ -3,7 +3,7 @@
 #include "crow.h"
 #include "Database.h"
 #include "User.h"
-//#include "Game.h"
+#include "Game.h"
 
 class GameHandler
 {
