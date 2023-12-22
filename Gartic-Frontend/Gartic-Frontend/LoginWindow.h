@@ -4,6 +4,7 @@
 #include <QPropertyAnimation>
 #include "ui_LoginWindow.h"
 
+#include "AppWindow.h"
 
 class LoginWindow : public QMainWindow
 {
@@ -16,7 +17,7 @@ public:
 	void OnRegisterButtonClicked();
 
 signals:
-	void ShowRegisterWindow();
+	void openRegisterWindow();
 	void LoginSuccessful();
 
 private:
@@ -24,9 +25,6 @@ private:
 
 	void ValidateCredentials();
 	void ClearErrorMessage();
-
-	QPropertyAnimation* transitionAnimationLoginToRegister;
-
 private slots:
 	void OnLoginButtonClicked();
 };

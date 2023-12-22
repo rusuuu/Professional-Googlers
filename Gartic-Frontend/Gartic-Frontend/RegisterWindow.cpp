@@ -2,6 +2,7 @@
 #include "LoginWindow.h"
 #include <QMessageBox>
 #include <QRegularExpression> 
+#include "AppWindow.h"
 
 RegisterWindow::RegisterWindow(QWidget* parent)
 	: QMainWindow(parent)
@@ -22,7 +23,7 @@ RegisterWindow::~RegisterWindow()
 
 void RegisterWindow::OnBackToLoginClicked()
 {
-	emit ShowLoginWindow();
+	AppWindow::ChangeWidget(0);
 }
 
 void RegisterWindow::OnRegisterButtonClicked()

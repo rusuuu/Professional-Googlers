@@ -58,5 +58,5 @@ void LoginWindow::ClearErrorMessage()
 
 void LoginWindow::OnRegisterButtonClicked()
 {
-    emit ShowRegisterWindow();
+    AppWindow::ChangeWidget(1);
 }
