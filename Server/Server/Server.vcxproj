@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Database.cpp" />
+    <ClCompile Include="GameHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="UserHandler.cpp" />
     <ClCompile Include="UserHelper.cpp" />
@@ -28,6 +29,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database.h" />
+    <ClInclude Include="GameHandler.h" />
     <ClInclude Include="UserHandler.h" />
     <ClInclude Include="UserHelper.h" />
   </ItemGroup>
