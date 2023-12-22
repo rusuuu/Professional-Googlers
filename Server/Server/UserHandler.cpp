@@ -5,7 +5,7 @@ UserHandler::UserHandler(Database::Storage& db) : m_db(db)
 
 }
 
-crow::response UserHandler::CreateUser(const crow::request& req)
+crow::response UserHandler::RegisterUser(const crow::request& req)
 {
 	try
 	{
@@ -98,6 +98,49 @@ crow::response UserHandler::GetUserByName(const crow::request& req)
 		}
 
 		return crow::response(404, "User not found");
+	}
+	catch (const std::exception& e)
+	{
+		return crow::response(500, e.what());
+	}
+}
+
+crow::response UserHandler::LoginUser(const crow::request& req)
+{
+	try
+	{
+		auto credentialJson = crow::json::load(req.body);
+
+		std::string userEmail = credentialJson["email"].s();
+		std::string userPassword = credentialJson["password"].s();
+
+		
+		if (userEmail.empty())
+		{
+			return crow::response(400, "Email parameter is missing");
+		}
+		if (userPassword.empty())
+		{
+			return crow::response(400, "Password parameter is missing");
+		}
+
+		auto users = m_db.get_all<User>();
+		for (const auto& user : users)
+		{
+			if (user.GetEmail() == userEmail)
+			{
+				if (user.GetPassword() == userPassword)
+				{
+					return crow::response(200, "Login successful");
+				}
+				else
+				{
+					return crow::response(401, "Invalid email or passoword");
+				}
+			}
+		}
+
+		return crow::response(401, "Invalid email or passoword");
 	}
 	catch (const std::exception& e)
 	{
