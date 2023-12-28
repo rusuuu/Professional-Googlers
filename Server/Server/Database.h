@@ -4,6 +4,7 @@
 
 #include "User.h"
 
+
 namespace sql = sqlite_orm;
 
 namespace Database
@@ -14,7 +15,7 @@ namespace Database
 			fileName,
 			sql::make_table(
 				"User",
-				sql::make_column("id", &User::SetId, &User::GetId, sql::primary_key().autoincrement()),
+				sql::make_column("id", &User::SetId, &User::GetId, sql::primary_key(), sql::autoincrement()),
 				sql::make_column("name", &User::SetName, &User::GetName),
 				sql::make_column("email", &User::SetEmail, &User::GetEmail),
 				sql::make_column("password", &User::SetPassword, &User::GetPassword),

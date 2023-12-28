@@ -1,10 +1,10 @@
-//#include "GameHandler.h"
-//
-//GameHandler::GameHandler(Database::Storage& db) : m_db(db)
-//{
-//
-//}
-//
+#include "GameHandler.h"
+
+GameHandler::GameHandler(Database::Storage& db) : m_db(db)
+{
+
+}
+
 //crow::response GameHandler::HostGame(const crow::request& req)
 //{
 //    try
@@ -31,38 +31,38 @@
 //        return crow::response(500, e.what());
 //    }
 //}
-//
-//crow::response GameHandler::GetGames()
-//{
-//    try
-//    {
-//        auto games = m_db.get_all<Game>();
-//        crow::json::wvalue jsonResponse;
-//        std::vector<crow::json::wvalue> jsonGames;
-//
-//        for (const auto& game : games)
-//        {
-//            crow::json::wvalue jsonGame;
-//
-//            jsonGame["game_id"] = game.GetGameId();
-//            jsonGame["host_user_id"] = game.GetHostUserId();
-//            jsonGame["max_players"] = game.GetMaxPlayers();
-//            jsonGame["draw_time"] = game.GetDrawTime();  
-//            jsonGame["word_count"] = game.GetWordCount();  
-//            jsonGame["num_rounds"] = game.GetNumRounds();  
-//
-//            jsonGames.emplace_back(jsonGame);
-//        }
-//
-//        jsonResponse = std::move(jsonGames);
-//        return crow::response(200, jsonResponse);
-//    }
-//    catch (const std::exception& e)
-//    {
-//        return crow::response(500, e.what());
-//    }
-//}
-//
+
+crow::response GameHandler::GetGames()
+{
+    try
+    {
+        auto games = m_db.get_all<Game>();
+        crow::json::wvalue jsonResponse;
+        std::vector<crow::json::wvalue> jsonGames;
+
+        for (const auto& game : games)
+        {
+            crow::json::wvalue jsonGame;
+
+            jsonGame["game_id"] = game.GetGameId();
+            jsonGame["host_user_id"] = game.GetHostUserId();
+            jsonGame["max_players"] = game.GetMaxPlayers();
+            jsonGame["draw_time"] = game.GetDrawTime();  
+            jsonGame["word_count"] = game.GetWordCount();  
+            jsonGame["num_rounds"] = game.GetNumRounds();  
+
+            jsonGames.emplace_back(jsonGame);
+        }
+
+        jsonResponse = std::move(jsonGames);
+        return crow::response(200, jsonResponse);
+    }
+    catch (const std::exception& e)
+    {
+        return crow::response(500, e.what());
+    }
+}
+
 //crow::response GameHandler::GetGameById(const crow::request& req)
 //{
 //    try

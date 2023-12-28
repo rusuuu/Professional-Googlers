@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "Define.h"
+#include "define.h"
 class MODELS_API User
 {
 public:
