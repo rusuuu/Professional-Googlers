@@ -7,7 +7,11 @@ Room::Room()
 	m_maxPlayers = -1;
 	m_drawTime = -1;
 	m_roomCode = std::string();
-	m_players = std::vector<std::string>();
+}
+
+void Room::SetId(int id)
+{
+	m_id = id;
 }
 
 void Room::SetHostId(int hostId)
@@ -30,21 +34,9 @@ void Room::SetRoomCode(const std::string& roomCode)
 	m_roomCode = roomCode;
 }
 
-void Room::AddPlayer(const std::string& player)
+int Room::GetId() const
 {
-	m_players.push_back(player);
-}
-
-void Room::RemovePlayer(const std::string& player)
-{
-	for (int i = 0; i < m_players.size(); i++)
-	{
-		if (m_players[i] == player)
-		{
-			m_players.erase(m_players.begin() + i);
-			break;
-		}
-	}
+	return m_id;
 }
 
 int Room::GetHostId() const
@@ -65,9 +57,4 @@ int Room::GetDrawTime() const
 std::string Room::GetRoomCode() const
 {
 	return m_roomCode;
-}
-
-std::vector<std::string> Room::GetPlayers() const
-{
-	return m_players;
 }

@@ -23,11 +23,6 @@ int main()
     CROW_ROUTE(app, "/user/update").methods(crow::HTTPMethod::Put)([&userHandler](const crow::request& req) { return userHandler.UpdateUser(req); });
     CROW_ROUTE(app, "/user/delete").methods(crow::HTTPMethod::Delete)([&userHandler](const crow::request& req) { return userHandler.DeleteUser(req); });
 
-
-    GameHandler gameHandler(database);
-    CROW_ROUTE(app, "/games").methods(crow::HTTPMethod::Get)([&gameHandler]() { return gameHandler.GetGames(); });
-
-
     app.port(18080).multithreaded().run();
     return 0;
 }

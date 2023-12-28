@@ -117,11 +117,11 @@ crow::response UserHandler::LoginUser(const crow::request& req)
 		
 		if (userEmail.empty())
 		{
-			return crow::response(400, "Email parameter is missing");
+			return crow::response(400, "Email cannot be empty");
 		}
 		if (userPassword.empty())
 		{
-			return crow::response(400, "Password parameter is missing");
+			return crow::response(400, "Password cannot be empty");
 		}
 
 		auto users = m_db.get_all<User>();

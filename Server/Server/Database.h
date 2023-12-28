@@ -3,7 +3,8 @@
 #include <sqlite_orm/sqlite_orm.h>
 
 #include "User.h"
-
+#include "Room.h"
+#include "RoomPlayer.h"
 
 namespace sql = sqlite_orm;
 
@@ -21,6 +22,20 @@ namespace Database
 				sql::make_column("password", &User::SetPassword, &User::GetPassword),
 				sql::make_column("image_path", &User::SetImagePath, &User::GetImagePath),
 				sql::make_column("role", &User::SetRole, &User::GetRole)
+			),
+			sql::make_table(
+				"Room",
+				sql::make_column("id", &Room::SetId, &Room::GetId, sql::primary_key(), sql::autoincrement()),
+				sql::make_column("host_id", &Room::SetHostId, &Room::GetHostId),
+				sql::make_column("max_players", &Room::SetMaxPlayers, &Room::GetMaxPlayers),
+				sql::make_column("draw_time", &Room::SetDrawTime, &Room::GetDrawTime),
+				sql::make_column("room_code", &Room::SetRoomCode, &Room::GetRoomCode)
+			),
+			sql::make_table(
+				"RoomsPlayers",
+				sql::make_column("id", &RoomPlayer::SetId, &RoomPlayer::GetId, sql::primary_key(), sql::autoincrement()),
+				sql::make_column("room_id", &RoomPlayer::SetRoomId, &RoomPlayer::GetRoomId),
+				sql::make_column("user_name", &RoomPlayer::SetUser, &RoomPlayer::GetUser)
 			)
 		);
 	};

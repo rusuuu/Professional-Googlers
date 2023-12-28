@@ -42,6 +42,18 @@
     <ClCompile Include="UserHelper.cpp">
       <Filter>Class Files</Filter>
     </ClCompile>
+    <ClCompile Include="RoomHandler.cpp">
+      <Filter>Class Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomHelper.cpp">
+      <Filter>Class Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameHandler.cpp">
+      <Filter>Class Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomPlayersHandler.cpp">
+      <Filter>Class Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database.h">
@@ -51,6 +63,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UserHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomPlayersHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

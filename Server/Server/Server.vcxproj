@@ -22,6 +22,9 @@
     <ClCompile Include="Database.cpp" />
     <ClCompile Include="GameHandler.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RoomHandler.cpp" />
+    <ClCompile Include="RoomHelper.cpp" />
+    <ClCompile Include="RoomPlayersHandler.cpp" />
     <ClCompile Include="UserHandler.cpp" />
     <ClCompile Include="UserHelper.cpp" />
     <ClCompile Include="UserValidator.cpp" />
@@ -30,6 +33,9 @@
   <ItemGroup>
     <ClInclude Include="Database.h" />
     <ClInclude Include="GameHandler.h" />
+    <ClInclude Include="RoomHandler.h" />
+    <ClInclude Include="RoomHelper.h" />
+    <ClInclude Include="RoomPlayersHandler.h" />
     <ClInclude Include="UserHandler.h" />
     <ClInclude Include="UserHelper.h" />
   </ItemGroup>
