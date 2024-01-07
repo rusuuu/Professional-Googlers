@@ -8,17 +8,15 @@ User::User()
 	m_email = std::string();
 	m_password = std::string();
 	m_imagePath = std::string();
-	m_role = false;
 }
 
-User::User(const int id, const std::string& name, const std::string& email, const std::string& password, bool role)
+User::User(const int id, const std::string& name, const std::string& email, const std::string& password)
 {
 	m_id = id;
 	m_name = name;
 	m_email = email;
 	m_password = password;
 	m_imagePath = std::string();
-	m_role = role;
 }
 
 void User::SetId(int id)
@@ -46,11 +44,6 @@ void User::SetImagePath(const std::string& imagePath)
 	m_imagePath = imagePath;
 }
 
-void User::SetRole(bool role)
-{
-	m_role = role;
-}
-
 int User::GetId() const
 {
 	return m_id;
@@ -74,9 +67,4 @@ std::string User::GetPassword() const
 std::string User::GetImagePath() const
 {
 	return m_imagePath;
-}
-
-bool User::GetRole() const
-{
-	return m_role;
 }

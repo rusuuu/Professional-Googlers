@@ -20,8 +20,7 @@ namespace Database
 				sql::make_column("name", &User::SetName, &User::GetName),
 				sql::make_column("email", &User::SetEmail, &User::GetEmail),
 				sql::make_column("password", &User::SetPassword, &User::GetPassword),
-				sql::make_column("image_path", &User::SetImagePath, &User::GetImagePath),
-				sql::make_column("role", &User::SetRole, &User::GetRole)
+				sql::make_column("image_path", &User::SetImagePath, &User::GetImagePath)
 			)/*,
 			sql::make_table(
 				"Room",

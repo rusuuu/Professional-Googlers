@@ -64,7 +64,6 @@ crow::response UserHandler::RegisterUser(const crow::request& req)
 		newUser.SetPassword(userJson["password"].s());
 		newUser.SetEmail(userJson["email"].s());
 		newUser.SetImagePath(userJson["image_path"].s());
-		newUser.SetRole(userJson["role"].b());
 
 		auto users = m_db.get_all<User>();
 		CheckNames(newUser.GetName(), ExtractNames(users));
@@ -99,7 +98,6 @@ crow::response UserHandler::GetUsers()
 			jsonUser["password"] = user.GetPassword();
 			jsonUser["email"] = user.GetEmail();
 			jsonUser["image_path"] = user.GetImagePath();
-			jsonUser["role"] = user.GetRole();
 
 			jsonUsers.emplace_back(jsonUser);
 		}
@@ -134,7 +132,6 @@ crow::response UserHandler::GetUserByName(const crow::request& req)
 				jsonUser["password"] = user.GetPassword();
 				jsonUser["email"] = user.GetEmail();
 				jsonUser["image_path"] = user.GetImagePath();
-				jsonUser["role"] = user.GetRole();
 
 				return crow::response(200, jsonUser);
 			}
@@ -168,7 +165,6 @@ crow::response UserHandler::UpdateUser(const crow::request& req)
 		auto password = userJson["password"].s();
 		auto email = userJson["email"].s();
 		auto imagePath = userJson["image_path"].s();
-		auto role = userJson["role"].b();
 
 		auto users = m_db.get_all<User>();
 		for (auto& user : users)
@@ -194,10 +190,6 @@ crow::response UserHandler::UpdateUser(const crow::request& req)
 				if (user.GetImagePath() != imagePath)
 				{
 					user.SetImagePath(imagePath);
-				}
-				if (user.GetRole() != role)
-				{
-					user.SetRole(role);
 				}
 
 				m_db.update(user);

@@ -4,16 +4,20 @@
 #include <QRegularExpression> 
 #include "AppWindow.h"
 
-RegisterWindow::RegisterWindow(QWidget* parent)
-	: QMainWindow(parent)
+RegisterWindow::RegisterWindow(QWidget* parent): QMainWindow(parent)
 {
 	ui.setupUi(this);
-	connect(ui.BackToLoginButton, &QPushButton::clicked, this, &RegisterWindow::OnBackToLoginClicked);
+
+	authenticationService = new AuthenticationService(this);
+
+	connect(ui.ReturnToLoginButton, &QPushButton::clicked, this, &RegisterWindow::OnReturnToLoginButtonClicked);
 	connect(ui.RegisterButton, &QPushButton::clicked, this, &RegisterWindow::OnRegisterButtonClicked);
-	connect(ui.UsernameInput, &QLineEdit::textChanged, this, &RegisterWindow::ClearErrorLabel);
-	connect(ui.EmailInput, &QLineEdit::textChanged, this, &RegisterWindow::ClearErrorLabel);
-	connect(ui.PasswordInput, &QLineEdit::textChanged, this, &RegisterWindow::ClearErrorLabel);
-	connect(ui.ConfirmPasswordInput, &QLineEdit::textChanged, this, &RegisterWindow::ClearErrorLabel);
+	connect(ui.UsernameInput, &QLineEdit::textChanged, this, &RegisterWindow::ClearErrorMessage);
+	connect(ui.EmailInput, &QLineEdit::textChanged, this, &RegisterWindow::ClearErrorMessage);
+	connect(ui.PasswordInput, &QLineEdit::textChanged, this, &RegisterWindow::ClearErrorMessage);
+	connect(ui.ConfirmPasswordInput, &QLineEdit::textChanged, this, &RegisterWindow::ClearErrorMessage);
+
+	connect(authenticationService, &AuthenticationService::registerResponseReceived, this, &RegisterWindow::OnRegisterResponseReceived);
 }
 
 RegisterWindow::~RegisterWindow()
@@ -21,21 +25,21 @@ RegisterWindow::~RegisterWindow()
 
 }
 
-void RegisterWindow::OnBackToLoginClicked()
-{
-	AppWindow::ChangeWidget(0);
-}
-
-void RegisterWindow::OnRegisterButtonClicked()
+void::RegisterWindow::OnRegisterButtonClicked()
 {
 	QString username = ui.UsernameInput->text();
 	QString email = ui.EmailInput->text();
 	QString password = ui.PasswordInput->text();
 	QString confirmPassword = ui.ConfirmPasswordInput->text();
 
+	std::string usernameString = username.toUtf8().constData();
+	std::string emailString = email.toUtf8().constData();
+	std::string passwordString = password.toUtf8().constData();
+
 	try
 	{
-		ValidateRegistration();
+		ValidateCredentials();
+		authenticationService->registerUser(usernameString, emailString, passwordString);
 	}
 	catch (std::exception exception)
 	{
@@ -43,68 +47,54 @@ void RegisterWindow::OnRegisterButtonClicked()
 	}
 }
 
-bool RegisterWindow::IsValidUsername(const QString& username)
-{
-	return !username.isEmpty() && username.length() >= 4;
-}
-
-bool RegisterWindow::IsValidEmail(const QString& email)
-{
-	QRegularExpression regex("^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4})*$");
-	return regex.match(email).hasMatch();
-}
-
-bool RegisterWindow::IsValidPassword(const QString& password)
-{
-	QRegularExpression regex("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$");
-
-	return regex.match(password).hasMatch();
-}
-
-bool RegisterWindow::IsPasswordConfirmed(const QString& password, const QString& confirmPassword)
-{
-	return password == confirmPassword;
-}
-
-void RegisterWindow::ValidateRegistration()
+void RegisterWindow::ValidateCredentials()
 {
 	QString username = ui.UsernameInput->text();
 	QString email = ui.EmailInput->text();
 	QString password = ui.PasswordInput->text();
 	QString confirmPassword = ui.ConfirmPasswordInput->text();
 
-	if (!IsValidUsername(username))
+	if (username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty())
 	{
-		throw std::exception("Invalid username");
+		throw std::runtime_error("All fields are required.");
 	}
 
-	if (email.isEmpty())
+	QRegularExpression emailRegex(R"([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4})");
+	if (!emailRegex.match(email).hasMatch())
 	{
-		throw std::exception("Email cannot be emtpy");
+		throw std::runtime_error("Please enter a valid email address.");
 	}
 
-	if (!IsValidEmail(email))
+	QRegularExpression passwordRegex(R"((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,})");
+	if (!passwordRegex.match(password).hasMatch())
 	{
-		throw std::exception("Invalid email format");
+		throw std::runtime_error("Password must be at least 8 characters and include: 1 uppercase, 1 lowercase, 1 number, 1 special character.");
 	}
 
-	if (password.isEmpty())
+	if (password != confirmPassword)
 	{
-		throw std::exception("Password cannot be empty");
-	}
-
-	if (!IsValidPassword(password))
-	{
-		throw std::runtime_error("Please ensure your password  meets the following criteria:\n- Is at least 8 characters long\n- Contains one uppercase letter\n- Contains one lowercase letter\n- Includes one number\n- Has one special character(e.g., !@#$%^&*)");
-	}
-
-	if (!IsPasswordConfirmed(password, confirmPassword))
-	{
-		throw std::exception("Password and confirm password must match");
+		throw std::runtime_error("Passwords do not match.");
 	}
 }
 
-void RegisterWindow::ClearErrorLabel()
+void RegisterWindow::ClearErrorMessage()
 {
 	ui.ErrorLabel->clear();
+}
+
+void RegisterWindow::OnReturnToLoginButtonClicked()
+{
+	AppWindow::ChangeWidget(0);
+}
+
+void RegisterWindow::OnRegisterResponseReceived(bool success, const QString& result)
+{
+	if (success)
+	{
+		AppWindow::ChangeWidget(0);
+	}
+	else
+	{
+		ui.ErrorLabel->setText(result);
+	}
 }

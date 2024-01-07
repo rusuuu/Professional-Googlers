@@ -31,6 +31,7 @@ void LoginWindow::OnLoginButtonClicked()
 
     std::string emailString = email.toUtf8().constData();
     std::string passwordString = password.toUtf8().constData();
+
     try
     {
         ValidateCredentials();
@@ -78,7 +79,7 @@ void LoginWindow::OnLoginResponseReceived(bool success, const QString& result)
 {
     if (success)
     {
-        ui.ErrorLabel->setText("Login worked!");
+        //TO DO: Navigate to main window
     }
     else
     {

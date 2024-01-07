@@ -363,7 +363,7 @@ QLineEdit:placeholder-text {
 </string>
     </property>
    </widget>
-   <widget class="QPushButton" name="BackToLoginButton">
+   <widget class="QPushButton" name="ReturnToLoginButton">
     <property name="geometry">
      <rect>
       <x>10</x>

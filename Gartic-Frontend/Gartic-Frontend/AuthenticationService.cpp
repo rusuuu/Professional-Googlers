@@ -24,6 +24,7 @@ void AuthenticationService::registerUser(const std::string& name, const std::str
     jsonPayload["name"] = name;
     jsonPayload["email"] = email;
     jsonPayload["password"] = password;
+    jsonPayload["image_path"] = "";
 
     sendPostRequest(url, jsonPayload.dump());
 }
@@ -34,7 +35,7 @@ void AuthenticationService::sendPostRequest(const std::string& url, const std::s
     cpr::Header headers = { {"Content-Type", "application/json"} };
     cpr::Response response = cpr::Post(cpr::Url{ url }, body, headers);
 
-    if (response.status_code == 200) 
+    if (200 <= response.status_code < 300) 
     {
         if (url.find("/login") != std::string::npos) 
         {
@@ -45,7 +46,7 @@ void AuthenticationService::sendPostRequest(const std::string& url, const std::s
             emit registerResponseReceived(true, QString::fromUtf8("User registered successfully"));
         }
     }
-    else 
+    else
     {
         if (url.find("/login") != std::string::npos) 
         {

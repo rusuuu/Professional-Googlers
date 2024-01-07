@@ -1,6 +1,5 @@
 #pragma once
 #include <QtWidgets/QMainWindow>
-#include <QPropertyAnimation>
 #include "ui_LoginWindow.h"
 
 #include "AppWindow.h"
@@ -14,11 +13,11 @@ public:
 	LoginWindow(QWidget *parent = nullptr);
 	~LoginWindow();
 
-	void OnCreateAccountButtonClicked();
 
 private slots:
 	void OnLoginButtonClicked();
 	void OnLoginResponseReceived(bool success, const QString& result);
+	void OnCreateAccountButtonClicked();
 
 private:
 	Ui::LoginWindowClass ui;
