@@ -99,6 +99,7 @@
       <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
     </ClCompile>
     <ClCompile Include="RegisterWindow.cpp" />
+    <ClCompile Include="ServerCommunicator.cpp" />
     <QtRcc Include="GarticFrontend.qrc" />
     <QtUic Include="AppWindow.ui" />
     <ClCompile Include="LoginWindow.cpp" />
@@ -126,6 +127,9 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="AppWindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="ServerCommunicator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

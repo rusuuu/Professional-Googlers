@@ -52,6 +52,9 @@
     <ClCompile Include="AppWindow.cpp">
       <Filter>Implementation Files</Filter>
     </ClCompile>
+    <ClCompile Include="ServerCommunicator.cpp">
+      <Filter>Implementation Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="LoginWindow.h">
@@ -70,6 +73,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="AppWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ServerCommunicator.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
