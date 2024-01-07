@@ -45,9 +45,6 @@
     <ClCompile Include="RoomHandler.cpp">
       <Filter>Class Files</Filter>
     </ClCompile>
-    <ClCompile Include="RoomHelper.cpp">
-      <Filter>Class Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameHandler.cpp">
       <Filter>Class Files</Filter>
     </ClCompile>
@@ -69,9 +66,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RoomHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RoomHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RoomPlayersHandler.h">

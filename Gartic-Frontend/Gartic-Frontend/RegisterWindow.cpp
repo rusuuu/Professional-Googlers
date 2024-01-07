@@ -10,10 +10,10 @@ RegisterWindow::RegisterWindow(QWidget* parent)
 	ui.setupUi(this);
 	connect(ui.BackToLoginButton, &QPushButton::clicked, this, &RegisterWindow::OnBackToLoginClicked);
 	connect(ui.RegisterButton, &QPushButton::clicked, this, &RegisterWindow::OnRegisterButtonClicked);
-	connect(ui.RegisterUsernameInput, &QLineEdit::textChanged, this, &RegisterWindow::ClearErrorLabel);
-	connect(ui.RegisterEmailInput, &QLineEdit::textChanged, this, &RegisterWindow::ClearErrorLabel);
-	connect(ui.RegisterPasswordInput, &QLineEdit::textChanged, this, &RegisterWindow::ClearErrorLabel);
-	connect(ui.RegisterPasswordConfirmationInput, &QLineEdit::textChanged, this, &RegisterWindow::ClearErrorLabel);
+	connect(ui.UsernameInput, &QLineEdit::textChanged, this, &RegisterWindow::ClearErrorLabel);
+	connect(ui.EmailInput, &QLineEdit::textChanged, this, &RegisterWindow::ClearErrorLabel);
+	connect(ui.PasswordInput, &QLineEdit::textChanged, this, &RegisterWindow::ClearErrorLabel);
+	connect(ui.ConfirmPasswordInput, &QLineEdit::textChanged, this, &RegisterWindow::ClearErrorLabel);
 }
 
 RegisterWindow::~RegisterWindow()
@@ -28,10 +28,10 @@ void RegisterWindow::OnBackToLoginClicked()
 
 void RegisterWindow::OnRegisterButtonClicked()
 {
-	QString username = ui.RegisterUsernameInput->text();
-	QString email = ui.RegisterEmailInput->text();
-	QString password = ui.RegisterPasswordInput->text();
-	QString confirmPassword = ui.RegisterPasswordConfirmationInput->text();
+	QString username = ui.UsernameInput->text();
+	QString email = ui.EmailInput->text();
+	QString password = ui.PasswordInput->text();
+	QString confirmPassword = ui.ConfirmPasswordInput->text();
 
 	try
 	{
@@ -68,10 +68,10 @@ bool RegisterWindow::IsPasswordConfirmed(const QString& password, const QString&
 
 void RegisterWindow::ValidateRegistration()
 {
-	QString username = ui.RegisterUsernameInput->text();
-	QString email = ui.RegisterEmailInput->text();
-	QString password = ui.RegisterPasswordInput->text();
-	QString confirmPassword = ui.RegisterPasswordConfirmationInput->text();
+	QString username = ui.UsernameInput->text();
+	QString email = ui.EmailInput->text();
+	QString password = ui.PasswordInput->text();
+	QString confirmPassword = ui.ConfirmPasswordInput->text();
 
 	if (!IsValidUsername(username))
 	{

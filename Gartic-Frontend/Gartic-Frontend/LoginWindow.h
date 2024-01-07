@@ -1,10 +1,10 @@
 #pragma once
-
 #include <QtWidgets/QMainWindow>
 #include <QPropertyAnimation>
 #include "ui_LoginWindow.h"
 
 #include "AppWindow.h"
+#include "AuthenticationService.h"
 
 class LoginWindow : public QMainWindow
 {
@@ -14,17 +14,18 @@ public:
 	LoginWindow(QWidget *parent = nullptr);
 	~LoginWindow();
 
-	void OnRegisterButtonClicked();
+	void OnCreateAccountButtonClicked();
 
-signals:
-	void openRegisterWindow();
-	void LoginSuccessful();
+private slots:
+	void OnLoginButtonClicked();
+	void OnLoginResponseReceived(bool success, const QString& result);
 
 private:
 	Ui::LoginWindowClass ui;
+	AuthenticationService* authenticationService;
 
 	void ValidateCredentials();
 	void ClearErrorMessage();
-private slots:
-	void OnLoginButtonClicked();
+
+
 };

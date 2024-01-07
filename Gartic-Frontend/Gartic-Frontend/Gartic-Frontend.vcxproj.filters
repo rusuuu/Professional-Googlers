@@ -24,6 +24,15 @@
     <Filter Include="Implementation Files">
       <UniqueIdentifier>{e419e0c9-21e1-4340-a7b8-9f988bc1975d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Services">
+      <UniqueIdentifier>{a18779d5-1724-4855-a457-cb21bf18801e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Services\Headers">
+      <UniqueIdentifier>{6d9749ec-49f8-4832-b44e-cee1ad969a19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Services\Implementations">
+      <UniqueIdentifier>{23fefe71-3df1-4141-b677-2e6ae76c1535}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="GarticFrontend.qrc">
@@ -55,6 +64,9 @@
     <ClCompile Include="ServerCommunicator.cpp">
       <Filter>Implementation Files</Filter>
     </ClCompile>
+    <ClCompile Include="AuthenticationService.cpp">
+      <Filter>Services\Implementations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="LoginWindow.h">
@@ -75,8 +87,8 @@
     <QtMoc Include="AppWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="ServerCommunicator.h">
-      <Filter>Header Files</Filter>
+    <QtMoc Include="AuthenticationService.h">
+      <Filter>Services\Headers</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -98,5 +110,10 @@
     <QtUic Include="AppWindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ServerCommunicator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
