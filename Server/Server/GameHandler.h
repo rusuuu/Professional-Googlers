@@ -13,6 +13,7 @@ public:
     crow::response GetGames();
     crow::response HostGame(const crow::request& req);
     crow::response GetGameById(const crow::request& req);
+    crow::response DeleteGame(const crow::request& req);
 
 private:
     Database::Storage& m_db;

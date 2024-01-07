@@ -98,3 +98,27 @@ crow::response GameHandler::GetGameById(const crow::request& req)
         return crow::response(500, e.what());
     }
 }
+
+crow::response GameHandler::DeleteGame(const crow::request& req)
+{
+    try
+    {
+        int gameId = std::stoi(req.url_params.get("game_id"));
+
+        auto games = m_db.get_all<Game>(sql::where(sql::c(&Game::GetGameId) == gameId));
+
+        if (games.empty())
+        {
+            return crow::response(404, "Game not found");
+        }
+
+        auto& game = games[0]; 
+
+        m_db.remove<Game>(game.GetGameId());
+        return crow::response(200, "Game deleted successfully");
+    }
+    catch (const std::exception& e)
+    {
+        return crow::response(500, e.what());
+    }
+}

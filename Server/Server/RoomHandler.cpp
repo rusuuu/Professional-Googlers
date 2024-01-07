@@ -20,7 +20,7 @@ crow::response RoomHandler::CreateRoom(const crow::request& req)
         newRoom.SetHostId(roomJson["host_id"].i());
         newRoom.SetMaxPlayers(roomJson["max_players"].i());
         newRoom.SetDrawTime(roomJson["draw_time"].i());
-        //newRoom.SetRoomCode(generateRoomCode()); 
+        newRoom.SetRoomCode(generateRoomCode()); 
 
         m_db.insert(newRoom);
         return crow::response(201, "Room created successfully");
@@ -140,7 +140,7 @@ crow::response RoomHandler::DeleteRoom(const crow::request& req)
             return crow::response(404, "Room not found");
         }
 
-        auto& room = rooms[0]; // Accesează prima cameră (dacă există)
+        auto& room = rooms[0]; 
 
         m_db.remove<Room>(room.GetId());
         return crow::response(200, "Room deleted successfully");
@@ -151,4 +151,21 @@ crow::response RoomHandler::DeleteRoom(const crow::request& req)
     }
 }
 
+std::string generateRoomCode()
+{
+    const std::string characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const int codeLength = 8; 
 
+    std::string generatedCode;
+    generatedCode.reserve(codeLength);
+
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
+
+    for (int i = 0; i < codeLength; ++i)
+    {
+        int randomIndex = std::rand() % characters.size();
+        generatedCode.push_back(characters[randomIndex]);
+    }
+
+    return generatedCode;
+}
