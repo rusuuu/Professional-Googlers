@@ -1,33 +1,27 @@
 #pragma once
 #include <QMainWindow>
-#include <QPropertyAnimation>
+
 #include "ui_MainMenuWindow.h"
 
-
-class HostRoom; 
 class MainMenuWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
+    static int WindowIndex;
+
     MainMenuWindow(QWidget* parent = nullptr);
     ~MainMenuWindow();
 
-signals:
-    void ShowHostRoomWindow();
-    void ShowProfileUserWindow();
+private slots:
+    void OnJoinGameButtonClicked();
+    void OnHostGameButtonClicked();
+    void OnExitButtonClicked();
+    void OnProfileButtonClicked();
 
 private:
     Ui::MainMenuWindow ui;
-    HostRoom* m_hostRoomWindow;
-    QPropertyAnimation* transitionAnimationMainMenuToHostRoom;
-    QLineEdit* JoinGameLabel = nullptr;
+    QLineEdit* JoinGameLabel;
 
-private slots:
-
-    void OnHostGameButtonClicked();
-    void OnProfileButtonClicked();
-    void OnExitButtonClicked();
-    void OnJoinGameButtonClicked();
-    
+    void StyleProfileButton();
 };

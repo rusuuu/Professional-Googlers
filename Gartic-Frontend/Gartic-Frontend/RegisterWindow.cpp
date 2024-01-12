@@ -1,8 +1,6 @@
 ﻿#include "RegisterWindow.h"
-#include "LoginWindow.h"
-#include <QMessageBox>
-#include <QRegularExpression> 
-#include "AppWindow.h"
+
+int RegisterWindow::WindowIndex = 1;
 
 RegisterWindow::RegisterWindow(QWidget* parent): QMainWindow(parent)
 {
@@ -84,14 +82,14 @@ void RegisterWindow::ClearErrorMessage()
 
 void RegisterWindow::OnReturnToLoginButtonClicked()
 {
-	AppWindow::ChangeWidget(0);
+	AppWindow::ChangeWidget(LoginWindow::WindowIndex);
 }
 
 void RegisterWindow::OnRegisterResponseReceived(bool success, const QString& result)
 {
 	if (success)
 	{
-		AppWindow::ChangeWidget(0);
+		AppWindow::ChangeWidget(LoginWindow::WindowIndex);
 	}
 	else
 	{

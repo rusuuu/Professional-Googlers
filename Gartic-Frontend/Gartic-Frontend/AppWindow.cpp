@@ -11,11 +11,13 @@ AppWindow::AppWindow(QWidget* parent)
 
 	LoginWindow* loginPage = new LoginWindow();
 	RegisterWindow* registerPage = new RegisterWindow();
+	MainMenuWindow* mainMenuPage = new MainMenuWindow();
 
 	stackedWidget->addWidget(loginPage);
 	stackedWidget->addWidget(registerPage);
+	stackedWidget->addWidget(mainMenuPage);	
 
-	ChangeWidget(0);
+	ChangeWidget(LoginWindow::WindowIndex);
 }
 
 void AppWindow::ChangeWidget(int index)

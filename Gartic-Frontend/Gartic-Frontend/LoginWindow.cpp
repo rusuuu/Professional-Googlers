@@ -5,6 +5,8 @@
 #include "LoginWindow.h"
 #include "RegisterWindow.h"
 
+int LoginWindow::WindowIndex = 0;
+
 LoginWindow::LoginWindow(QWidget *parent): QMainWindow(parent)
 {
 	ui.setupUi(this);
@@ -26,6 +28,9 @@ LoginWindow::~LoginWindow()
 
 void LoginWindow::OnLoginButtonClicked() 
 {
+    ui.EmailInput->setText("iulia@gmail.com");
+    ui.PasswordInput->setText("Iulia!07");
+
     QString email = ui.EmailInput->text();
     QString password = ui.PasswordInput->text();
 
@@ -72,14 +77,14 @@ void LoginWindow::ClearErrorMessage()
 
 void LoginWindow::OnCreateAccountButtonClicked()
 {
-    AppWindow::ChangeWidget(1);
+    AppWindow::ChangeWidget(RegisterWindow::WindowIndex);
 }
 
 void LoginWindow::OnLoginResponseReceived(bool success, const QString& result)
 {
     if (success)
     {
-        //TO DO: Navigate to main window
+        AppWindow::ChangeWidget(MainMenuWindow::WindowIndex);
     }
     else
     {

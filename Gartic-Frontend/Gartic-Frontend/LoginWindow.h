@@ -1,8 +1,9 @@
 #pragma once
 #include <QtWidgets/QMainWindow>
-#include "ui_LoginWindow.h"
 
 #include "AppWindow.h"
+#include "MainMenuWindow.h"
+#include "ui_LoginWindow.h"
 #include "AuthenticationService.h"
 
 class LoginWindow : public QMainWindow
@@ -10,6 +11,8 @@ class LoginWindow : public QMainWindow
 	Q_OBJECT
 
 public:
+	static int WindowIndex;
+
 	LoginWindow(QWidget *parent = nullptr);
 	~LoginWindow();
 

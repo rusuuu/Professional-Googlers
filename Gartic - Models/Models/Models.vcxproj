@@ -147,6 +147,7 @@
     <ClInclude Include="Room.h" />
     <ClInclude Include="RoomPlayer.h" />
     <ClInclude Include="User.h" />
+    <ClInclude Include="UserStats.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
@@ -160,6 +161,7 @@
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="RoomPlayer.cpp" />
     <ClCompile Include="User.cpp" />
+    <ClCompile Include="UserStats.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Models.rc" />

@@ -51,6 +51,9 @@
     <ClCompile Include="RoomPlayersHandler.cpp">
       <Filter>Class Files</Filter>
     </ClCompile>
+    <ClCompile Include="UserStatsHandler.cpp">
+      <Filter>Class Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database.h">
@@ -69,6 +72,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RoomPlayersHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UserStatsHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

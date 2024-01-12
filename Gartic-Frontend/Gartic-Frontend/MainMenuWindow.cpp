@@ -3,6 +3,7 @@
 #include "ProfileUserWindow.h"
 #include <QLineEdit>
 
+int MainMenuWindow::WindowIndex = 2;
 
 MainMenuWindow::MainMenuWindow(QWidget* parent) : QMainWindow(parent)
 {
@@ -13,7 +14,17 @@ MainMenuWindow::MainMenuWindow(QWidget* parent) : QMainWindow(parent)
     connect(ui.ExitButton, &QPushButton::clicked, this, &MainMenuWindow::OnExitButtonClicked);
     connect(ui.JoinGameButton, &QPushButton::clicked, this, &MainMenuWindow::OnJoinGameButtonClicked);
 
-    // Style sheet to make the button round
+    StyleProfileButton();
+
+    ui.JoinGameLabel->hide();
+}
+
+MainMenuWindow::~MainMenuWindow()
+{
+}
+
+void MainMenuWindow::StyleProfileButton()
+{
     int buttonSize = 75;
     ui.ProfileButton->setFixedSize(buttonSize, buttonSize);
 
@@ -29,39 +40,24 @@ MainMenuWindow::MainMenuWindow(QWidget* parent) : QMainWindow(parent)
         "   background-color: rgb(225, 62, 103);"
         "   border-radius: " + QString::number(buttonSize / 2) + "px;"
         "}");
-
-    ui.JoinGameLabel->hide();
-
-}
-
-MainMenuWindow::~MainMenuWindow()
-{
-}
-
-void MainMenuWindow::OnHostGameButtonClicked()
-{
-    emit ShowHostRoomWindow();
-}
-
-void MainMenuWindow::OnProfileButtonClicked()
-{
-    emit ShowProfileUserWindow();
-}
-
-void MainMenuWindow::OnExitButtonClicked()
-{
-    qApp->quit();
 }
 
 void MainMenuWindow::OnJoinGameButtonClicked()
 {
-    ui.JoinGameLabel->show();    
+    ui.JoinGameLabel->show();
     ui.JoinGameLabel->setFocus();
     ui.JoinGameButton->hide();
 }
 
+void MainMenuWindow::OnHostGameButtonClicked()
+{
+}
 
+void MainMenuWindow::OnProfileButtonClicked()
+{
+}
 
-
-
-
+void MainMenuWindow::OnExitButtonClicked()
+{
+    QCoreApplication::quit();
+}
