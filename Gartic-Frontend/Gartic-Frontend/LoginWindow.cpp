@@ -28,8 +28,8 @@ LoginWindow::~LoginWindow()
 
 void LoginWindow::OnLoginButtonClicked() 
 {
-    ui.EmailInput->setText("iulia@gmail.com");
-    ui.PasswordInput->setText("Iulia!07");
+    ui.EmailInput->setText("model@email.com");
+    ui.PasswordInput->setText("Model!01");
 
     QString email = ui.EmailInput->text();
     QString password = ui.PasswordInput->text();
@@ -84,7 +84,11 @@ void LoginWindow::OnLoginResponseReceived(bool success, const QString& result)
 {
     if (success)
     {
+        auto name = result;
+        MainMenuWindow::SetUserName(std::move(name));
         AppWindow::ChangeWidget(MainMenuWindow::WindowIndex);
+
+        emit UserLoggedIn(name);
     }
     else
     {

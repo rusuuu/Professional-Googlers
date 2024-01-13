@@ -43,7 +43,7 @@ void AuthenticationService::sendPostRequest(const std::string& url, const std::s
         }
         else if (url.find("/register") != std::string::npos) 
         {
-            emit registerResponseReceived(true, QString::fromUtf8("User registered successfully"));
+            emit registerResponseReceived(false, QString::fromUtf8("User registered successfully"));
         }
     }
     else

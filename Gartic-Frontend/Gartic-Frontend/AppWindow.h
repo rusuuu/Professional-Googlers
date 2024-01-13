@@ -4,8 +4,9 @@
 #include <QTimer>
 
 #include "LoginWindow.h"
-#include "RegisterWindow.h"
 #include "ui_AppWindow.h"
+#include "RegisterWindow.h"
+#include "ProfileUserWindow.h"
 
 class AppWindow : public QMainWindow
 {

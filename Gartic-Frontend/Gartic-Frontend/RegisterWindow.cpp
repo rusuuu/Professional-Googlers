@@ -7,6 +7,7 @@ RegisterWindow::RegisterWindow(QWidget* parent): QMainWindow(parent)
 	ui.setupUi(this);
 
 	authenticationService = new AuthenticationService(this);
+	userStatsService = new UserStatsService(this);
 
 	connect(ui.ReturnToLoginButton, &QPushButton::clicked, this, &RegisterWindow::OnReturnToLoginButtonClicked);
 	connect(ui.RegisterButton, &QPushButton::clicked, this, &RegisterWindow::OnRegisterButtonClicked);
@@ -16,6 +17,7 @@ RegisterWindow::RegisterWindow(QWidget* parent): QMainWindow(parent)
 	connect(ui.ConfirmPasswordInput, &QLineEdit::textChanged, this, &RegisterWindow::ClearErrorMessage);
 
 	connect(authenticationService, &AuthenticationService::registerResponseReceived, this, &RegisterWindow::OnRegisterResponseReceived);
+	connect(userStatsService, &UserStatsService::CreateUserStatsResponse, this, &RegisterWindow::OnCreateUserStatsResponseReceived);
 }
 
 RegisterWindow::~RegisterWindow()
@@ -25,6 +27,11 @@ RegisterWindow::~RegisterWindow()
 
 void::RegisterWindow::OnRegisterButtonClicked()
 {
+	ui.UsernameInput->setText("Model");
+	ui.EmailInput->setText("model@email.com");
+	ui.PasswordInput->setText("Model!01");
+	ui.ConfirmPasswordInput->setText("Model!01");
+
 	QString username = ui.UsernameInput->text();
 	QString email = ui.EmailInput->text();
 	QString password = ui.PasswordInput->text();
@@ -85,11 +92,31 @@ void RegisterWindow::OnReturnToLoginButtonClicked()
 	AppWindow::ChangeWidget(LoginWindow::WindowIndex);
 }
 
-void RegisterWindow::OnRegisterResponseReceived(bool success, const QString& result)
+void RegisterWindow::OnCreateUserStatsResponseReceived(bool success, const QString& result)
 {
 	if (success)
 	{
 		AppWindow::ChangeWidget(LoginWindow::WindowIndex);
+	}
+	else
+	{
+		ui.ErrorLabel->setText(result);
+	}
+}
+
+void RegisterWindow::OnRegisterResponseReceived(bool success, const QString& result)
+{
+	if (success)
+	{
+		std::string name = ui.UsernameInput->text().toUtf8().constData();
+		try
+		{
+			userStatsService->CreateUserStats(name, -1, -1, -1, -1);
+		}
+		catch(std::exception e)
+		{
+			ui.ErrorLabel->setText(e.what());
+		}
 	}
 	else
 	{

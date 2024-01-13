@@ -16,7 +16,6 @@ crow::response UserStatsHandler::CreateUserStats(const crow::request& req)
 
         UserStats newStats;
 
-        newStats.SetId(statsJson["id"].i());
         newStats.SetName(statsJson["name"].s());
         newStats.SetTotalGames(statsJson["totalGames"].i());
         newStats.SetGamesWon(statsJson["gamesWon"].i());
