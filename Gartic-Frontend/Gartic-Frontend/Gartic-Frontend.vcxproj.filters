@@ -67,6 +67,9 @@
     <ClCompile Include="AuthenticationService.cpp">
       <Filter>Services\Implementations</Filter>
     </ClCompile>
+    <ClCompile Include="ScribbleWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="LoginWindow.h">
@@ -90,6 +93,9 @@
     <QtMoc Include="AuthenticationService.h">
       <Filter>Services\Headers</Filter>
     </QtMoc>
+    <QtMoc Include="ScribbleWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="LoginWindow.ui">
@@ -108,6 +114,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="AppWindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ScribbleWindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

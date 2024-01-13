@@ -3,7 +3,7 @@
 #include <QClipboard>
 #include <QRandomGenerator>
 
-
+int HostRoom::WindowIndex = 4;
 
 HostRoom::HostRoom(QWidget *parent)
 	: QMainWindow(parent)
@@ -21,7 +21,7 @@ HostRoom::~HostRoom()
 
 void HostRoom::OnBackToMainMenuClicked()
 {
-	emit ShowMainMenuWindow();
+    AppWindow::ChangeWidget(MainMenuWindow::WindowIndex);
 }
 
 void HostRoom::OnCopyInviteCodeClicked()

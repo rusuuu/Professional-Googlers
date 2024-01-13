@@ -1,6 +1,7 @@
 #pragma once
 
 #include <QMainWindow>
+#include "AppWindow.h"
 #include "ui_ProfileUserWindow.h"
 
 #include <QWidget>
@@ -15,6 +16,7 @@ class ProfileUserWindow : public QMainWindow
 	Q_OBJECT
 
 public:
+	static int WindowIndex;
 
 	ProfileUserWindow(QWidget *parent = nullptr);
 	~ProfileUserWindow();

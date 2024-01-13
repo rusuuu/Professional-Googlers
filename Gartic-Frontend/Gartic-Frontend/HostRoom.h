@@ -9,6 +9,8 @@ class HostRoom : public QMainWindow
 	Q_OBJECT
 
 public:
+	static int WindowIndex;
+
 	HostRoom(QWidget *parent = nullptr);
 	~HostRoom();
 

@@ -1,6 +1,8 @@
 #include "ProfileUserWindow.h"
 #include "MainMenuWindow.h"
 
+int ProfileUserWindow::WindowIndex = 3;
+
 ProfileUserWindow::ProfileUserWindow(QWidget *parent)
 	: QMainWindow(parent)
 {
@@ -24,7 +26,7 @@ ProfileUserWindow::~ProfileUserWindow()
 
 void ProfileUserWindow::OnBackToMainMenuClicked()
 {
-    emit ShowMainMenuWindow();
+    AppWindow::ChangeWidget(MainMenuWindow::WindowIndex);
 }
 
 void ProfileUserWindow::UploadAvatar()
