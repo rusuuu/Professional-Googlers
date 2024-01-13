@@ -68,7 +68,10 @@
       <Filter>Services\Implementations</Filter>
     </ClCompile>
     <ClCompile Include="ScribbleWindow.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Implementation Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScribbleArea.cpp">
+      <Filter>Implementation Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -96,6 +99,9 @@
     <QtMoc Include="ScribbleWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="ScribbleArea.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="LoginWindow.ui">
@@ -117,6 +123,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="ScribbleWindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ScribbleArea.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
