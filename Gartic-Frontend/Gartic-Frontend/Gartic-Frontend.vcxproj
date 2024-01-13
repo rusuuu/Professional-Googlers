@@ -117,6 +117,7 @@
     <ClCompile Include="ScribbleArea.cpp" />
     <ClCompile Include="ScribbleWindow.cpp" />
     <ClCompile Include="ServerCommunicator.cpp" />
+    <ClCompile Include="UserStatsService.cpp" />
     <QtRcc Include="GarticFrontend.qrc" />
     <QtUic Include="AppWindow.ui" />
     <ClCompile Include="LoginWindow.cpp" />
@@ -148,6 +149,7 @@
     <QtMoc Include="AppWindow.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="UserStatsService.h" />
     <QtMoc Include="AuthenticationService.h" />
     <QtMoc Include="ScribbleWindow.h" />
     <QtMoc Include="ScribbleArea.h" />

@@ -16,6 +16,8 @@ public:
 	LoginWindow(QWidget *parent = nullptr);
 	~LoginWindow();
 
+signals:
+	void UserLoggedIn(const QString& name);
 
 private slots:
 	void OnLoginButtonClicked();
@@ -28,6 +30,4 @@ private:
 
 	void ValidateCredentials();
 	void ClearErrorMessage();
-
-
 };

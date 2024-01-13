@@ -10,6 +10,7 @@ class MainMenuWindow : public QMainWindow
 
 public:
     static int WindowIndex;
+    static void SetUserName(QString&& name);
 
     MainMenuWindow(QWidget* parent = nullptr);
     ~MainMenuWindow();
@@ -21,6 +22,8 @@ private slots:
     void OnProfileButtonClicked();
 
 private:
+    static QString UserName;
+
     Ui::MainMenuWindow ui;
     QLineEdit* JoinGameLabel;
 

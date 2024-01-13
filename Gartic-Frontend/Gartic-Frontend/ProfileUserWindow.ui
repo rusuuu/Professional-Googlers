@@ -195,7 +195,7 @@ QPushButton:pressed {
      <string>Upload Photo</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="BackToMainMenuFromProfileUser">
+   <widget class="QPushButton" name="ReturnToMainMenuButton">
     <property name="geometry">
      <rect>
       <x>10</x>

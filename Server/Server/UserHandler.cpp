@@ -31,7 +31,7 @@ crow::response UserHandler::LoginUser(const crow::request& req)
 			{
 				if (user.GetPassword() == userPassword)
 				{
-					return crow::response(200, "Login successful");
+					return crow::response(200, user.GetName());
 				}
 				else
 				{

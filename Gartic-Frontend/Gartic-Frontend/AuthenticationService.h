@@ -16,7 +16,7 @@ public:
 
 signals:
 	void loginResponseReceived(bool success, const QString& result);
-	void registerResponseReceived(bool success, const QString& message);
+	void registerResponseReceived(bool success, const QString& result);
 
 private:
 	void sendPostRequest(const std::string& url, const std::string& jsonPayload);
