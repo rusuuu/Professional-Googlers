@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "UserStats.h"
 
 UserStats::UserStats()

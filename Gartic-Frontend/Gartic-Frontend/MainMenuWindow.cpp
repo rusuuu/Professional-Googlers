@@ -4,6 +4,7 @@
 #include <QLineEdit>
 
 int MainMenuWindow::WindowIndex = 2;
+QString MainMenuWindow::UserName = "";
 
 MainMenuWindow::MainMenuWindow(QWidget* parent) : QMainWindow(parent)
 {
@@ -17,6 +18,11 @@ MainMenuWindow::MainMenuWindow(QWidget* parent) : QMainWindow(parent)
     StyleProfileButton();
 
     ui.JoinGameLabel->hide();
+}
+
+void MainMenuWindow::SetUserName(QString&& name)
+{
+    UserName = name;
 }
 
 MainMenuWindow::~MainMenuWindow()
@@ -51,11 +57,11 @@ void MainMenuWindow::OnJoinGameButtonClicked()
 
 void MainMenuWindow::OnHostGameButtonClicked()
 {
-    AppWindow::ChangeWidget(HostRoom::WindowIndex);
 }
 
 void MainMenuWindow::OnProfileButtonClicked()
 {
+    ProfileUserWindow::SetUserName(std::move(UserName));
     AppWindow::ChangeWidget(ProfileUserWindow::WindowIndex);
 }
 

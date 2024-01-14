@@ -1,8 +1,5 @@
 #include "AppWindow.h"
 
-#include "HostRoom.h"
-#include "ProfileUserWindow.h"
-
 QStackedWidget* AppWindow::stackedWidget = nullptr;
 
 AppWindow::AppWindow(QWidget* parent)
@@ -15,16 +12,16 @@ AppWindow::AppWindow(QWidget* parent)
 	LoginWindow* loginPage = new LoginWindow();
 	RegisterWindow* registerPage = new RegisterWindow();
 	MainMenuWindow* mainMenuPage = new MainMenuWindow();
-	ProfileUserWindow* profilePage = new ProfileUserWindow();
-	HostRoom* hostPage = new HostRoom();
+	ProfileUserWindow* profileUserPage = new ProfileUserWindow();
 
 	stackedWidget->addWidget(loginPage);
 	stackedWidget->addWidget(registerPage);
-	stackedWidget->addWidget(mainMenuPage);
-	stackedWidget->addWidget(profilePage);
-	stackedWidget->addWidget(hostPage);
+	stackedWidget->addWidget(mainMenuPage);	
+	stackedWidget->addWidget(profileUserPage);	
 
 	ChangeWidget(LoginWindow::WindowIndex);
+
+	connect(loginPage, &LoginWindow::UserLoggedIn, profileUserPage, &ProfileUserWindow::GetUserStats);
 }
 
 void AppWindow::ChangeWidget(int index)

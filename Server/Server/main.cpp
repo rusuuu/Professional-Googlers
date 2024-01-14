@@ -2,6 +2,7 @@
 
 #include "crow.h"
 #include "Database.h"
+#include "RoomHandler.h"
 #include "UserHandler.h"
 #include "UserStatsHandler.h"
 
@@ -31,6 +32,41 @@ int main()
     CROW_ROUTE(app, "/stats/update").methods(crow::HTTPMethod::Put)([&statsHandler](const crow::request& req) { return statsHandler.UpdateUserStats(req); });
     CROW_ROUTE(app, "/stats/delete").methods(crow::HTTPMethod::Delete)([&statsHandler](const crow::request& req) { return statsHandler.DeleteUserStats(req); });
 
+    RoomHandler roomHandler;
+    CROW_ROUTE(app, "/createRoom/<int>/<int>").methods(crow::HTTPMethod::Post)([&roomHandler](int roomId, int hostId)
+        {
+        roomHandler.CreateRoom(roomId, hostId);
+        return crow::response(200, "Room created");
+        });
+    CROW_ROUTE(app, "/joinRoom/<int>/<int>").methods(crow::HTTPMethod::Put)([&roomHandler](int roomId, int userId) 
+        {
+        Room* room = roomHandler.GetRoom(roomId);
+        if (room) 
+        {
+            room->AddUser(userId);
+            return crow::response(200, "User added to room");
+        }
+        return crow::response(404, "Room not found");
+        });
+
+    CROW_ROUTE(app, "/startGame/<int>/<int>").methods(crow::HTTPMethod::Post)([&roomHandler](int roomId, int userId)
+        {
+        Room* room = roomHandler.GetRoom(roomId);
+        if (room && room->IsHost(userId))
+        {
+            room->StartGame(userId);
+            return crow::response(200, "Game started");
+        }
+        return crow::response(404, "Room not found or user is not host");
+        });
+    CROW_ROUTE(app, "/rooms").methods(crow::HTTPMethod::Get)([&roomHandler]()
+        {
+        return crow::response(200, roomHandler.GetAllRooms());
+        });
+    CROW_ROUTE(app, "/room/<int>").methods(crow::HTTPMethod::Get)([&roomHandler](int roomId)
+        {
+            return crow::response(200, roomHandler.GetRoomById(roomId));
+        });
 
     app.port(18080).multithreaded().run();
     return 0;

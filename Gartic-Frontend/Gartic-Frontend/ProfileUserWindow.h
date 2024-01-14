@@ -1,15 +1,12 @@
 #pragma once
+#include <QJsonDocument>
+#include <QJsonObject>
 
-#include <QMainWindow>
-#include "AppWindow.h"
 #include "ui_ProfileUserWindow.h"
-
-#include <QWidget>
-#include <QLabel>
-#include <QPainter>
-#include <QPushButton>
-#include <QFileDialog>
-#include <QVBoxLayout>
+#include "UserStatsService.h"
+#include "MainMenuWindow.h"
+#include "LoginWindow.h"
+#include "AppWindow.h"
 
 class ProfileUserWindow : public QMainWindow
 {
@@ -17,29 +14,22 @@ class ProfileUserWindow : public QMainWindow
 
 public:
 	static int WindowIndex;
+	static void SetUserName(QString&& name);
 
 	ProfileUserWindow(QWidget *parent = nullptr);
 	~ProfileUserWindow();
 
-	void OnBackToMainMenuClicked();
-	void SetDefaultAvatar();
-
-signals:
-	void ShowMainMenuWindow();
-
-private:
-
-	Ui::ProfileUserWindowClass ui;
-
-	QPushButton* UploadButton;
-
-	QString ProfileName;
-	QString TotalGames;
-	QString GamesWon;
-	QString GamesLost;
-	QString TotalPoints;
+public slots:
+	void GetUserStats(const QString& name);
 
 private slots:
+	//void OnUploadButtonClicked();
+	void OnReturnToMainMenuButtonClicked();
+	void OnGetUserStatsResponseReceived(bool success, const QString& result);
 
-	void UploadAvatar();
+private:
+	static QString UserName;
+
+	Ui::ProfileUserWindowClass ui;
+	UserStatsService* userStatsService;
 };

@@ -61,14 +61,17 @@
     <ClCompile Include="AppWindow.cpp">
       <Filter>Implementation Files</Filter>
     </ClCompile>
-    <ClCompile Include="ServerCommunicator.cpp">
-      <Filter>Implementation Files</Filter>
-    </ClCompile>
     <ClCompile Include="AuthenticationService.cpp">
       <Filter>Services\Implementations</Filter>
     </ClCompile>
-    <ClCompile Include="ScribbleWindow.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="UserStatsService.cpp">
+      <Filter>Services\Implementations</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomService.cpp">
+      <Filter>Services\Implementations</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomWindow.cpp">
+      <Filter>Implementation Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -93,8 +96,11 @@
     <QtMoc Include="AuthenticationService.h">
       <Filter>Services\Headers</Filter>
     </QtMoc>
-    <QtMoc Include="ScribbleWindow.h">
-      <Filter>Header Files</Filter>
+    <QtMoc Include="UserStatsService.h">
+      <Filter>Services\Headers</Filter>
+    </QtMoc>
+    <QtMoc Include="RoomService.h">
+      <Filter>Services\Headers</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -116,12 +122,12 @@
     <QtUic Include="AppWindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="ScribbleWindow.ui">
+    <QtUic Include="RoomWindow.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ServerCommunicator.h">
+    <ClInclude Include="RoomWindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,20 +1,25 @@
 #pragma once
+#include "Room.h"
 
-#include "crow.h"
-#include "Database.h"
+#include <mutex>
+#include <thread>
+#include <unordered_map>
 
 class RoomHandler
 {
 public:
-	RoomHandler(Database::Storage& db);
+    RoomHandler();
+    ~RoomHandler();
 
-	crow::response CreateRoom(const crow::request& req);
-	crow::response GetRooms();
-	crow::response GetRoomByCode(const crow::request& req);
-	crow::response UpdateRoom(const crow::request& req);
-	crow::response DeleteRoom(const crow::request& req);
-	
+    void CreateRoom(int roomId, int hostId);
+    void DeleteRoom(int roomId);
+    Room* GetRoom(int roomId);
+    std::string GetRoomById(int roomId);
+    std::string GetAllRooms();
+    void HandleRoom(int roomId);
+
 private:
-	Database::Storage& m_db;
+    std::unordered_map<int, std::pair<std::unique_ptr<Room>, std::thread>> m_rooms;
+    std::mutex roomsMutex;
 };
 

@@ -13,24 +13,47 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Module Files">
-      <UniqueIdentifier>{ee8b1697-34b5-4b79-8b99-33617f257f60}</UniqueIdentifier>
+    <Filter Include="Modules">
+      <UniqueIdentifier>{70a44a31-48cb-4fd6-9cbf-7aa78ceafdb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Class Files">
+      <UniqueIdentifier>{edee3fe7-b86c-4bce-b878-a4546c033956}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules Implementations">
+      <UniqueIdentifier>{93f07bd2-0429-4ade-856c-d6411c7fb80d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="RoomHandler.h">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
-    </ClInclude>
+    </ClCompile>
+    <ClCompile Include="Database.cpp">
+      <Filter>Class Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UserHandler.cpp">
+      <Filter>Class Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UserValidator.cppm">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="UserValidator.cpp">
+      <Filter>Modules Implementations</Filter>
+    </ClCompile>
+    <ClCompile Include="UserHelper.cpp">
+      <Filter>Class Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UserStatsHandler.cpp">
+      <Filter>Class Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RoomHandler.cpp">
+      <Filter>Class Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Room.cpp">
+      <Filter>Class Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="Database.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RoomHelper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RoomPlayersHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UserHandler.h">
@@ -42,43 +65,16 @@
     <ClInclude Include="UserStatsHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameHandler.h">
+    <ClInclude Include="RoomHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Room.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Database.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RoomHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RoomHelper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RoomPlayersHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UserHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UserHelper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UserValidator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UserStatsHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="UserValidator.cppm">
-      <Filter>Module Files</Filter>
-    </ClCompile>
+    <ResourceCompile Include="Server.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
