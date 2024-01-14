@@ -25,4 +25,5 @@ private:
 private slots:
 	void OnCopyInviteCodeClicked();
 	void OnStartButtonClicked();
+	void OnGenerateCodeButtonClicked();
 };
