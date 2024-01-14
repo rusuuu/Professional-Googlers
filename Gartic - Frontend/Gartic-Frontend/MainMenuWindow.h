@@ -19,6 +19,7 @@ public:
 private slots:
     void OnJoinGameButtonClicked();
     void OnHostGameButtonClicked();
+    void OnJoinGameCodeButtonClicked();
     void OnExitButtonClicked();
     void OnProfileButtonClicked();
 

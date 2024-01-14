@@ -9,7 +9,7 @@ RoomWindow::RoomWindow(QWidget* parent) : QMainWindow(parent)
     roomService = new RoomService();
 
     connect(ui.ReturnToMainMenuButton, &QPushButton::clicked, this, &RoomWindow::OnReturnToMainMenuButtonClicked);
-
+    connect(ui.StartGameButton, &QPushButton::clicked, this, &RoomWindow::OnStartGameButtonClicked);
     connect(roomService, &RoomService::CreateRoomResponse, this, &RoomWindow::HandleCreateRoomResponse);
 }
 

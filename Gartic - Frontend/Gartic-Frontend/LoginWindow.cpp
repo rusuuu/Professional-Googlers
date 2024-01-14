@@ -28,9 +28,6 @@ LoginWindow::~LoginWindow()
 
 void LoginWindow::OnLoginButtonClicked() 
 {
-    ui.EmailInput->setText("model@email.com");
-    ui.PasswordInput->setText("Model!01");
-
     QString email = ui.EmailInput->text();
     QString password = ui.PasswordInput->text();
 

@@ -11,10 +11,13 @@ MainMenuWindow::MainMenuWindow(QWidget* parent) : QMainWindow(parent)
     connect(ui.ProfileButton, &QPushButton::clicked, this, &MainMenuWindow::OnProfileButtonClicked);
     connect(ui.ExitButton, &QPushButton::clicked, this, &MainMenuWindow::OnExitButtonClicked);
     connect(ui.JoinGameButton, &QPushButton::clicked, this, &MainMenuWindow::OnJoinGameButtonClicked);
+    connect(ui.HostGameButton_2, &QPushButton::clicked, this, &MainMenuWindow::OnJoinGameCodeButtonClicked);
 
     StyleProfileButton();
 
     ui.JoinGameLabel->hide();
+    ui.HostGameButton_2->hide();
+
 }
 
 void MainMenuWindow::SetUserName(QString&& name)
@@ -50,12 +53,19 @@ void MainMenuWindow::OnJoinGameButtonClicked()
     ui.JoinGameLabel->show();
     ui.JoinGameLabel->setFocus();
     ui.JoinGameButton->hide();
+    ui.HostGameButton_2->show();
+    ui.HostGameButton_2->setFocus();
 }
 
 void MainMenuWindow::OnHostGameButtonClicked()
 {
     HostRoom::SetUserName(std::move(UserName));
     AppWindow::ChangeWidget(HostRoom::WindowIndex);
+}
+
+void MainMenuWindow::OnJoinGameCodeButtonClicked()
+{
+    AppWindow::ChangeWidget(RoomWindow::WindowIndex);
 }
 
 void MainMenuWindow::OnProfileButtonClicked()

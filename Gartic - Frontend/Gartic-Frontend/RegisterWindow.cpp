@@ -27,11 +27,6 @@ RegisterWindow::~RegisterWindow()
 
 void::RegisterWindow::OnRegisterButtonClicked()
 {
-	ui.UsernameInput->setText("Model");
-	ui.EmailInput->setText("model@email.com");
-	ui.PasswordInput->setText("Model!01");
-	ui.ConfirmPasswordInput->setText("Model!01");
-
 	QString username = ui.UsernameInput->text();
 	QString email = ui.EmailInput->text();
 	QString password = ui.PasswordInput->text();

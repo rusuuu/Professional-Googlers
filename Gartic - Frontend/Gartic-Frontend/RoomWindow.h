@@ -18,8 +18,6 @@ public:
 	RoomWindow(QWidget* parent = nullptr);
 	~RoomWindow();
 
-
-
 private slots:
 	void OnReturnToMainMenuButtonClicked();
 	void OnStartGameButtonClicked();
