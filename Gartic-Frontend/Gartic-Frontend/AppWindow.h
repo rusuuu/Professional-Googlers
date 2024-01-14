@@ -7,6 +7,8 @@
 #include "ui_AppWindow.h"
 #include "RegisterWindow.h"
 #include "ProfileUserWindow.h"
+#include "HostRoom.h"
+#include "ScribbleWindow.h"
 
 class AppWindow : public QMainWindow
 {

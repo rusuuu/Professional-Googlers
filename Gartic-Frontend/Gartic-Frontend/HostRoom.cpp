@@ -3,7 +3,7 @@
 #include <QClipboard>
 #include <QRandomGenerator>
 
-
+int HostRoom::WindowIndex = 4;
 
 HostRoom::HostRoom(QWidget *parent)
 	: QMainWindow(parent)
@@ -13,7 +13,7 @@ HostRoom::HostRoom(QWidget *parent)
 	connect(ui.BackToMainMenuButton, &QPushButton::clicked, this, &HostRoom::OnBackToMainMenuClicked);
 	connect(ui.CopyInviteCodeButton, &QPushButton::clicked, this, &HostRoom::OnCopyInviteCodeClicked);
     connect(ui.StartButton, &QPushButton::clicked, this, &HostRoom::OnStartButtonClicked);
-
+    connect(ui.GenerateCodeButton, &QPushButton::clicked, this, &HostRoom::OnGenerateCodeButtonClicked);
 }
 
 HostRoom::~HostRoom()
@@ -21,7 +21,7 @@ HostRoom::~HostRoom()
 
 void HostRoom::OnBackToMainMenuClicked()
 {
-	emit ShowMainMenuWindow();
+    AppWindow::ChangeWidget(MainMenuWindow::WindowIndex);
 }
 
 void HostRoom::OnCopyInviteCodeClicked()
@@ -51,6 +51,11 @@ QString HostRoom::GenerateRandomCode()
 }
 
 void HostRoom::OnStartButtonClicked()
+{
+    AppWindow::ChangeWidget(ScribbleWindow::WindowIndex);
+}
+
+void HostRoom::OnGenerateCodeButtonClicked()
 {
     QString inviteCode = GenerateRandomCode();
     ui.InviteCode->setText(inviteCode);

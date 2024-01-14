@@ -13,11 +13,16 @@ AppWindow::AppWindow(QWidget* parent)
 	RegisterWindow* registerPage = new RegisterWindow();
 	MainMenuWindow* mainMenuPage = new MainMenuWindow();
 	ProfileUserWindow* profileUserPage = new ProfileUserWindow();
+	HostRoom* hostRoomPage = new HostRoom();
+	ScribbleWindow* scribblePage = new ScribbleWindow();
 
 	stackedWidget->addWidget(loginPage);
 	stackedWidget->addWidget(registerPage);
 	stackedWidget->addWidget(mainMenuPage);	
-	stackedWidget->addWidget(profileUserPage);	
+	stackedWidget->addWidget(profileUserPage);
+	stackedWidget->addWidget(hostRoomPage);
+	stackedWidget->addWidget(scribblePage);
+
 
 	ChangeWidget(LoginWindow::WindowIndex);
 

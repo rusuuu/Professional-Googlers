@@ -57,6 +57,7 @@ void MainMenuWindow::OnJoinGameButtonClicked()
 
 void MainMenuWindow::OnHostGameButtonClicked()
 {
+    AppWindow::ChangeWidget(HostRoom::WindowIndex);
 }
 
 void MainMenuWindow::OnProfileButtonClicked()

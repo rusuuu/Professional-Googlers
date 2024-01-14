@@ -116,6 +116,8 @@
     <ClCompile Include="RegisterWindow.cpp" />
     <ClCompile Include="RoomService.cpp" />
     <ClCompile Include="RoomWindow.cpp" />
+    <ClCompile Include="ScribbleArea.cpp" />
+    <ClCompile Include="ScribbleWindow.cpp" />
     <ClCompile Include="UserStatsService.cpp" />
     <QtRcc Include="GarticFrontend.qrc" />
     <QtUic Include="AppWindow.ui" />
@@ -127,6 +129,8 @@
     <QtUic Include="ProfileUserWindow.ui" />
     <QtUic Include="RegisterWindow.ui" />
     <QtUic Include="RoomWindow.ui" />
+    <QtUic Include="ScribbleArea.ui" />
+    <QtUic Include="ScribbleWindow.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="LoginWindow.h" />
@@ -155,6 +159,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RoomWindow.h" />
+    <QtMoc Include="ScribbleArea.h" />
+    <QtMoc Include="ScribbleWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

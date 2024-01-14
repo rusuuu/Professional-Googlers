@@ -33,7 +33,7 @@
     <property name="geometry">
      <rect>
       <x>560</x>
-      <y>430</y>
+      <y>390</y>
       <width>161</width>
       <height>51</height>
      </rect>
@@ -647,7 +647,7 @@ QComboBox QLineEdit:placeholder-text {
      </property>
     </item>
    </widget>
-   <widget class="QPushButton" name="ReturnToMainMenuButton">
+   <widget class="QPushButton" name="BackToMainMenuButton">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -685,6 +685,46 @@ QPushButton:pressed {
     </property>
     <property name="text">
      <string>🠔</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="GenerateCodeButton">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>470</y>
+      <width>161</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>15</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    border-radius: 10px; 
+    border: 2px solid #5c5c5c; 
+    
+background-color: rgb(162,72,147);  
+    padding: 5px;
+    color: #ffffff;  
+}
+
+
+QPushButton:hover {
+    background-color: rgb(231,96,131);  
+}
+
+
+QPushButton:pressed {
+    background-color: rgb(225,62,103);  
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Generate Code</string>
     </property>
    </widget>
   </widget>

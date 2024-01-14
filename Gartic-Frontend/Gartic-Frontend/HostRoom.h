@@ -1,6 +1,8 @@
 #pragma once
 
 #include <QMainWindow>
+
+#include "AppWindow.h"
 #include <QPropertyAnimation>
 #include "ui_HostRoom.h"
 
@@ -9,6 +11,8 @@ class HostRoom : public QMainWindow
 	Q_OBJECT
 
 public:
+	static int WindowIndex;
+
 	HostRoom(QWidget *parent = nullptr);
 	~HostRoom();
 
@@ -25,4 +29,5 @@ private:
 private slots:
 	void OnCopyInviteCodeClicked();
 	void OnStartButtonClicked();
+	void OnGenerateCodeButtonClicked();
 };

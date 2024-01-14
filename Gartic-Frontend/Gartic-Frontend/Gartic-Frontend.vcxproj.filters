@@ -73,6 +73,12 @@
     <ClCompile Include="RoomWindow.cpp">
       <Filter>Implementation Files</Filter>
     </ClCompile>
+    <ClCompile Include="ScribbleArea.cpp">
+      <Filter>Implementation Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScribbleWindow.cpp">
+      <Filter>Implementation Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="LoginWindow.h">
@@ -102,6 +108,12 @@
     <QtMoc Include="RoomService.h">
       <Filter>Services\Headers</Filter>
     </QtMoc>
+    <QtMoc Include="ScribbleWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ScribbleArea.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="LoginWindow.ui">
@@ -123,6 +135,12 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="RoomWindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ScribbleWindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ScribbleArea.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
