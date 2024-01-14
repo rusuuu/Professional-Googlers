@@ -1,6 +1,7 @@
 #pragma once
 #include "Room.h"
 
+#include <crow.h>
 #include <mutex>
 #include <thread>
 #include <unordered_map>
@@ -11,7 +12,7 @@ public:
     RoomHandler();
     ~RoomHandler();
 
-    void CreateRoom(int roomId, int hostId);
+    void CreateRoom(int roomId, std::string hostName);
     void DeleteRoom(int roomId);
     Room* GetRoom(int roomId);
     std::string GetRoomById(int roomId);
@@ -22,4 +23,6 @@ private:
     std::unordered_map<int, std::pair<std::unique_ptr<Room>, std::thread>> m_rooms;
     std::mutex roomsMutex;
 };
+
+
 

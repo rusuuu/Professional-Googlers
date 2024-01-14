@@ -4,32 +4,39 @@ RoomService::RoomService(QObject* parent)
 {
 }
 
-void RoomService::CreateRoom(int roomId, int hostId)
+void RoomService::CreateRoom(int roomId, QString hostName)
 {
-    std::string url = "http://localhost:18080/createRoom" + std::to_string(roomId) + "/" + std::to_string(hostId);
+    std::string url = "http://localhost:18080/createRoom/" + std::to_string(roomId) + "/" + hostName.toUtf8().constData();
 
     sendPostRequest(url, "");
 }
 
 void RoomService::GetRoom(int roomId)
 {
-    std::string url = "http://localhost:18080/room" + roomId;
+    std::string url = "http://localhost:18080/room/" + roomId;
 
     sendGetRequest(url, "");
 }
 
 void RoomService::UpdateRoom(int roomId, int userId)
 {
-    std::string url = "http://localhost:18080/joinRoom" + std::to_string(roomId) + "/" + std::to_string(userId);
+    std::string url = "http://localhost:18080/joinRoom/" + std::to_string(roomId) + "/" + std::to_string(userId);
 
     sendPutRequest(url, "");
 }
 
 void RoomService::DeleteRoom(int roomId)
 {
-    std::string url = "http://localhost:18080/deleteRoom" + roomId;
+    std::string url = "http://localhost:18080/deleteRoom/" + roomId;
 
     sendDeleteRequest(url, "");
+}
+
+void RoomService::GetRoomPlayers(int roomId)
+{
+    std::string url = "http://localhost:18080/room/" + std::to_string(roomId);
+
+    sendGetRequest(url, "");
 }
 
 void RoomService::sendPostRequest(const std::string& url, const std::string& jsonPayload)
@@ -38,8 +45,8 @@ void RoomService::sendPostRequest(const std::string& url, const std::string& jso
     cpr::Header headers = { {"Content-Type", "application/json"} };
     cpr::Response response = cpr::Post(cpr::Url{ url }, body, headers);
 
-    if (200 <= response.status_code && response.status_code < 300) 
-    {        
+    if (200 <= response.status_code && response.status_code < 300)
+    {
         emit CreateRoomResponse(true, QString::fromUtf8(response.text.c_str()));
     }
     else
@@ -54,8 +61,8 @@ void RoomService::sendPutRequest(const std::string& url, const std::string& json
     cpr::Header headers = { {"Content-Type", "application/json"} };
     cpr::Response response = cpr::Put(cpr::Url{ url }, body, headers);
 
-    if (200 <= response.status_code && response.status_code < 300) 
-    {       
+    if (200 <= response.status_code && response.status_code < 300)
+    {
         emit UpdateRoomResponse(true, QString::fromUtf8(response.text.c_str()));
     }
     else
@@ -69,11 +76,11 @@ void RoomService::sendGetRequest(const std::string& url, const std::string& json
     cpr::Header headers = { {"Content-Type", "application/json"} };
     cpr::Response response = cpr::Get(cpr::Url{ url }, headers);
 
-    if (200 <= response.status_code && response.status_code < 300) 
+    if (200 <= response.status_code && response.status_code < 300)
     {
         emit GetRoomResponse(true, QString::fromUtf8(response.text.c_str()));
     }
-    else 
+    else
     {
         emit GetRoomResponse(false, QString::fromUtf8(response.text.c_str()));
     }
@@ -84,7 +91,7 @@ void RoomService::sendDeleteRequest(const std::string& url, const std::string& j
     cpr::Header headers = { {"Content-Type", "application/json"} };
     cpr::Response response = cpr::Delete(cpr::Url{ url }, headers);
 
-    if (200 <= response.status_code && response.status_code < 300) 
+    if (200 <= response.status_code && response.status_code < 300)
     {
         emit DeleteRoomResponse(true, QString::fromUtf8(response.text.c_str()));
     }

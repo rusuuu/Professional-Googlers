@@ -3,11 +3,12 @@
 #include <QStackedWidget>
 #include <QTimer>
 
+#include "HostRoom.h"
+#include "RoomWindow.h"
 #include "LoginWindow.h"
 #include "ui_AppWindow.h"
 #include "RegisterWindow.h"
 #include "ProfileUserWindow.h"
-#include "HostRoom.h"
 #include "ScribbleWindow.h"
 
 class AppWindow : public QMainWindow

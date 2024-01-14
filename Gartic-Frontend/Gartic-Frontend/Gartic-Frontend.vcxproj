@@ -158,7 +158,7 @@
     <QtMoc Include="RoomService.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="RoomWindow.h" />
+    <QtMoc Include="RoomWindow.h" />
     <QtMoc Include="ScribbleArea.h" />
     <QtMoc Include="ScribbleWindow.h" />
   </ItemGroup>

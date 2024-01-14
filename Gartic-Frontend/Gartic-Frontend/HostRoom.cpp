@@ -1,19 +1,26 @@
 #include "HostRoom.h"
-#include "MainMenuWindow.h"
-#include <QClipboard>
-#include <QRandomGenerator>
 
 int HostRoom::WindowIndex = 4;
+QString HostRoom::UserName = "";
+
+void HostRoom::SetUserName(QString&& name)
+{
+    UserName = name;
+}
 
 HostRoom::HostRoom(QWidget *parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
 
+    roomService = new RoomService(this);
+
 	connect(ui.BackToMainMenuButton, &QPushButton::clicked, this, &HostRoom::OnBackToMainMenuClicked);
 	connect(ui.CopyInviteCodeButton, &QPushButton::clicked, this, &HostRoom::OnCopyInviteCodeClicked);
     connect(ui.StartButton, &QPushButton::clicked, this, &HostRoom::OnStartButtonClicked);
     connect(ui.GenerateCodeButton, &QPushButton::clicked, this, &HostRoom::OnGenerateCodeButtonClicked);
+    
+    connect(roomService, &RoomService::CreateRoomResponse, this, &HostRoom::OnCreateRoomResponseReceived);
 }
 
 HostRoom::~HostRoom()
@@ -35,10 +42,11 @@ void HostRoom::OnCopyInviteCodeClicked()
     
     clipboard->setText(inviteCode);
 }
+
 QString HostRoom::GenerateRandomCode()
 {
-    const QString possibleCharacters("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789");
-    const int randomStringLength = 8; // For example, a code with 8 characters
+    const QString possibleCharacters("0123456789");
+    const int randomStringLength = 8; 
 
     QString randomString;
     for (int i = 0; i < randomStringLength; ++i)
@@ -52,12 +60,31 @@ QString HostRoom::GenerateRandomCode()
 
 void HostRoom::OnStartButtonClicked()
 {
-    AppWindow::ChangeWidget(ScribbleWindow::WindowIndex);
+    try
+    {
+        roomService->CreateRoom(ui.InviteCode->text().toInt(), UserName);
+    }
+    catch (std::exception e)
+    {
+
+    }
 }
 
 void HostRoom::OnGenerateCodeButtonClicked()
 {
     QString inviteCode = GenerateRandomCode();
     ui.InviteCode->setText(inviteCode);
+}
+
+void HostRoom::OnCreateRoomResponseReceived(bool success, const QString& result)
+{
+    if (success)
+    {
+        AppWindow::ChangeWidget(RoomWindow::WindowIndex);
+    }
+    else
+    {
+
+    }
 }
 

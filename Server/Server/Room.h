@@ -1,28 +1,33 @@
 #pragma once
 #include <set>
 #include <mutex>
+#include <string>
+#include <vector>
 
 enum class State { Waiting, InProgress, Finished };
-class Room 
+class Room
 {
 public:
-    Room(int id, int hostId);
+    Room(int id, std::string hostName);
     ~Room();
 
-    void AddUser(int userId);
     int GetId() const;
     size_t GetUserCount() const;
-    void RemoveUser(int userId);
-    bool IsEmpty() const;   
-    void StartGame(int userId);
     State GetState() const;
+
     void SetState(State state);
-    bool IsHost(int userId) const;
+
+    bool IsEmpty() const;
+    bool IsHost(std::string userName) const;
+
+    void StartGame();
+    std::vector<std::string> GetUserNames() const;
+    void AddUserName(const std::string& userName);
 
 private:
     int m_roomId;
-    int m_hostId;
+    std::string m_hostName;
     State m_state;
-    std::set<int> m_users;
-    mutable std::mutex mutex; 
+    std::vector<std::string> m_users;
+    std::mutex mutex;
 };

@@ -114,6 +114,9 @@
     <QtMoc Include="ScribbleArea.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="RoomWindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="LoginWindow.ui">
@@ -143,10 +146,5 @@
     <QtUic Include="ScribbleArea.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="RoomWindow.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

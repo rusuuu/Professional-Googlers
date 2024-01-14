@@ -2,19 +2,23 @@
 #include <string>
 #include <QObject>
 #include <cpr/cpr.h>
+#include <QJsonObject>
+#include <QJsonDocument>
 #include <nlohmann/json.hpp>
 
 class RoomService: public QObject
 {
-	Q_OBJECT;
+	Q_OBJECT
 
 public:
 	explicit RoomService(QObject* parent = nullptr);
 
-	void CreateRoom(int roomId, int hostId);
+	void CreateRoom(int roomId, QString hostName);
 	void GetRoom(int roomId);
 	void UpdateRoom(int roomId, int userId);
 	void DeleteRoom(int roomId);
+
+	void GetRoomPlayers(int roomId);
 
 signals:
 	void CreateRoomResponse(bool success, const QString& result);
@@ -27,5 +31,6 @@ private:
 	void sendPutRequest(const std::string& url, const std::string& jsonPayload);
 	void sendGetRequest(const std::string& url, const std::string& jsonPayload);
 	void sendDeleteRequest(const std::string& url, const std::string& jsonPayload);
+
 };
 

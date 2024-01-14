@@ -1,37 +1,34 @@
 #include "Room.h"
 
-Room::Room(int id, int hostId) : m_roomId(id), m_hostId(hostId), m_state(State::Waiting) {}
+Room::Room(int id, std::string hostName) : m_roomId(id), m_hostName(hostName), m_state(State::Waiting) {}
 
 Room::~Room() 
 {
    
 }
 
-void Room::AddUser(int userId)
-{
-    std::lock_guard<std::mutex> lock(mutex);
-    m_users.insert(userId);
-}
-
-void Room::RemoveUser(int userId)
-{
-    std::lock_guard<std::mutex> lock(mutex);
-    m_users.erase(userId);
-}
-
 bool Room::IsEmpty() const 
 {
-    std::lock_guard<std::mutex> lock(mutex);
     return m_users.empty();
 }
 
-void Room::StartGame(int userId)
+void Room::StartGame()
 {
     std::lock_guard<std::mutex> lock(mutex);
-    if (userId == m_hostId && m_state == State::Waiting)
+    if (m_state == State::Waiting)
     {
         m_state = State::InProgress;
     }
+}
+
+std::vector<std::string> Room::GetUserNames() const
+{
+    return m_users;
+}
+
+void Room::AddUserName(const std::string& userName)
+{
+    m_users.push_back(userName);
 }
 
 State Room::GetState() const
@@ -45,9 +42,9 @@ void Room::SetState(State state)
     m_state = state;
 }
 
-bool Room::IsHost(int userId) const
+bool Room::IsHost(std::string hostName) const
 {
-    return userId == m_hostId;
+    return hostName == m_hostName;
 }
 
 int Room::GetId() const
@@ -57,6 +54,5 @@ int Room::GetId() const
 
 size_t Room::GetUserCount() const 
 {
-    std::lock_guard<std::mutex> lock(mutex);
     return m_users.size();
 }

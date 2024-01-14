@@ -1,7 +1,4 @@
 #include "MainMenuWindow.h"
-#include "HostRoom.h"
-#include "ProfileUserWindow.h"
-#include <QLineEdit>
 
 int MainMenuWindow::WindowIndex = 2;
 QString MainMenuWindow::UserName = "";
@@ -57,6 +54,7 @@ void MainMenuWindow::OnJoinGameButtonClicked()
 
 void MainMenuWindow::OnHostGameButtonClicked()
 {
+    HostRoom::SetUserName(std::move(UserName));
     AppWindow::ChangeWidget(HostRoom::WindowIndex);
 }
 

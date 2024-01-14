@@ -1,6 +1,6 @@
 #include "ScribbleWindow.h"
 
-int ScribbleWindow::WindowIndex = 5;
+int ScribbleWindow::WindowIndex = 6;
 
 ScribbleWindow::ScribbleWindow(QWidget* parent)
 	: QMainWindow(parent)
